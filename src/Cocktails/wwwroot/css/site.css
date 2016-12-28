@@ -5,3 +5,8 @@
     padding-top: 30px;
     padding-bottom: 20px;
 }
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}

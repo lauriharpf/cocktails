@@ -1,8 +1,13 @@
 ﻿var CocktailButton = React.createClass({
     render: function() {
+        var src = "/images/cocktail_no_image_extra_small.jpg";
+        if (this.props.image) {
+            src = "/images/drinks/" + this.props.image;
+        }
+
         return (
-            <div className="col-sm-4" style={{ textAlign: "center" }} data-toggle="modal" data-target={"#modal" + this.props.id}>
-                <img src="/images/cocktail_no_image_extra_small.jpg" width="50" height="78" />
+            <div className="col-sm-4 cocktailButton" style={{ textAlign: "center" }} data-toggle="modal" data-target={"#modal" + this.props.id}>                
+                <img src={src} width="50" height="78" />
                 <h6>{this.props.name}</h6>
                 <CocktailDetails id={this.props.id} name={this.props.name} ingredients={this.props.ingredients} instructions={this.props.instructions} />
             </div>
@@ -51,7 +56,6 @@ var CocktailGrid = React.createClass({
         var component = this;
         $.get(this.props.url)
             .done(function(data) {
-                console.log(data);
                 component.setState({ data: data });
             })
             .fail(function() {
@@ -61,7 +65,7 @@ var CocktailGrid = React.createClass({
     render: function () {
         var cocktails = this.state.data.map(function(cocktail) {
             return (
-                <CocktailButton key={cocktail.id} id={cocktail.id} name={cocktail.name} ingredients={cocktail.ingredients} instructions={cocktail.instructions} />
+                <CocktailButton key={cocktail.id} id={cocktail.id} name={cocktail.name} ingredients={cocktail.ingredients} instructions={cocktail.instructions} image={cocktail.image} />
             );
         });
         return (

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security.Policy;
 
 namespace Cocktails.Models
 {
@@ -8,5 +9,6 @@ namespace Cocktails.Models
         public string Name { get; set; }
         public IEnumerable<string> Ingredients { get; set; }
         public string Instructions { get; set; }
+        public string Image { get; set; }
     }
 }

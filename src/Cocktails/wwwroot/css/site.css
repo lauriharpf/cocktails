@@ -10,3 +10,13 @@ ul {
     list-style-type: none;
     padding-left: 0;
 }
+
+.cocktailButton img {
+    border: 1px solid white;
+    border-radius: 8px;
+}
+
+.cocktailButton h6 {
+    letter-spacing: 3px;
+    font-weight: 300;
+}

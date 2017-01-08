@@ -1,13 +1,9 @@
-﻿var CocktailButton = React.createClass({
+﻿
+var CocktailButton = React.createClass({
     render: function () {
-        var src = "/images/cocktail_no_image_extra_small.jpg";
-        if (this.props.cocktail.image) {
-            src = "/images/drinks/" + this.props.cocktail.image;
-        }
-
         return (
             <div className="col-sm-4 cocktailButton" style={{ textAlign: "center" }} data-toggle="modal" data-target={"#modal" + this.props.cocktail.id}>
-                <img src={src} width="50" height="78" />
+                <img src={this.props.cocktail.image} width="50" height="78" />
                 <h6>{this.props.cocktail.name}</h6>
                 <CocktailDetails cocktail={this.props.cocktail} />
             </div>
@@ -30,13 +26,18 @@ var CocktailDetails = React.createClass({
                             <h4 className="modal-title" id={"modalLabel" + this.props.cocktail.id}>{this.props.cocktail.name}</h4>
                         </div>
                         <div className="modal-body">
-                            <h6>Ingredients</h6>
-                            <ul>
-                                {ingredients}
-                            </ul>
+                            <div className="row">
+                                <div className="col-sm-6">
+                                    <img src={this.props.cocktail.image} width="240" height="320" />
+                                </div>
+                                <div className="col-sm-6">
+                                    <h6>Ingredients</h6>
+                                    <ul>{ingredients}</ul>
 
-                            <h6>Instructions</h6>
-                            {this.props.cocktail.instructions}
+                                    <h6>Instructions</h6>
+                                    {this.props.cocktail.instructions}
+                                    </div>
+                            </div>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-primary">Close</button>
@@ -48,14 +49,22 @@ var CocktailDetails = React.createClass({
     }
 });
 
-var CocktailGrid = React.createClass({
+
+
+var CocktailGrid = React.createClass({    
     getInitialState: function() {
         return { data: [] };
     },
     componentWillMount: function () {
         var component = this;
+
+        function cocktailImageUrl(url) {
+            return url ? ("/images/drinks/" + url) : "/images/cocktail_no_image_small.jpg";
+        }
+
         $.get(this.props.url)
-            .done(function(data) {
+            .done(function (data) {
+                $(data).each((index, item) => item.image = cocktailImageUrl(item.image));
                 component.setState({ data: data });
             })
             .fail(function() {

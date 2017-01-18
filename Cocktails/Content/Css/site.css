@@ -1,0 +1,40 @@
+﻿body {
+    background-image: url(/Content/Images/sea.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -100px;
+}
+
+.cocktailButton img {
+    border: 1px solid white;
+    border-radius: 8px;
+}
+
+.cocktailButton h6 {
+    letter-spacing: 3px;
+    font-weight: 300;
+    color: white;
+}
+
+/* No bullets for the ingredient list */
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.navbar-light.bg-faded {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.cocktailButton {
+    margin-top: 20px;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    text-shadow: -1px -1px 0px rgba(255,255,255,0.3), 1px 1px 0px rgba(0,0,0,0.8);
+}
+
+.capitalize {
+    text-transform: capitalize;
+}

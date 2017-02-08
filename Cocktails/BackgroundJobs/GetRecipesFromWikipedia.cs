@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Text;
 using Cocktails.BackgroundJobs.RecipeParser;
 using Cocktails.Database;
 using Cocktails.Models;
 
 namespace Cocktails.BackgroundJobs
 {
-    public class GetRecipiesFromWikipedia
+    public class GetRecipesFromWikipedia
     {
         private static readonly IList<string> CocktailPages = new List<string>
         {
@@ -23,18 +21,18 @@ namespace Cocktails.BackgroundJobs
         public void Get()
         {
             var parser = new HRecipeParser();
-            var recipies = new List<HRecipe>();
+            var recipes = new List<HRecipe>();
             var recipeRowConverter = new RecipeRowConverter(new Ingredient[0]);
 
             foreach (var cocktailPage in CocktailPages)
             {
                 var recipe = parser.Parse(new Uri(RootUrl + cocktailPage));
-                recipies.AddRange(recipe);
+                recipes.AddRange(recipe);
             }
 
-            RemoveExistingCocktails(recipies);
+            RemoveExistingCocktails(recipes);
 
-            var cocktails = recipies.Select(recipe => new Cocktail
+            var cocktails = recipes.Select(recipe => new Cocktail
             {
                 Instructions = recipe.Instructions,
                 Name = recipe.Name,
@@ -46,10 +44,10 @@ namespace Cocktails.BackgroundJobs
             _context.SaveChanges();
         }
 
-        private void RemoveExistingCocktails(List<HRecipe> recipies)
+        private void RemoveExistingCocktails(List<HRecipe> recipes)
         {
             var namesOfExistingCocktails = _context.Cocktails.Select(c => c.Name);
-            recipies.RemoveAll(c => namesOfExistingCocktails.Contains(c.Name));
+            recipes.RemoveAll(c => namesOfExistingCocktails.Contains(c.Name));
         }
 
     }

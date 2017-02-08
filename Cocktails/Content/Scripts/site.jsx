@@ -58,7 +58,7 @@ var CocktailDetails = React.createClass({
                                     {this.props.cocktail.Instructions}
 
                                     <div className="wikipediaLicense">
-                                            Recipie based on Wikipedia article&nbsp;
+                                            Recipe based on Wikipedia article&nbsp;
                                             <a href={this.props.cocktail.WikipediaArticleUri}>{this.props.cocktail.Name}</a>
                                             &nbsp;(<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>).
                                     </div>

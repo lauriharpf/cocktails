@@ -204,7 +204,7 @@
     <Compile Include="App_Start\ReactConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="BackgroundJobs\GetRecipiesFromWikipedia.cs" />
+    <Compile Include="BackgroundJobs\GetRecipesFromWikipedia.cs" />
     <Compile Include="BackgroundJobs\RecipeParser\HRecipe.cs" />
     <Compile Include="BackgroundJobs\RecipeParser\HRecipeParser.cs" />
     <Compile Include="BackgroundJobs\OrAuthorizationFilter.cs" />

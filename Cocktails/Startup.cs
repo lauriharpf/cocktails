@@ -17,7 +17,8 @@ namespace Cocktails
             });
             app.UseHangfireServer();
 
-            RecurringJob.AddOrUpdate<GetRecipiesFromWikipedia>(g => g.Get(), Cron.Yearly);
+            RecurringJob.AddOrUpdate<GetRecipesFromWikipedia>(g => g.Get(), Cron.Yearly);
+            RecurringJob.RemoveIfExists("GetRecipiesFromWikipedia");
         }
 
         private static IEnumerable<IAuthorizationFilter> GetAuthorizationFilters()

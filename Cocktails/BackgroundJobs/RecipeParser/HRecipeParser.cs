@@ -16,13 +16,13 @@ namespace Cocktails.BackgroundJobs.RecipeParser
             var html = new HtmlDocument();
             html.LoadHtml(_client.DownloadString(uri));
 
-            var hrecipieNodes = html.DocumentNode.Descendants().Where(n => n.HasClass("hrecipe"));
-            return hrecipieNodes.Select(x => Parse(x, uri)).ToList();
+            var hrecipeNodes = html.DocumentNode.Descendants().Where(n => n.HasClass("hrecipe"));
+            return hrecipeNodes.Select(x => Parse(x, uri)).ToList();
         }
 
-        private static HRecipe Parse(HtmlNode hrecipieNode, Uri uri)
+        private static HRecipe Parse(HtmlNode hrecipeNode, Uri uri)
         {
-            var children = hrecipieNode.Descendants().ToList();
+            var children = hrecipeNode.Descendants().ToList();
             var name = children.FirstOrDefault(n => n.HasClass("fn"));
             var ingredients = children.Where(n => n.HasClass("ingredient")).SelectMany(i => i.Descendants("li"));
             var instructions = children.FirstOrDefault(n => n.InnerText == "Preparation")?.NextSibling?.NextSibling?.InnerText;

@@ -37,3 +37,10 @@ ul {
 .capitalize {
     text-transform: capitalize;
 }
+
+/* Styling for the licensing info and the link back to the Wikipedia article. */
+.wikipediaLicense {
+    margin-top: 25px;
+    font-size: smaller;
+    font-style: italic;
+}

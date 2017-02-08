@@ -1,9 +1,15 @@
 ﻿function unitToString(unit) {
     switch (unit) {
-    case 0:
-        return "cl";
-    case 1:
-        return "Teaspoon";
+        case 0:
+            return "cl";
+        case 1:
+            return "Teaspoon(s)";
+        case 2:
+            return "Item(s)";
+        case 3:
+            return "";
+        case 4:
+            return "Dash(es) of";
     }
 
     return "";
@@ -50,6 +56,12 @@ var CocktailDetails = React.createClass({
 
                                     <h6>Instructions</h6>
                                     {this.props.cocktail.Instructions}
+
+                                    <div className="wikipediaLicense">
+                                            Recipie based on Wikipedia article&nbsp;
+                                            <a href={this.props.cocktail.WikipediaArticleUri}>{this.props.cocktail.Name}</a>
+                                            &nbsp;(<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>).
+                                    </div>
                                 </div>
                             </div>
                         </div>

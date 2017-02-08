@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Cocktails.Models
 {
@@ -9,5 +10,11 @@ namespace Cocktails.Models
         public virtual ICollection<RecipeRow> RecipeRows { get; set; }
         public string Instructions { get; set; }
         public string Image { get; set; }
+        public string WikipediaArticleUri { get; set; }
+
+        public override string ToString()
+        {
+            return $"ID: {ID}, Name: {Name}";
+        }
     }
 }

@@ -18,9 +18,11 @@
 var CocktailButton = React.createClass({
     render: function() {
         return (
-            <div className="col-sm-4 cocktailButton" style={{ textAlign: "center" }} data-toggle="modal" data-target={"#modal" + this.props.cocktail.ID}>
-                <img src={this.props.cocktail.Image} width="50" height="78" />
-                <h6>{this.props.cocktail.Name}</h6>
+            <div className="col-sm-3 cocktailButton" style={{ textAlign: "center" }} data-toggle="modal" data-target={"#modal" + this.props.cocktail.ID}>                
+                <div className="buttonStyle left">
+                        <img src={this.props.cocktail.Image} width="50" height="78" className="left" />
+                        <span>{this.props.cocktail.Name}</span>
+                </div>
                 <CocktailDetails cocktail={this.props.cocktail} />
             </div>
         );

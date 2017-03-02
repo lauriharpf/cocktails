@@ -9,22 +9,24 @@ namespace Cocktails.BackgroundJobs
 {
     public class GetRecipesFromWikipedia
     {
-        private static readonly IList<string> CocktailPages = new List<string>
-        {
-            "Bloody_Mary_(cocktail)", "Alexander_(cocktail)", "Angel_Face_(cocktail)", "Aviation_(cocktail)",
-            "Mai_Tai", "Cosmopolitan_(cocktail)", "Mojito", "Martini_(cocktail)"
-        };
-
         private const string RootUrl = "https://en.wikipedia.org/wiki/";
-        private readonly CocktailsContext _context = new CocktailsContext();
 
-        public void Get()
+        private readonly CocktailsContext _context;
+
+        public GetRecipesFromWikipedia() : this(new CocktailsContext()) { }
+
+        public GetRecipesFromWikipedia(CocktailsContext context)
+        {
+            _context = context;
+        }
+
+        public void Get(IEnumerable<string> pagesToGet)
         {
             var parser = new HRecipeParser();
             var recipes = new List<HRecipe>();
-            var recipeRowConverter = new RecipeRowConverter(new Ingredient[0]);
+            var recipeRowConverter = new RecipeRowConverter(_context.Ingredients);
 
-            foreach (var cocktailPage in CocktailPages)
+            foreach (var cocktailPage in pagesToGet)
             {
                 var recipe = parser.Parse(new Uri(RootUrl + cocktailPage));
                 recipes.AddRange(recipe);
@@ -49,6 +51,5 @@ namespace Cocktails.BackgroundJobs
             var namesOfExistingCocktails = _context.Cocktails.Select(c => c.Name);
             recipes.RemoveAll(c => namesOfExistingCocktails.Contains(c.Name));
         }
-
     }
 }

@@ -11,7 +11,7 @@ namespace Cocktails.BackgroundJobs.RecipeParser
     public class RecipeRowConverter
     {
         private readonly IList<Ingredient> _knownIngredients;
-        private static readonly Regex AmountRegex = new Regex(@"^(\d\.*\d*)\s");
+        private static readonly Regex AmountRegex = new Regex(@"^(\d\.*\d*)");
         private static readonly IDictionary<string, Unit> StringToUnit = BuildUnitConversionTable();
 
         private static IDictionary<string, Unit> BuildUnitConversionTable()
@@ -67,17 +67,17 @@ namespace Cocktails.BackgroundJobs.RecipeParser
 
         private Unit ParseUnit(IEnumerable<string> ingredientParts)
         {
-            var unit = ingredientParts.FirstOrDefault(u => StringToUnit.ContainsKey(u));
-            return unit != null ? StringToUnit[unit] : Unit.Unspecified;
+            var unit = StringToUnit.FirstOrDefault(u => ingredientParts.Any(p => p.Contains(u.Key)));
+            return unit.Equals(default(KeyValuePair<string, Unit>)) ? Unit.Unspecified : unit.Value;
         }
 
         private Ingredient ParseIngredient(IEnumerable<string> ingredientParts)
         {
-            var reversedParts = ingredientParts.Reverse();
+            var reversedParts = ingredientParts.Reverse().Where(p => !p.Contains(')') && !p.Contains('(') && p != "fresh");
             var builder = new StringBuilder();
             foreach (var part in reversedParts)
             {
-                if (part.Length < 3 || part.Contains(')') || StringToUnit.Keys.Contains(part))
+                if (part.Length < 3 || StringToUnit.Keys.Any(k => part.Contains(k)))
                 {
                     break;
                 }

@@ -210,6 +210,7 @@
     <Compile Include="BackgroundJobs\OrAuthorizationFilter.cs" />
     <Compile Include="BackgroundJobs\RecipeParser\HtmlNodeExtensions.cs" />
     <Compile Include="BackgroundJobs\RecipeParser\RecipeRowConverter.cs" />
+    <Compile Include="BackgroundJobs\Wikipedia.cs" />
     <Compile Include="Controllers\CocktailsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Database\CocktailsContext.cs" />

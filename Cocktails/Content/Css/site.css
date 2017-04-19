@@ -2,6 +2,7 @@
     background-image: url(/Content/Images/sea.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: cover; 
 }
 
 .cocktailButton img {

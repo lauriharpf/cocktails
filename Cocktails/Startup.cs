@@ -17,7 +17,7 @@ namespace Cocktails
             });
             app.UseHangfireServer();
 
-            RecurringJob.AddOrUpdate<GetRecipesFromWikipedia>(g => g.Get(Wikipedia.CocktailPages), Cron.Yearly);
+            RecurringJob.AddOrUpdate<GetRecipesFromWikipedia>(g => g.Get(Wikipedia.CocktailPages), "1 13 1 1 *");
             RecurringJob.RemoveIfExists("GetRecipiesFromWikipedia.Get");
         }
 

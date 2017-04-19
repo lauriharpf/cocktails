@@ -18,10 +18,11 @@
 .buttonStyle {
     background-color: rgba(255, 255, 255, 0.5);
     color: black;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
     border: 1px solid white;
     border-radius: 8px;
     width: 100%;
+    font-size: 0.90rem;
 }
 
 .left {

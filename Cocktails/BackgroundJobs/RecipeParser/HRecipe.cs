@@ -9,5 +9,6 @@ namespace Cocktails.BackgroundJobs.RecipeParser
         public Uri Uri { get; set; }
         public IEnumerable<string> Ingredients { get; set; }
         public string Instructions { get; set; }
+        public Image Image { get; set; }
     }
 }

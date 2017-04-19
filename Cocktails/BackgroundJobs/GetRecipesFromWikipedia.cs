@@ -20,11 +20,20 @@ namespace Cocktails.BackgroundJobs
             _context = context;
         }
 
+        private static bool IsManuallyTriggered()
+        {
+            return DateTime.UtcNow.Day > 2 || DateTime.UtcNow.Month > 1;
+        }
+
         public void Get(IEnumerable<string> pagesToGet)
         {
+            if (!IsManuallyTriggered())
+            {
+                return;                
+            }
+
             var parser = new HRecipeParser();
             var recipes = new List<HRecipe>();
-            var recipeRowConverter = new RecipeRowConverter(_context.Ingredients);
 
             foreach (var cocktailPage in pagesToGet)
             {
@@ -32,24 +41,37 @@ namespace Cocktails.BackgroundJobs
                 recipes.AddRange(recipe);
             }
 
-            RemoveExistingCocktails(recipes);
+            var imageUploader = new AzureImageUploader();
+            RemoveExistingCocktails(imageUploader);
 
-            var cocktails = recipes.Select(recipe => new Cocktail
+            var cocktails = new List<Cocktail>();
+            var recipeRowConverter = new RecipeRowConverter(_context.Ingredients);
+
+            foreach (var recipe in recipes)
             {
-                Instructions = recipe.Instructions,
-                Name = recipe.Name,
-                RecipeRows = recipeRowConverter.Convert(recipe.Ingredients.ToList()).Values,
-                WikipediaArticleUri = recipe.Uri.AbsoluteUri
-            }).ToList();
+                var imageName = recipe.Image != null ? imageUploader.Upload(recipe.Image).ToString() : null;
+
+                cocktails.Add(new Cocktail
+                {
+                    Instructions = recipe.Instructions,
+                    Name = recipe.Name,
+                    RecipeRows = recipeRowConverter.Convert(recipe.Ingredients.ToList()).Values,
+                    WikipediaArticleUri = recipe.Uri.AbsoluteUri,
+                    Image = imageName
+                });
+            }
 
             _context.Cocktails.AddRange(cocktails);
             _context.SaveChanges();
         }
 
-        private void RemoveExistingCocktails(List<HRecipe> recipes)
+        private void RemoveExistingCocktails(AzureImageUploader imageUploader)
         {
-            var namesOfExistingCocktails = _context.Cocktails.Select(c => c.Name);
-            recipes.RemoveAll(c => namesOfExistingCocktails.Contains(c.Name));
+            _context.Cocktails.RemoveRange(_context.Cocktails);
+            _context.Ingredients.RemoveRange(_context.Ingredients);
+            _context.SaveChanges();
+
+            imageUploader.ClearContainer();
         }
     }
 }

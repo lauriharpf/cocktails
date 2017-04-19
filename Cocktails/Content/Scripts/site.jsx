@@ -18,7 +18,7 @@
 var CocktailButton = React.createClass({
     render: function() {
         return (
-            <div className="col-sm-3 cocktailButton" style={{ textAlign: "center" }} data-toggle="modal" data-target={"#modal" + this.props.cocktail.ID}>                
+            <div className="col-12 col-sm-4 col-lg-3 col-xl-2 cocktailButton" style={{ textAlign: "center"}} data-toggle="modal" data-target={"#modal" + this.props.cocktail.ID}>                
                 <div className="buttonStyle left">
                         <img src={this.props.cocktail.Image} width="50" height="78" className="left" />
                         <span>{this.props.cocktail.Name}</span>
@@ -84,14 +84,17 @@ var CocktailGrid = React.createClass({
     componentWillMount: function() {
         var component = this;
 
-        function cocktailImageUrl(url) {
-            return url ? ("/Content/Images/Drinks/" + url) : "/Content/Images/cocktail_no_image_small.jpg";
+        function cocktailImageUrl(azureStorageUrl, imageName) {
+            return imageName ? (azureStorageUrl + imageName) : "/Content/Images/cocktail_no_image_small.jpg";
         }
 
-        $.get(this.props.url)
-            .done(function(data) {
-                $(data).each((index, item) => item.Image = cocktailImageUrl(item.Image));
-                component.setState({ data: data });
+        var azureStoragePromise = $.get("/api/configuration");
+        var cocktailsPromise = $.get(this.props.url);
+
+        $.when(azureStoragePromise, cocktailsPromise)
+            .done(function (azureStorageUrlData, cocktailsData) {
+                $(cocktailsData[0]).each((index, item) => item.Image = cocktailImageUrl(azureStorageUrlData[0] + "/", item.Image));
+                component.setState({ data: cocktailsData[0] });
             })
             .fail(function() {
                 alert("Sorry! Fetching cocktails went horribly wrong. Try refreshing the page.");
@@ -104,7 +107,7 @@ var CocktailGrid = React.createClass({
             );
         });
         return (
-            <div className="container">
+            <div className="container-fluid">
         <div className="row">
             {cocktails}
         </div>

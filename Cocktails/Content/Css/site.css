@@ -1,8 +1,5 @@
 ﻿body {
-    background-image: url(/Content/Images/sea.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover; 
+    background: url(/Content/Images/sea.jpg);
 }
 
 .cocktailButton img {
@@ -17,13 +14,14 @@
 }
 
 .buttonStyle {
-    background-color: rgba(255, 255, 255, 0.5);
-    color: black;
+    background-color: rgba(55, 55, 55, 0.6);
+    color: white;
     letter-spacing: 1px;
     border: 1px solid white;
     border-radius: 8px;
     width: 100%;
     font-size: 0.90rem;
+    font-weight: 600;
 }
 
 .left {
@@ -36,8 +34,8 @@ ul {
     padding-left: 0;
 }
 
-.navbar-light.bg-faded {
-    background-color: rgba(255, 255, 255, 0.4);
+.navbar.bg-faded {
+    background-color: rgba(55, 55, 55, 0.4);
 }
 
 .cocktailButton {
@@ -46,7 +44,12 @@ ul {
 
 .navbar-brand {
     font-size: 1.5rem;
-    text-shadow: -1px -1px 0px rgba(255,255,255,0.3), 1px 1px 0px rgba(0,0,0,0.8);
+    color: white;
+    text-shadow: -1px -1px 0px rgba(255,255,255,0.3), 1px 1px 0px rgba(0,0,0,0.8);    
+}
+
+a.navbar-brand:hover, a.navbar-brand:visited {
+    color: white;
 }
 
 .capitalize {

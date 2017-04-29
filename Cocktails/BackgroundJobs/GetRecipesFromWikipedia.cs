@@ -12,12 +12,14 @@ namespace Cocktails.BackgroundJobs
         private const string RootUrl = "https://en.wikipedia.org/wiki/";
 
         private readonly CocktailsContext _context;
+        private readonly IAzureImageUploader _azureImageUploader;
 
-        public GetRecipesFromWikipedia() : this(new CocktailsContext()) { }
+        public GetRecipesFromWikipedia() : this(new CocktailsContext(), new AzureImageUploader()) { }
 
-        public GetRecipesFromWikipedia(CocktailsContext context)
+        public GetRecipesFromWikipedia(CocktailsContext context, IAzureImageUploader azureImageUploader)
         {
             _context = context;
+            _azureImageUploader = azureImageUploader;
         }
 
         private static bool IsManuallyTriggered()
@@ -41,15 +43,14 @@ namespace Cocktails.BackgroundJobs
                 recipes.AddRange(recipe);
             }
 
-            var imageUploader = new AzureImageUploader();
-            RemoveExistingCocktails(imageUploader);
+            RemoveExistingCocktails();
 
             var cocktails = new List<Cocktail>();
             var recipeRowConverter = new RecipeRowConverter(_context.Ingredients);
 
             foreach (var recipe in recipes)
             {
-                var imageName = recipe.Image != null ? imageUploader.Upload(recipe.Image).ToString() : null;
+                var imageName = recipe.Image != null ? _azureImageUploader.Upload(recipe.Image).ToString() : null;
 
                 cocktails.Add(new Cocktail
                 {
@@ -65,13 +66,13 @@ namespace Cocktails.BackgroundJobs
             _context.SaveChanges();
         }
 
-        private void RemoveExistingCocktails(AzureImageUploader imageUploader)
+        private void RemoveExistingCocktails()
         {
             _context.Cocktails.RemoveRange(_context.Cocktails);
             _context.Ingredients.RemoveRange(_context.Ingredients);
             _context.SaveChanges();
 
-            imageUploader.ClearContainer();
+            _azureImageUploader.ClearContainer();
         }
     }
 }

@@ -4,6 +4,7 @@ using Cocktails.Database;
 using Cocktails.Models;
 using CocktailsTests.Models;
 using FluentAssertions;
+using Moq;
 using NUnit.Framework;
 
 namespace CocktailsTests.BackgroundJobs
@@ -13,20 +14,21 @@ namespace CocktailsTests.BackgroundJobs
     {
         private GetRecipesFromWikipedia _getRecipes;
         private CocktailsContext _context;
+        private Mock<IAzureImageUploader> _azureImageUploader;
 
         [SetUp]
         public void Setup()
         {
             _context = EffortSetup.EffortProviderFactory.FreshContext();
-            _getRecipes = new GetRecipesFromWikipedia(_context);
+            _azureImageUploader = new Mock<IAzureImageUploader>();
+            _getRecipes = new GetRecipesFromWikipedia(_context, _azureImageUploader.Object);
         }
 
         [Test]
         public void ReusesKnownIngredients()
         {
             // Both of these have gin; we should end up with only one instance of the "gin" ingredient
-            _getRecipes.Get(new[] { "Angel_Face_(cocktail)" });
-            _getRecipes.Get(new[] { "Aviation_(cocktail)" });
+            _getRecipes.Get(new[] { "Angel_Face_(cocktail)", "Aviation_(cocktail)" });
             HasExpectedIngredients();
         }
 

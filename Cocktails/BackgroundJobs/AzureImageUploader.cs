@@ -6,7 +6,14 @@ using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Cocktails.BackgroundJobs
 {
-    public class AzureImageUploader
+    public interface IAzureImageUploader
+    {
+        void ClearContainer();
+        Guid Upload(Image image);
+        Uri GetAzureStorageUri();
+    }
+
+    public class AzureImageUploader : IAzureImageUploader
     {
         private const string ContainerName = "images";
 
@@ -34,7 +41,7 @@ namespace Cocktails.BackgroundJobs
             return GetContainer().Uri;
         }
 
-        private CloudBlobContainer GetContainer()
+        private static CloudBlobContainer GetContainer()
         {
             var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
             var blobClient = storageAccount.CreateCloudBlobClient();

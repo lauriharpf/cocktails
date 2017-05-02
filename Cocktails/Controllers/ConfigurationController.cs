@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 using Cocktails.BackgroundJobs;
 
@@ -9,9 +6,16 @@ namespace Cocktails.Controllers
 {
     public class ConfigurationController : ApiController
     {
+        private readonly IAzureImageUploader _azureImageUploader;
+
+        public ConfigurationController(IAzureImageUploader azureImageUploader)
+        {
+            _azureImageUploader = azureImageUploader;
+        }
+
         public Uri Get()
         {
-            return new AzureImageUploader().GetAzureStorageUri();
+            return _azureImageUploader.GetAzureStorageUri();
         }
     }
 }

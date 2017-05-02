@@ -14,8 +14,6 @@ namespace Cocktails.BackgroundJobs
         private readonly CocktailsContext _context;
         private readonly IAzureImageUploader _azureImageUploader;
 
-        public GetRecipesFromWikipedia() : this(new CocktailsContext(), new AzureImageUploader()) { }
-
         public GetRecipesFromWikipedia(CocktailsContext context, IAzureImageUploader azureImageUploader)
         {
             _context = context;

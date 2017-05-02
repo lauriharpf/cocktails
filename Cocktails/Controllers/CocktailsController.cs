@@ -9,10 +9,16 @@ namespace Cocktails.Controllers
 {
     public class CocktailsController : ApiController
     {
+        private readonly CocktailsContext _context;
+
+        public CocktailsController(CocktailsContext context)
+        {
+            _context = context;
+        }
+
         public IEnumerable<Cocktail> Get()
         {
-            var context = new CocktailsContext();
-            return context.Cocktails.Include(c => c.RecipeRows.Select(r => r.Ingredient)).ToList();
+            return _context.Cocktails.Include(c => c.RecipeRows.Select(r => r.Ingredient)).ToList();
         }
     }
 }

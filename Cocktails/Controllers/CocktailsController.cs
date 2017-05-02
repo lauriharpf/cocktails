@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Http;
 using Cocktails.Database;
@@ -11,7 +12,7 @@ namespace Cocktails.Controllers
         public IEnumerable<Cocktail> Get()
         {
             var context = new CocktailsContext();
-            return context.Cocktails.ToList();
+            return context.Cocktails.Include(c => c.RecipeRows.Select(r => r.Ingredient)).ToList();
         }
     }
 }

@@ -24,7 +24,7 @@ export default class CocktailGrid extends React.Component {
                 component.setState({ data: cocktailsData[0] });
             })
             .fail(function() {
-                alert("Sorry! Fetching cocktails went horribly wrong. Try refreshing the page.");
+                alert("Sorry! Fetching cocktails went horribly wrong! Try refreshing the page.");
             });
     }
 

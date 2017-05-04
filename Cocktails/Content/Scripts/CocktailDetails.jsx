@@ -40,6 +40,9 @@ export default class CocktailDetails extends React.Component {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h4 className="modal-title" id={"modalLabel" + this.props.cocktail.ID}>{this.props.cocktail.Name}</h4>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                         <div className="modal-body">
                             <div className="row">
@@ -60,9 +63,6 @@ export default class CocktailDetails extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-primary">Close</button>
                         </div>
                     </div>
                 </div>

@@ -24,6 +24,23 @@
     font-weight: 600;
 }
 
+.drinkListWrapper {
+    margin-top: 20px;
+    display: flex;   
+}
+
+.drinkList {
+    background-color: rgba(55, 55, 55, 0.6);
+    color: white;
+    letter-spacing: 1px;
+    border: 1px solid white;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 0.90rem;
+    font-weight: 600;
+    padding-left: 10px;
+}
+
 .left {
     float: left;
 }

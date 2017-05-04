@@ -54,6 +54,8 @@
 
 	'use strict';
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -66,9 +68,83 @@
 
 	var _CocktailGrid2 = _interopRequireDefault(_CocktailGrid);
 
+	var _DrinkList = __webpack_require__(187);
+
+	var _DrinkList2 = _interopRequireDefault(_DrinkList);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_reactDom2.default.render(_react2.default.createElement(_CocktailGrid2.default, { url: '/api/cocktails' }), document.getElementById("content"));
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ListBuilder = function (_React$Component) {
+	    _inherits(ListBuilder, _React$Component);
+
+	    function ListBuilder(props) {
+	        _classCallCheck(this, ListBuilder);
+
+	        var _this = _possibleConstructorReturn(this, (ListBuilder.__proto__ || Object.getPrototypeOf(ListBuilder)).call(this, props));
+
+	        _this.state = { drinkList: new Map(), data: [] };
+	        _this.addDrink = _this.addDrink.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(ListBuilder, [{
+	        key: 'addDrink',
+	        value: function addDrink(cocktailId) {
+	            var count = this.state.drinkList.has(cocktailId) ? this.state.drinkList.get(cocktailId) : 0;
+	            count++;
+	            var newDrinkList = new Map(this.state.drinkList);
+	            newDrinkList.set(cocktailId, count);
+	            this.setState({
+	                drinkList: newDrinkList
+	            });
+	        }
+	    }, {
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            var component = this;
+
+	            function cocktailImageUrl(azureStorageUrl, imageName) {
+	                return imageName ? azureStorageUrl + imageName : "/Content/Images/cocktail_no_image_small.jpg";
+	            }
+
+	            var azureStoragePromise = $.get("/api/configuration");
+	            var cocktailsPromise = $.get("/api/cocktails");
+
+	            $.when(azureStoragePromise, cocktailsPromise).done(function (azureStorageUrlData, cocktailsData) {
+	                $(cocktailsData[0]).each(function (index, item) {
+	                    return item.Image = cocktailImageUrl(azureStorageUrlData[0] + "/", item.Image);
+	                });
+	                component.setState({ data: cocktailsData[0] });
+	            }).fail(function () {
+	                alert("Sorry! Fetching cocktails went horribly wrong! Try refreshing the page.");
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'container-fluid' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'row' },
+	                    _react2.default.createElement(_DrinkList2.default, { drinkList: this.state.drinkList, cocktails: this.state.data }),
+	                    _react2.default.createElement(_CocktailGrid2.default, { cocktails: this.state.data, handlePlusClick: this.addDrink })
+	                )
+	            );
+	        }
+	    }]);
+
+	    return ListBuilder;
+	}(_react2.default.Component);
+
+	_reactDom2.default.render(_react2.default.createElement(ListBuilder, null), document.getElementById("content"));
 
 /***/ },
 /* 2 */
@@ -21834,42 +21910,19 @@
 	    function CocktailGrid(props) {
 	        _classCallCheck(this, CocktailGrid);
 
-	        var _this = _possibleConstructorReturn(this, (CocktailGrid.__proto__ || Object.getPrototypeOf(CocktailGrid)).call(this, props));
-
-	        _this.state = { data: [] };
-	        return _this;
+	        return _possibleConstructorReturn(this, (CocktailGrid.__proto__ || Object.getPrototypeOf(CocktailGrid)).call(this, props));
 	    }
 
 	    _createClass(CocktailGrid, [{
-	        key: 'componentWillMount',
-	        value: function componentWillMount() {
-	            var component = this;
-
-	            function cocktailImageUrl(azureStorageUrl, imageName) {
-	                return imageName ? azureStorageUrl + imageName : "/Content/Images/cocktail_no_image_small.jpg";
-	            }
-
-	            var azureStoragePromise = $.get("/api/configuration");
-	            var cocktailsPromise = $.get(this.props.url);
-
-	            $.when(azureStoragePromise, cocktailsPromise).done(function (azureStorageUrlData, cocktailsData) {
-	                $(cocktailsData[0]).each(function (index, item) {
-	                    return item.Image = cocktailImageUrl(azureStorageUrlData[0] + "/", item.Image);
-	                });
-	                component.setState({ data: cocktailsData[0] });
-	            }).fail(function () {
-	                alert("Sorry! Fetching cocktails went horribly wrong! Try refreshing the page.");
-	            });
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var cocktails = this.state.data.map(function (cocktail) {
-	                return _react2.default.createElement(_CocktailButton2.default, { key: cocktail.ID, cocktail: cocktail });
+	            var that = this;
+	            var cocktails = this.props.cocktails.map(function (cocktail) {
+	                return _react2.default.createElement(_CocktailButton2.default, { key: cocktail.ID, cocktail: cocktail, handlePlusClick: that.props.handlePlusClick });
 	            });
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'container-fluid' },
+	                { className: 'col-6 col-sm-7 col-md-8 col-lg-9 col-xl-10' },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'row' },
@@ -21918,23 +21971,37 @@
 	    function CocktailButton(props) {
 	        _classCallCheck(this, CocktailButton);
 
-	        return _possibleConstructorReturn(this, (CocktailButton.__proto__ || Object.getPrototypeOf(CocktailButton)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (CocktailButton.__proto__ || Object.getPrototypeOf(CocktailButton)).call(this, props));
+
+	        _this.onPlusClick = _this.onPlusClick.bind(_this);
+	        return _this;
 	    }
 
 	    _createClass(CocktailButton, [{
+	        key: 'onPlusClick',
+	        value: function onPlusClick() {
+	            this.props.handlePlusClick(this.props.cocktail.ID);
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var modalTarget = "#modal" + this.props.cocktail.ID;
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-12 col-sm-4 col-lg-3 col-xl-2 cocktailButton', style: { textAlign: "center" }, 'data-toggle': 'modal', 'data-target': "#modal" + this.props.cocktail.ID },
+	                { className: 'col-12 col-sm-12 col-lg-4 col-xl-3 cocktailButton', style: { textAlign: "center" } },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'buttonStyle left' },
-	                    _react2.default.createElement('img', { src: this.props.cocktail.Image, width: '50', height: '78', className: 'left' }),
+	                    _react2.default.createElement('img', { src: this.props.cocktail.Image, width: '50', height: '78', className: 'left', 'data-toggle': 'modal', 'data-target': modalTarget }),
 	                    _react2.default.createElement(
 	                        'span',
-	                        null,
+	                        { 'data-toggle': 'modal', 'data-target': modalTarget },
 	                        this.props.cocktail.Name
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        _react2.default.createElement('i', { className: 'fa fa-plus-square', onClick: this.onPlusClick })
 	                    )
 	                ),
 	                _react2.default.createElement(_CocktailDetails2.default, { cocktail: this.props.cocktail })
@@ -22035,6 +22102,15 @@
 	                                "h4",
 	                                { className: "modal-title", id: "modalLabel" + this.props.cocktail.ID },
 	                                this.props.cocktail.Name
+	                            ),
+	                            _react2.default.createElement(
+	                                "button",
+	                                { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" },
+	                                _react2.default.createElement(
+	                                    "span",
+	                                    { "aria-hidden": "true" },
+	                                    "\xD7"
+	                                )
 	                            )
 	                        ),
 	                        _react2.default.createElement(
@@ -22086,15 +22162,6 @@
 	                                    )
 	                                )
 	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            "div",
-	                            { className: "modal-footer" },
-	                            _react2.default.createElement(
-	                                "button",
-	                                { type: "button", className: "btn btn-primary" },
-	                                "Close"
-	                            )
 	                        )
 	                    )
 	                )
@@ -22129,6 +22196,104 @@
 	        }]
 	    }
 	};
+
+/***/ },
+/* 187 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var DrinkList = function (_React$Component) {
+	    _inherits(DrinkList, _React$Component);
+
+	    function DrinkList(props) {
+	        _classCallCheck(this, DrinkList);
+
+	        var _this = _possibleConstructorReturn(this, (DrinkList.__proto__ || Object.getPrototypeOf(DrinkList)).call(this, props));
+
+	        _this.buildDrinkList = _this.buildDrinkList.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(DrinkList, [{
+	        key: 'buildDrinkList',
+	        value: function buildDrinkList() {
+	            var that = this;
+	            return Array.from(this.props.drinkList.entries()).map(function (keyToValue) {
+	                var cocktailId = keyToValue[0];
+	                var count = keyToValue[1];
+	                var cocktail = that.props.cocktails.find(function (x) {
+	                    return x.ID === cocktailId;
+	                });
+	                return _react2.default.createElement(
+	                    'li',
+	                    { key: cocktailId },
+	                    count,
+	                    ' x ',
+	                    cocktail.Name
+	                );
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var hasDrinks = this.props.drinkList.size > 0;
+	            var message;
+	            if (hasDrinks) {
+	                message = _react2.default.createElement(
+	                    'ul',
+	                    { style: { listStyleType: 'none' } },
+	                    this.buildDrinkList()
+	                );
+	            } else {
+	                message = _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    'Thirsty? Use ',
+	                    _react2.default.createElement('i', { className: 'fa fa-plus-square' }),
+	                    ' icons to add to list.'
+	                );
+	            }
+
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 drinkListWrapper' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'drinkList' },
+	                    _react2.default.createElement(
+	                        'h4',
+	                        null,
+	                        'Selected drinks'
+	                    ),
+	                    message
+	                )
+	            );
+	        }
+	    }]);
+
+	    return DrinkList;
+	}(_react2.default.Component);
+
+	exports.default = DrinkList;
 
 /***/ }
 /******/ ]);

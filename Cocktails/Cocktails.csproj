@@ -179,6 +179,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Css\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Content\Css\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Content\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Css\site.css" />
     <Content Include="Content\Images\background.jpg" />
     <Content Include="Content\Images\cocktail_no_image_small.jpg" />
@@ -186,6 +189,39 @@
     <Content Include="Content\Images\Drinks\mai-tai_small.jpg" />
     <Content Include="Content\Images\Drinks\mojito_small.jpg" />
     <Content Include="Content\Scripts\bundle.js" />
+    <Content Include="Content\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Css\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Content\Css\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Content\Css\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Content\Css\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Content\Css\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Content\Css\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Content\Css\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Content\Css\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Content\Css\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Content\Css\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Content\Css\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Content\Css\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Content\Css\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Content\Css\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Content\Css\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Content\Css\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Content\Css\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Content\Css\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Content\Css\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Content\Css\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Content\Css\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Content\Css\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Content\Css\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Content\Css\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Content\Css\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Content\Css\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Content\Css\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Content\Css\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Content\Css\font-awesome-4.7.0\scss\_variables.scss" />
     <None Include="Content\Scripts\CocktailDetails.jsx" />
     <Content Include="Content\Scripts\ThirdParty\tether.min.js" />
     <Content Include="Global.asax" />
@@ -241,6 +277,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Content\Scripts\CocktailGrid.jsx" />
+    <Content Include="Content\Scripts\DrinkList.jsx" />
     <None Include="Content\Scripts\site.jsx" />
     <None Include="Content\Scripts\CocktailButton.jsx" />
     <Content Include="package.json" />

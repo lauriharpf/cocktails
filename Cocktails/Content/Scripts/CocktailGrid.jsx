@@ -5,37 +5,17 @@ export default class CocktailGrid extends React.Component {
     
     constructor(props) {
         super(props);
-        this.state = { data: [] };
-    }
-
-    componentWillMount() {
-        var component = this;
-
-        function cocktailImageUrl(azureStorageUrl, imageName) {
-            return imageName ? (azureStorageUrl + imageName) : "/Content/Images/cocktail_no_image_small.jpg";
-        }
-
-        var azureStoragePromise = $.get("/api/configuration");
-        var cocktailsPromise = $.get(this.props.url);
-
-        $.when(azureStoragePromise, cocktailsPromise)
-            .done(function (azureStorageUrlData, cocktailsData) {
-                $(cocktailsData[0]).each((index, item) => item.Image = cocktailImageUrl(azureStorageUrlData[0] + "/", item.Image));
-                component.setState({ data: cocktailsData[0] });
-            })
-            .fail(function() {
-                alert("Sorry! Fetching cocktails went horribly wrong! Try refreshing the page.");
-            });
     }
 
     render() {
-        var cocktails = this.state.data.map(function(cocktail) {
+        var that = this;
+        var cocktails = this.props.cocktails.map(function(cocktail) {
             return (
-                <CocktailButton key={cocktail.ID} cocktail={cocktail} />
+                <CocktailButton key={cocktail.ID} cocktail={cocktail} handlePlusClick={that.props.handlePlusClick} />
             );
         });
         return (
-            <div className="container-fluid">
+            <div className="col-6 col-sm-7 col-md-8 col-lg-9 col-xl-10">
                 <div className="row">
                     {cocktails}
                 </div>

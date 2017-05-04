@@ -233,11 +233,14 @@
     <Content Include="Content\Images\Drinks\cosmopolitan_small.jpg" />
     <Content Include="Content\Images\Drinks\mai-tai_small.jpg" />
     <Content Include="Content\Images\Drinks\mojito_small.jpg" />
+    <Content Include="Content\Scripts\bundle.js" />
+    <None Include="Content\Scripts\CocktailDetails.jsx" />
     <Content Include="Content\Scripts\ThirdParty\tether.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="webpack.config.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\ReactConfig.cs" />
@@ -284,7 +287,10 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Content\Scripts\site.jsx" />
+    <Content Include="Content\Scripts\CocktailGrid.jsx" />
+    <None Include="Content\Scripts\site.jsx" />
+    <None Include="Content\Scripts\CocktailButton.jsx" />
+    <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\Cocktails20161208083924 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Cocktails20161208083924.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />

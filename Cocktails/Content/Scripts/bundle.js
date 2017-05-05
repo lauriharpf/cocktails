@@ -22009,16 +22009,16 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'buttonStyle left' },
-	                    _react2.default.createElement('img', { src: this.props.cocktail.Image, width: '50', height: '78', className: 'left', 'data-toggle': 'modal', 'data-target': modalTarget }),
+	                    _react2.default.createElement('img', { src: this.props.cocktail.Image, width: '50', height: '78', className: 'left openDetails', 'data-toggle': 'modal', 'data-target': modalTarget }),
 	                    _react2.default.createElement(
 	                        'span',
-	                        { 'data-toggle': 'modal', 'data-target': modalTarget },
+	                        { className: 'openDetails', 'data-toggle': 'modal', 'data-target': modalTarget },
 	                        this.props.cocktail.Name
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
 	                        null,
-	                        _react2.default.createElement('i', { className: 'fa fa-plus-square', onClick: this.onPlusClick })
+	                        _react2.default.createElement('i', { className: 'fa fa-2x fa-plus-square plusIcon', onClick: this.onPlusClick })
 	                    )
 	                ),
 	                _react2.default.createElement(_CocktailDetails2.default, { cocktail: this.props.cocktail })

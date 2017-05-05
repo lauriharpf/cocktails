@@ -14,13 +14,13 @@ export default class NavBar extends React.Component {
         return (
             <nav className="navbar sticky-top bg-faded" role="navigation">
                 <div>
-                    <a className="navbar-brand" href="#">
+                    <span className="navbar-brand">
                         Cocktails World
-                    </a>
+                    </span>
 
-                    <a href="#" type="button" className="btn btn-secondary navbar-btn pull-right" onClick={this.showDrinkList}>
+                    <button type="button" className="btn btn-secondary navbar-btn pull-right" onClick={this.showDrinkList}>
                         <span className="badge">{this.props.drinkListCount}</span><i className="fa fa-shopping-cart"></i> Selected drinks
-                    </a>
+                    </button>
                 </div>
             </nav>
         );

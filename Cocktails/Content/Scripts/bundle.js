@@ -22306,8 +22306,8 @@
 	                { className: "shopping-cart", id: "drinkList" },
 	                message,
 	                _react2.default.createElement(
-	                    "a",
-	                    { href: "#", className: "btn btn-primary", style: { width: '100%' }, onClick: this.hideList },
+	                    "button",
+	                    { className: "btn btn-primary", style: { width: '100%' }, onClick: this.hideList },
 	                    "Close"
 	                )
 	            );
@@ -22370,13 +22370,13 @@
 	                    "div",
 	                    null,
 	                    _react2.default.createElement(
-	                        "a",
-	                        { className: "navbar-brand", href: "#" },
+	                        "span",
+	                        { className: "navbar-brand" },
 	                        "Cocktails World"
 	                    ),
 	                    _react2.default.createElement(
-	                        "a",
-	                        { href: "#", type: "button", className: "btn btn-secondary navbar-btn pull-right", onClick: this.showDrinkList },
+	                        "button",
+	                        { type: "button", className: "btn btn-secondary navbar-btn pull-right", onClick: this.showDrinkList },
 	                        _react2.default.createElement(
 	                            "span",
 	                            { className: "badge" },

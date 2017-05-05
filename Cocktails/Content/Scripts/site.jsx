@@ -53,8 +53,8 @@ class ListBuilder extends React.Component {
        <div>
            <NavBar drinkListCount={this.drinkListCount()} />
            <DrinkList drinkList={this.state.drinkList} cocktails={this.state.data} />
-           <div className="container-fluid">
-               <div className="row">               
+           <div className="container-fluid" style={{position: 'relative' }}>
+               <div className="row">
                    <CocktailGrid cocktails={this.state.data} handlePlusClick={this.addDrink}/>
                </div>
            </div>

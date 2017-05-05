@@ -36,12 +36,10 @@ export default class DrinkList extends React.Component {
         }
 
             return (
-                <div className="container" id="drinkList">
-                 <div className="shopping-cart">
+                 <div className="shopping-cart" id="drinkList">
                     {message}
                     <a href="#" className="btn btn-primary" style={{width: '100%' }} onClick={this.hideList}>Close</a>
-                  </div>
-                </div>
+                  </div>                
         );
     }
 }

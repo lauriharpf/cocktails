@@ -147,7 +147,7 @@
 	                _react2.default.createElement(_DrinkList2.default, { drinkList: this.state.drinkList, cocktails: this.state.data }),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'container-fluid' },
+	                    { className: 'container-fluid', style: { position: 'relative' } },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'row' },
@@ -22303,16 +22303,12 @@
 
 	            return _react2.default.createElement(
 	                "div",
-	                { className: "container", id: "drinkList" },
+	                { className: "shopping-cart", id: "drinkList" },
+	                message,
 	                _react2.default.createElement(
-	                    "div",
-	                    { className: "shopping-cart" },
-	                    message,
-	                    _react2.default.createElement(
-	                        "a",
-	                        { href: "#", className: "btn btn-primary", style: { width: '100%' }, onClick: this.hideList },
-	                        "Close"
-	                    )
+	                    "a",
+	                    { href: "#", className: "btn btn-primary", style: { width: '100%' }, onClick: this.hideList },
+	                    "Close"
 	                )
 	            );
 	        }

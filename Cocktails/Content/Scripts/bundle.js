@@ -22012,7 +22012,7 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        null,
-	                        _react2.default.createElement('img', { src: this.props.cocktail.Image, width: '50', height: '78', className: 'left openDetails', 'data-toggle': 'modal', 'data-target': modalTarget })
+	                        _react2.default.createElement('img', { src: this.props.cocktail.Image, width: '50', height: '78', className: 'left openDetails noselect', 'data-toggle': 'modal', 'data-target': modalTarget })
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',

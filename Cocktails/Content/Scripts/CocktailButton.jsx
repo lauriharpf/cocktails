@@ -18,7 +18,7 @@ export default class CocktailButton extends React.Component {
             <div className="col-1 cocktailButton">
                 <div className="buttonStyle left">
                     <div>
-                        <img src={this.props.cocktail.Image} width="50" height="78" className="left openDetails" data-toggle="modal" data-target={modalTarget} />
+                        <img src={this.props.cocktail.Image} width="50" height="78" className="left openDetails noselect" data-toggle="modal" data-target={modalTarget} />
                     </div>
                     <div className="textArea">
                         <span className="openDetails" data-toggle="modal" data-target={modalTarget}>{this.props.cocktail.Name}</span>

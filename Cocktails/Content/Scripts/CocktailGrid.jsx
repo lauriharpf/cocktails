@@ -16,7 +16,7 @@ export default class CocktailGrid extends React.Component {
         });
         return (
             <div className="col-12">
-                <div className="row">
+                <div className="row justify-content-center">
                     {cocktails}
                 </div>
             </div>

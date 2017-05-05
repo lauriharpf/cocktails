@@ -21942,7 +21942,7 @@
 	                { className: 'col-12' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'row' },
+	                    { className: 'row justify-content-center' },
 	                    cocktails
 	                )
 	            );
@@ -22005,20 +22005,28 @@
 	            var modalTarget = "#modal" + this.props.cocktail.ID;
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-12 col-sm-12 col-lg-4 col-xl-3 cocktailButton', style: { textAlign: "center" } },
+	                { className: 'col-1 cocktailButton' },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'buttonStyle left' },
-	                    _react2.default.createElement('img', { src: this.props.cocktail.Image, width: '50', height: '78', className: 'left openDetails', 'data-toggle': 'modal', 'data-target': modalTarget }),
-	                    _react2.default.createElement(
-	                        'span',
-	                        { className: 'openDetails', 'data-toggle': 'modal', 'data-target': modalTarget },
-	                        this.props.cocktail.Name
-	                    ),
 	                    _react2.default.createElement(
 	                        'div',
 	                        null,
-	                        _react2.default.createElement('i', { className: 'fa fa-2x fa-plus-square plusIcon', onClick: this.onPlusClick })
+	                        _react2.default.createElement('img', { src: this.props.cocktail.Image, width: '50', height: '78', className: 'left openDetails', 'data-toggle': 'modal', 'data-target': modalTarget })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'textArea' },
+	                        _react2.default.createElement(
+	                            'span',
+	                            { className: 'openDetails', 'data-toggle': 'modal', 'data-target': modalTarget },
+	                            this.props.cocktail.Name
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'plusIconWrapper' },
+	                            _react2.default.createElement('i', { className: 'fa fa-2x fa-plus-square plusIcon', onClick: this.onPlusClick })
+	                        )
 	                    )
 	                ),
 	                _react2.default.createElement(_CocktailDetails2.default, { cocktail: this.props.cocktail })

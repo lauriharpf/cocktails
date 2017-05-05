@@ -13,6 +13,14 @@
     color: black;
 }
 
+.cocktailButton .plusIconWrapper {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 3px;
+}
+
 .cocktailButton .plusIcon {
     padding-top: 5px;
     cursor: pointer;
@@ -22,15 +30,19 @@
     cursor: pointer;
 }
 
+.cocktailButton .textArea {
+    position: relative;
+    width: 100%;
+}
+
 .buttonStyle {
     background-color: rgba(55, 55, 55, 0.6);
     color: white;
-    letter-spacing: 1px;
     border: 1px solid white;
     border-radius: 8px;
     width: 100%;
     font-size: 0.90rem;
-    font-weight: 600;
+    display: flex;
 }
 
 .left {
@@ -49,6 +61,9 @@ ul {
 
 .cocktailButton {
     margin-top: 20px;
+    padding-right: 0;
+    min-width: 160px;
+    text-align: center;
 }
 
 .navbar-brand {

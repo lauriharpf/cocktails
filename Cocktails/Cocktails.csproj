@@ -278,6 +278,7 @@
     </Content>
     <Content Include="Content\Scripts\CocktailGrid.jsx" />
     <Content Include="Content\Scripts\DrinkList.jsx" />
+    <Content Include="Content\Scripts\NavBar.jsx" />
     <None Include="Content\Scripts\site.jsx" />
     <None Include="Content\Scripts\CocktailButton.jsx" />
     <Content Include="package.json" />

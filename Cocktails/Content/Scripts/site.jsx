@@ -2,12 +2,14 @@
 import ReactDOM from 'react-dom';
 import CocktailGrid from './CocktailGrid.jsx';
 import DrinkList from './DrinkList.jsx';
+import NavBar from './NavBar.jsx';
 
 class ListBuilder extends React.Component {
     constructor(props) {
         super(props);
         this.state = { drinkList: new Map(), data: [] };
         this.addDrink = this.addDrink.bind(this);
+        this.drinkListCount = this.drinkListCount.bind(this);
     }
 
     addDrink(cocktailId) {
@@ -18,6 +20,12 @@ class ListBuilder extends React.Component {
         this.setState({
             drinkList: newDrinkList
         });
+    }
+
+    drinkListCount() {
+        return Array.from(this.state.drinkList.entries()).reduce(function(acc, keyToValue) {
+            return acc + keyToValue[1];
+        }, 0);
     }
 
     componentWillMount() {
@@ -41,10 +49,14 @@ class ListBuilder extends React.Component {
     }
 
     render() {
-        return (<div className="container-fluid">
-           <div className="row">
-               <DrinkList drinkList={this.state.drinkList} cocktails={this.state.data} />
-               <CocktailGrid cocktails={this.state.data} handlePlusClick={this.addDrink}/>
+        return (
+       <div>
+           <NavBar drinkListCount={this.drinkListCount()} />
+           <DrinkList drinkList={this.state.drinkList} cocktails={this.state.data} />
+           <div className="container-fluid">
+               <div className="row">               
+                   <CocktailGrid cocktails={this.state.data} handlePlusClick={this.addDrink}/>
+               </div>
            </div>
        </div>);
     }

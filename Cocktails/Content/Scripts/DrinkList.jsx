@@ -4,6 +4,7 @@ export default class DrinkList extends React.Component {
     constructor(props) {
         super(props);
         this.buildDrinkList = this.buildDrinkList.bind(this);
+        this.hideList = this.hideList.bind(this);
     }
 
     buildDrinkList() {
@@ -13,27 +14,34 @@ export default class DrinkList extends React.Component {
             var count = keyToValue[1];
             var cocktail = that.props.cocktails.find(x => x.ID === cocktailId);
             return (
-                <li key={cocktailId}>{count} x {cocktail.Name}</li>
+                <li key={cocktailId}>
+                    <img src={cocktail.Image} style={{ height: 49, width: 30 }} alt="" />
+                    <span className="item-name">{count} x {cocktail.Name}</span>                
+                </li>
             );
         });
+     }
+
+    hideList() {
+        $("#drinkList").hide("fast");
     }
 
     render() {
         var hasDrinks = this.props.drinkList.size > 0;
         var message;
         if (hasDrinks) {
-            message = <ul style={{listStyleType: 'none'}}>{this.buildDrinkList()}</ul>;
+            message = <ul className="shopping-cart-items">{this.buildDrinkList()}</ul>;
         } else {
             message = <p>Thirsty? Use <i className="fa fa-plus-square"></i> icons to add to list.</p>;
         }
 
-        return (
-            <div className="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 drinkListWrapper">
-                <div className="drinkList">
-                    <h4>Selected drinks</h4>                    
+            return (
+                <div className="container" id="drinkList">
+                 <div className="shopping-cart">
                     {message}
+                    <a href="#" className="btn btn-primary" style={{width: '100%' }} onClick={this.hideList}>Close</a>
+                  </div>
                 </div>
-            </div>
         );
     }
 }

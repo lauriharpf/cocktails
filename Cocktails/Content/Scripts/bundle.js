@@ -72,6 +72,10 @@
 
 	var _DrinkList2 = _interopRequireDefault(_DrinkList);
 
+	var _NavBar = __webpack_require__(188);
+
+	var _NavBar2 = _interopRequireDefault(_NavBar);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -90,6 +94,7 @@
 
 	        _this.state = { drinkList: new Map(), data: [] };
 	        _this.addDrink = _this.addDrink.bind(_this);
+	        _this.drinkListCount = _this.drinkListCount.bind(_this);
 	        return _this;
 	    }
 
@@ -103,6 +108,13 @@
 	            this.setState({
 	                drinkList: newDrinkList
 	            });
+	        }
+	    }, {
+	        key: 'drinkListCount',
+	        value: function drinkListCount() {
+	            return Array.from(this.state.drinkList.entries()).reduce(function (acc, keyToValue) {
+	                return acc + keyToValue[1];
+	            }, 0);
 	        }
 	    }, {
 	        key: 'componentWillMount',
@@ -130,12 +142,17 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'container-fluid' },
+	                null,
+	                _react2.default.createElement(_NavBar2.default, { drinkListCount: this.drinkListCount() }),
+	                _react2.default.createElement(_DrinkList2.default, { drinkList: this.state.drinkList, cocktails: this.state.data }),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'row' },
-	                    _react2.default.createElement(_DrinkList2.default, { drinkList: this.state.drinkList, cocktails: this.state.data }),
-	                    _react2.default.createElement(_CocktailGrid2.default, { cocktails: this.state.data, handlePlusClick: this.addDrink })
+	                    { className: 'container-fluid' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'row' },
+	                        _react2.default.createElement(_CocktailGrid2.default, { cocktails: this.state.data, handlePlusClick: this.addDrink })
+	                    )
 	                )
 	            );
 	        }
@@ -21922,7 +21939,7 @@
 	            });
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-6 col-sm-7 col-md-8 col-lg-9 col-xl-10' },
+	                { className: 'col-12' },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'row' },
@@ -22201,7 +22218,7 @@
 /* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -22230,11 +22247,12 @@
 	        var _this = _possibleConstructorReturn(this, (DrinkList.__proto__ || Object.getPrototypeOf(DrinkList)).call(this, props));
 
 	        _this.buildDrinkList = _this.buildDrinkList.bind(_this);
+	        _this.hideList = _this.hideList.bind(_this);
 	        return _this;
 	    }
 
 	    _createClass(DrinkList, [{
-	        key: 'buildDrinkList',
+	        key: "buildDrinkList",
 	        value: function buildDrinkList() {
 	            var that = this;
 	            return Array.from(this.props.drinkList.entries()).map(function (keyToValue) {
@@ -22244,47 +22262,57 @@
 	                    return x.ID === cocktailId;
 	                });
 	                return _react2.default.createElement(
-	                    'li',
+	                    "li",
 	                    { key: cocktailId },
-	                    count,
-	                    ' x ',
-	                    cocktail.Name
+	                    _react2.default.createElement("img", { src: cocktail.Image, style: { height: 49, width: 30 }, alt: "" }),
+	                    _react2.default.createElement(
+	                        "span",
+	                        { className: "item-name" },
+	                        count,
+	                        " x ",
+	                        cocktail.Name
+	                    )
 	                );
 	            });
 	        }
 	    }, {
-	        key: 'render',
+	        key: "hideList",
+	        value: function hideList() {
+	            $("#drinkList").hide("fast");
+	        }
+	    }, {
+	        key: "render",
 	        value: function render() {
 	            var hasDrinks = this.props.drinkList.size > 0;
 	            var message;
 	            if (hasDrinks) {
 	                message = _react2.default.createElement(
-	                    'ul',
-	                    { style: { listStyleType: 'none' } },
+	                    "ul",
+	                    { className: "shopping-cart-items" },
 	                    this.buildDrinkList()
 	                );
 	            } else {
 	                message = _react2.default.createElement(
-	                    'p',
+	                    "p",
 	                    null,
-	                    'Thirsty? Use ',
-	                    _react2.default.createElement('i', { className: 'fa fa-plus-square' }),
-	                    ' icons to add to list.'
+	                    "Thirsty? Use ",
+	                    _react2.default.createElement("i", { className: "fa fa-plus-square" }),
+	                    " icons to add to list."
 	                );
 	            }
 
 	            return _react2.default.createElement(
-	                'div',
-	                { className: 'col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 drinkListWrapper' },
+	                "div",
+	                { className: "container", id: "drinkList" },
 	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'drinkList' },
+	                    "div",
+	                    { className: "shopping-cart" },
+	                    message,
 	                    _react2.default.createElement(
-	                        'h4',
-	                        null,
-	                        'Selected drinks'
-	                    ),
-	                    message
+	                        "a",
+	                        { href: "#", className: "btn btn-primary", style: { width: '100%' }, onClick: this.hideList },
+	                        "Close"
+	                    )
 	                )
 	            );
 	        }
@@ -22294,6 +22322,82 @@
 	}(_react2.default.Component);
 
 	exports.default = DrinkList;
+
+/***/ },
+/* 188 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var NavBar = function (_React$Component) {
+	    _inherits(NavBar, _React$Component);
+
+	    function NavBar(props) {
+	        _classCallCheck(this, NavBar);
+
+	        var _this = _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
+
+	        _this.showDrinkList = _this.showDrinkList.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(NavBar, [{
+	        key: "showDrinkList",
+	        value: function showDrinkList() {
+	            $("#drinkList").show("fast");
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "nav",
+	                { className: "navbar sticky-top bg-faded", role: "navigation" },
+	                _react2.default.createElement(
+	                    "div",
+	                    null,
+	                    _react2.default.createElement(
+	                        "a",
+	                        { className: "navbar-brand", href: "#" },
+	                        "Cocktails World"
+	                    ),
+	                    _react2.default.createElement(
+	                        "a",
+	                        { href: "#", type: "button", className: "btn btn-secondary navbar-btn pull-right", onClick: this.showDrinkList },
+	                        _react2.default.createElement(
+	                            "span",
+	                            { className: "badge" },
+	                            this.props.drinkListCount
+	                        ),
+	                        _react2.default.createElement("i", { className: "fa fa-shopping-cart" }),
+	                        " Selected drinks"
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return NavBar;
+	}(_react2.default.Component);
+
+	exports.default = NavBar;
 
 /***/ }
 /******/ ]);

@@ -15,7 +15,7 @@ export default class CocktailGrid extends React.Component {
             );
         });
         return (
-            <div className="col-6 col-sm-7 col-md-8 col-lg-9 col-xl-10">
+            <div className="col-12">
                 <div className="row">
                     {cocktails}
                 </div>

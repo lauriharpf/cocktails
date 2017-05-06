@@ -35,7 +35,7 @@ export default class CocktailDetails extends React.Component {
             );
         });
         return (
-            <div className="modal fade" id={"modal" + this.props.cocktail.ID} tabIndex="-1" role="dialog" aria-labelledby={"modalLabel" + this.props.cocktail.ID} aria-hidden="true">
+            <div className="modal fade cocktailDetails" id={"modal" + this.props.cocktail.ID} tabIndex="-1" role="dialog" aria-labelledby={"modalLabel" + this.props.cocktail.ID} aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -47,7 +47,7 @@ export default class CocktailDetails extends React.Component {
                         <div className="modal-body">
                             <div className="row">
                                 <div className="col-sm-6">
-                                    <img src={this.props.cocktail.Image} width="240" height="320" />
+                                    <img src={this.props.cocktail.Image} className="responsiveImage" />
                                 </div>
                                 <div className="col-sm-6">
                                     <h6>Ingredients</h6>

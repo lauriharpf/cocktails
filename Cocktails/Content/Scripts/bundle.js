@@ -22113,7 +22113,7 @@
 	            });
 	            return _react2.default.createElement(
 	                "div",
-	                { className: "modal fade", id: "modal" + this.props.cocktail.ID, tabIndex: "-1", role: "dialog", "aria-labelledby": "modalLabel" + this.props.cocktail.ID, "aria-hidden": "true" },
+	                { className: "modal fade cocktailDetails", id: "modal" + this.props.cocktail.ID, tabIndex: "-1", role: "dialog", "aria-labelledby": "modalLabel" + this.props.cocktail.ID, "aria-hidden": "true" },
 	                _react2.default.createElement(
 	                    "div",
 	                    { className: "modal-dialog", role: "document" },
@@ -22147,7 +22147,7 @@
 	                                _react2.default.createElement(
 	                                    "div",
 	                                    { className: "col-sm-6" },
-	                                    _react2.default.createElement("img", { src: this.props.cocktail.Image, width: "240", height: "320" })
+	                                    _react2.default.createElement("img", { src: this.props.cocktail.Image, className: "responsiveImage" })
 	                                ),
 	                                _react2.default.createElement(
 	                                    "div",

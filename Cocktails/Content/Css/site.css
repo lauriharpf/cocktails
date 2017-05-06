@@ -59,6 +59,22 @@
     float: left;
 }
 
+@media (min-width: 576px) {
+    .cocktailDetails .responsiveImage {
+        width: auto;
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 575px) {
+    .cocktailDetails .responsiveImage {
+        width: auto;
+        max-width: 45%;
+        height: auto;
+    }
+}   
+
 /* No bullets for the ingredient list */
 ul {
     list-style-type: none;
@@ -92,7 +108,7 @@ a.navbar-brand:hover, a.navbar-brand:visited {
 
 /* Styling for the licensing info and the link back to the Wikipedia article. */
 .wikipediaLicense {
-    margin-top: 25px;
+    margin-top: 10px;
     font-size: smaller;
     font-style: italic;
 }

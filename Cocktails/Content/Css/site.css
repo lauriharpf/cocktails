@@ -112,6 +112,10 @@ a.navbar-brand:hover, a.navbar-brand:visited {
     text-transform: capitalize;
 }
 
+.hidden {
+    display: none;
+}
+
 /* Styling for the licensing info and the link back to the Wikipedia article. */
 .wikipediaLicense {
     margin-top: 10px;

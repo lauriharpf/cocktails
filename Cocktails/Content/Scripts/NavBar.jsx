@@ -3,11 +3,6 @@
 export default class NavBar extends React.Component {
     constructor(props) {
         super(props);
-        this.showDrinkList = this.showDrinkList.bind(this);
-    }
-
-    showDrinkList() {
-        $("#drinkList").show("fast");
     }
 
     render() {
@@ -18,7 +13,7 @@ export default class NavBar extends React.Component {
                         Cocktails World
                     </span>
 
-                    <button type="button" className="btn btn-secondary navbar-btn pull-right" onClick={this.showDrinkList}>
+                    <button type="button" className="btn btn-secondary navbar-btn pull-right" onClick={this.props.toggleDrinkList}>
                         <span className="badge">{this.props.drinkListCount}</span><i className="fa fa-shopping-cart"></i> Selections
                     </button>
                 </div>

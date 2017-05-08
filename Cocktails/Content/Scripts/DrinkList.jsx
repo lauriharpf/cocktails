@@ -4,7 +4,6 @@ export default class DrinkList extends React.Component {
     constructor(props) {
         super(props);
         this.buildDrinkList = this.buildDrinkList.bind(this);
-        this.hideList = this.hideList.bind(this);
     }
 
     buildDrinkList() {
@@ -22,11 +21,8 @@ export default class DrinkList extends React.Component {
         });
      }
 
-    hideList() {
-        $("#drinkList").hide("fast");
-    }
-
     render() {
+        var displayClass = this.props.showDrinkList ? "" : "hidden";
         var hasDrinks = this.props.drinkList.size > 0;
         var message;
         if (hasDrinks) {
@@ -35,11 +31,11 @@ export default class DrinkList extends React.Component {
             message = <p>Thirsty? Use <i className="fa fa-plus-square"></i> icons to add to list.</p>;
         }
 
-            return (
-                 <div className="shopping-cart" id="drinkList">
-                    {message}
-                    <button className="btn btn-primary" style={{width: '100%' }} onClick={this.hideList}>Close</button>
-                  </div>                
+        return (
+                <div className={"shopping-cart " + displayClass} id="drinkList">
+                {message}
+                <button className="btn btn-primary" style={{width: '100%' }} onClick={this.props.toggleDrinkList}>Close</button>
+                </div>                
         );
     }
 }

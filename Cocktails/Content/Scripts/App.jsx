@@ -7,9 +7,10 @@ import NavBar from './NavBar.jsx';
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { drinkList: new Map(), data: [] };
+        this.state = { drinkList: new Map(), data: [], showDrinkList: true };
         this.addDrink = this.addDrink.bind(this);
         this.drinkListCount = this.drinkListCount.bind(this);
+        this.toggleDrinkList = this.toggleDrinkList.bind(this);
     }
 
     addDrink(cocktailId) {
@@ -48,11 +49,15 @@ class App extends React.Component {
             });
     }
 
+    toggleDrinkList() {
+        this.setState({ showDrinkList: !this.state.showDrinkList });
+    }
+
     render() {
         return (
        <div>
-           <NavBar drinkListCount={this.drinkListCount()} />
-           <DrinkList drinkList={this.state.drinkList} cocktails={this.state.data} />
+           <NavBar drinkListCount={this.drinkListCount()} toggleDrinkList={this.toggleDrinkList} />
+           <DrinkList drinkList={this.state.drinkList} cocktails={this.state.data} showDrinkList={this.state.showDrinkList} toggleDrinkList={this.toggleDrinkList}/>
            <div className="container-fluid" style={{position: 'relative' }}>
                <div className="row">
                    <CocktailGrid cocktails={this.state.data} handlePlusClick={this.addDrink}/>

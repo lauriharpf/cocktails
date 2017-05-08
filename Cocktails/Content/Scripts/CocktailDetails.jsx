@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 
-function unitToString(unit) {
+const unitToString = (unit) => {
     switch (unit) {
         case 0:
             return "cl";

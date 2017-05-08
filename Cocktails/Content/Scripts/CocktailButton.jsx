@@ -13,7 +13,7 @@ export default class CocktailButton extends React.Component {
     }
 
     render() {
-        var modalTarget = "#modal" + this.props.cocktail.ID;
+        const modalTarget = "#modal" + this.props.cocktail.ID;
         return ( 
             <div className="col-1 cocktailButton">
                 <div className="buttonStyle left">

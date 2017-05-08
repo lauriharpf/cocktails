@@ -296,6 +296,7 @@
     <None Include="Content\Scripts\App.jsx" />
     <None Include="Content\Scripts\CocktailButton.jsx" />
     <Content Include="package.json" />
+    <Content Include="Content\Scripts\DrinkListItem.jsx" />
     <None Include="Properties\PublishProfiles\Cocktails20161208083924 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Cocktails20161208083924.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />

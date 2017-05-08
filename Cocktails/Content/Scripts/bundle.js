@@ -22391,7 +22391,7 @@
 	                            this.props.drinkListCount
 	                        ),
 	                        _react2.default.createElement("i", { className: "fa fa-shopping-cart" }),
-	                        " Selected drinks"
+	                        " Selections"
 	                    )
 	                )
 	            );

@@ -19,7 +19,7 @@ export default class NavBar extends React.Component {
                     </span>
 
                     <button type="button" className="btn btn-secondary navbar-btn pull-right" onClick={this.showDrinkList}>
-                        <span className="badge">{this.props.drinkListCount}</span><i className="fa fa-shopping-cart"></i> Selected drinks
+                        <span className="badge">{this.props.drinkListCount}</span><i className="fa fa-shopping-cart"></i> Selections
                     </button>
                 </div>
             </nav>

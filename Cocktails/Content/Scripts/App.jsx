@@ -8,16 +8,21 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = { drinkList: new Map(), data: [], showDrinkList: true };
-        this.addDrink = this.addDrink.bind(this);
         this.drinkListCount = this.drinkListCount.bind(this);
+        this.changeDrinkCount = this.changeDrinkCount.bind(this);
         this.toggleDrinkList = this.toggleDrinkList.bind(this);
     }
 
-    addDrink(cocktailId) {
-        var count = this.state.drinkList.has(cocktailId) ? this.state.drinkList.get(cocktailId) : 0;
-        count++;
-        var newDrinkList = new Map(this.state.drinkList);
-        newDrinkList.set(cocktailId, count);
+    changeDrinkCount(cocktailId, changeBy) {
+        let count = this.state.drinkList.has(cocktailId) ? this.state.drinkList.get(cocktailId) : 0;
+        count += changeBy;
+        const newDrinkList = new Map(this.state.drinkList);
+        
+        if (count > 0) {
+            newDrinkList.set(cocktailId, count);
+        } else if (this.state.drinkList.has(cocktailId)) {
+            newDrinkList.delete(cocktailId);
+        }
         this.setState({
             drinkList: newDrinkList
         });
@@ -57,10 +62,11 @@ class App extends React.Component {
         return (
        <div>
            <NavBar drinkListCount={this.drinkListCount()} toggleDrinkList={this.toggleDrinkList} />
-           <DrinkList drinkList={this.state.drinkList} cocktails={this.state.data} showDrinkList={this.state.showDrinkList} toggleDrinkList={this.toggleDrinkList}/>
+           <DrinkList drinkList={this.state.drinkList} cocktails={this.state.data} showDrinkList={this.state.showDrinkList} 
+                      toggleDrinkList={this.toggleDrinkList} changeDrinkCount={this.changeDrinkCount}/>
            <div className="container-fluid" style={{position: 'relative' }}>
                <div className="row">
-                   <CocktailGrid cocktails={this.state.data} handlePlusClick={this.addDrink}/>
+                   <CocktailGrid cocktails={this.state.data} handlePlusClick={this.changeDrinkCount}/>
                </div>
            </div>
        </div>);

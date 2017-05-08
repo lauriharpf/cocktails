@@ -9,7 +9,7 @@ export default class CocktailButton extends React.Component {
     }
 
     onPlusClick() {
-        this.props.handlePlusClick(this.props.cocktail.ID);
+        this.props.handlePlusClick(this.props.cocktail.ID, 1);
     }
 
     render() {

@@ -4,7 +4,7 @@ import CocktailGrid from './CocktailGrid.jsx';
 import DrinkList from './DrinkList.jsx';
 import NavBar from './NavBar.jsx';
 
-class ListBuilder extends React.Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = { drinkList: new Map(), data: [] };
@@ -62,4 +62,4 @@ class ListBuilder extends React.Component {
     }
 }
 
-ReactDOM.render(<ListBuilder />, document.getElementById("content"));
+ReactDOM.render(<App />, document.getElementById("content"));

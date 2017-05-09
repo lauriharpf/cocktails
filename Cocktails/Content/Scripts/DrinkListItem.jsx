@@ -19,7 +19,10 @@ export default class DrinkListItem extends React.Component {
         return (
            <li key={this.props.cocktail.ID} className="noselect">
                <img src={this.props.cocktail.Image} style={{ height: 49, width: 30 }} alt="" />                
-               <span className="item-name"><i className="fa fa-plus-square plusIcon" onClick={this.onPlusClick}></i> <i className="fa fa-minus-square" onClick={this.onMinusClick}></i> 
+               <span className="item-name">
+                   <span className="addAndRemove">
+                       <i className="fa fa-plus-square plusIcon" onClick={this.onPlusClick}></i> <i className="fa fa-minus-square" onClick={this.onMinusClick}></i>
+                   </span>
                    {this.props.count} x {this.props.cocktail.Name}</span>
            </li>
         );   

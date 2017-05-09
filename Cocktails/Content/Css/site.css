@@ -163,6 +163,10 @@ a.navbar-brand:hover, a.navbar-brand:visited {
       padding-top: 10px;
       font-size: 16px;
 }
+
+.shopping-cart .shopping-cart-items .addAndRemove {
+    padding-right: 5px;
+}
     
  .shopping-cart .shopping-cart-items .item-price {
       color: #6394F8;

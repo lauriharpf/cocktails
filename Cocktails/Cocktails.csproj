@@ -275,6 +275,10 @@
     <Compile Include="Migrations\201702080747302_AddWikipediaURL.Designer.cs">
       <DependentUpon>201702080747302_AddWikipediaURL.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705091338087_DeleteDuplicates.cs" />
+    <Compile Include="Migrations\201705091338087_DeleteDuplicates.Designer.cs">
+      <DependentUpon>201705091338087_DeleteDuplicates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cocktail.cs" />
     <Compile Include="Models\Ingredient.cs" />
@@ -326,6 +330,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702080747302_AddWikipediaURL.resx">
       <DependentUpon>201702080747302_AddWikipediaURL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705091338087_DeleteDuplicates.resx">
+      <DependentUpon>201705091338087_DeleteDuplicates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

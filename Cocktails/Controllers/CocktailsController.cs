@@ -18,7 +18,7 @@ namespace Cocktails.Controllers
 
         public IEnumerable<Cocktail> Get()
         {
-            return _context.Cocktails.Include(c => c.RecipeRows.Select(r => r.Ingredient)).ToList();
+            return _context.Cocktails.Include(c => c.RecipeRows.Select(r => r.Ingredient)).OrderBy(c => c.Name).ToList();
         }
     }
 }

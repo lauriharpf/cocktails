@@ -1,27 +1,22 @@
 ﻿import React from 'react';
 import DrinkListItem from './DrinkListItem.jsx';
 
-const buildDrinkList = (drinkList, cocktails, changeDrinkCount) => {
-    return Array.from(drinkList.entries()).map((keyToValue) => {
-        var cocktail = cocktails.find(x => x.ID === keyToValue[0]);
+export default class DrinkList extends React.Component {
+    buildDrinkList(drinkList, cocktails, changeDrinkCount) {
+        return Array.from(drinkList.entries()).map((keyToValue) => {
+            var cocktail = cocktails.find(x => x.ID === keyToValue[0]);
+            return (
+                <DrinkListItem cocktail={cocktail} count={keyToValue[1]} changeDrinkCount={changeDrinkCount} />
+            );
+        });
+    }
+
+    render() {
+        const content = this.props.drinkList.size > 0 ? 
+            <ul className="shopping-cart-items">{this.buildDrinkList(this.props.drinkList, this.props.cocktails, this.props.changeDrinkCount)}</ul> :
+            <p>Thirsty? Use <i className="fa fa-plus-square"></i> icons to add to list.</p>;
         return (
-            <DrinkListItem cocktail={cocktail} count={keyToValue[1]} changeDrinkCount={changeDrinkCount} />
+            <div>{content}</div>
         );
-    });
+    }
 }
-
-const DrinkList = (props) => {
-    const displayClass = props.showDrinkList ? "" : "hidden";
-    const message = props.drinkList.size > 0 ? 
-        <ul className="shopping-cart-items">{buildDrinkList(props.drinkList, props.cocktails, props.changeDrinkCount)}</ul> :
-        <p>Thirsty? Use <i className="fa fa-plus-square"></i> icons to add to list.</p>;
-
-    return (
-            <div className={"shopping-cart " + displayClass} id="drinkList">
-            {message}
-            <button className="btn btn-primary" style={{width: '100%' }} onClick={props.toggleDrinkList}>Close</button>
-            </div>                
-        );
-}
-
-export default DrinkList;

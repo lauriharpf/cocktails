@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import ReactDOM from 'react-dom';
 import CocktailGrid from './CocktailGrid.jsx';
-import DrinkList from './DrinkList.jsx';
+import Selections from './Selections.jsx';
 import NavBar from './NavBar.jsx';
 
 class App extends React.Component {
@@ -62,7 +62,7 @@ class App extends React.Component {
         return (
        <div>
            <NavBar drinkListCount={this.drinkListCount()} toggleDrinkList={this.toggleDrinkList} />
-           <DrinkList drinkList={this.state.drinkList} cocktails={this.state.data} showDrinkList={this.state.showDrinkList} 
+           <Selections drinkList={this.state.drinkList} cocktails={this.state.data} showDrinkList={this.state.showDrinkList} 
                       toggleDrinkList={this.toggleDrinkList} changeDrinkCount={this.changeDrinkCount}/>
            <div className="container-fluid" style={{position: 'relative' }}>
                <div className="row">

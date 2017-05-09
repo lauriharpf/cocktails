@@ -18,8 +18,9 @@ export default class DrinkListItem extends React.Component {
     render() {
         return (
            <li key={this.props.cocktail.ID} className="noselect">
-               <img src={this.props.cocktail.Image} style={{ height: 49, width: 30 }} alt="" />
-               <span className="item-name">{this.props.count} x {this.props.cocktail.Name} <i className="fa fa-plus-square plusIcon" onClick={this.onPlusClick}></i> <i className="fa fa-minus-square" onClick={this.onMinusClick}></i></span>
+               <img src={this.props.cocktail.Image} style={{ height: 49, width: 30 }} alt="" />                
+               <span className="item-name"><i className="fa fa-plus-square plusIcon" onClick={this.onPlusClick}></i> <i className="fa fa-minus-square" onClick={this.onMinusClick}></i> 
+                   {this.props.count} x {this.props.cocktail.Name}</span>
            </li>
         );   
     }    

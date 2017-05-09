@@ -1,30 +1,10 @@
 ﻿import React from 'react';
-
-const unitToString = (unit) => {
-    switch (unit) {
-        case 0:
-            return "cl";
-        case 1:
-            return "Teaspoon(s)";
-        case 2:
-            return "Item(s)";
-        case 3:
-            return "";
-        case 4:
-            return "Dash(es) of";
-    }
-
-    return "";  
-}
+import AmountAndUnit from './AmountAndUnit.jsx';
 
 const CocktailDetails = (props) => {
     var recipeRows = props.cocktail.RecipeRows.map((recipeRow) => {
-        var unit = unitToString(recipeRow.Unit);
-        var amount = recipeRow.Amount > 0 ? recipeRow.Amount : "";
-        var amountAndUnit = amount + (unit.length > 0 ? " " + unit : "");
-
         return (
-            <li key={recipeRow.ID}>{amountAndUnit} <span className="capitalize">{recipeRow.Ingredient.Name}</span></li>
+            <li key={recipeRow.ID}><AmountAndUnit unit={recipeRow.Unit} amount={recipeRow.Amount}/> <span className="capitalize">{recipeRow.Ingredient.Name}</span></li>
         );
     });
     return (

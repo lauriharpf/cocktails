@@ -173,6 +173,23 @@ a.navbar-brand:hover, a.navbar-brand:visited {
       color: #ABB0BE;    
 }
 
+/* Darker borders for Bootstrap tabs; otherwise they are really hard to make out */
+.shopping-cart .nav-tabs .nav-link:not(.active) {
+    color: blue;
+}
+
+.shopping-cart ul.nav-tabs {
+    border-bottom: 1px solid #aaa;
+}
+
+.shopping-cart .nav-link.active {
+    border-color: #aaa #aaa #fff;
+}
+
+.shopping-cart .nav-link:hover:not(.active) {
+    border-bottom: 1px solid #aaa;
+}
+
 .shopping-cart:after {
 	bottom: 100%;
 	left: 89%;

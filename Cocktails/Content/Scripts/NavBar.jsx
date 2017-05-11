@@ -8,8 +8,8 @@ const NavBar = (props) => {
                     Cocktails World
                 </span>
 
-                <button type="button" className="btn btn-secondary navbar-btn pull-right" onClick={props.toggleDrinkList}>
-                    <span className="badge">{props.drinkListCount}</span><i className="fa fa-shopping-cart"></i> Selections
+                <button type="button" className="btn btn-secondary navbar-btn float-right" onClick={props.toggleDrinkList}>
+                    <span className="badge">{props.drinkListCount}</span><span className="icon-shopping-basket"></span> Selections
                 </button>
             </div>
         </nav>

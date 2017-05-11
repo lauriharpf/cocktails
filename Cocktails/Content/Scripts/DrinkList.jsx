@@ -14,7 +14,7 @@ export default class DrinkList extends React.Component {
     render() {
         const content = this.props.drinkList.size > 0 ? 
             <ul className="shopping-cart-items">{this.buildDrinkList(this.props.drinkList, this.props.cocktails, this.props.changeDrinkCount)}</ul> :
-            <p>Thirsty? Use <i className="fa fa-plus-square"></i> icons to add to list.</p>;
+            <p>Thirsty? Use <span className="icon-plus-square"></span> icons to add to list.</p>;
         return (
             <div>{content}</div>
         );

@@ -24,7 +24,7 @@ export default class CocktailButton extends React.Component {
                         </div>
                     </div>
                     <div className="actions">
-                        <i className="fa fa-2x fa-plus-square plusIcon" onClick={this.onPlusClick}></i>
+                        <span className="icon-plus-square plusIcon" onClick={this.onPlusClick}></span>
                     </div>
                 </div>
                     <CocktailDetails cocktail={this.props.cocktail} />

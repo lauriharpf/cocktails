@@ -192,19 +192,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Css\font-awesome-4.7.0\css\font-awesome.min.css" />
-    <Content Include="Content\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Css\icomoon\fonts\icomoon.svg" />
+    <Content Include="Content\Css\icomoon\style.css" />
     <Content Include="Content\Css\site.css" />
     <Content Include="Content\Images\cocktail_no_image_small.jpg" />
     <Content Include="Content\Images\Drinks\cosmopolitan_small.jpg" />
     <Content Include="Content\Images\Drinks\mai-tai_small.jpg" />
     <Content Include="Content\Images\Drinks\mojito_small.jpg" />
     <Content Include="Content\Scripts\bundle.js" />
-    <Content Include="Content\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\Css\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Content\Css\icomoon\fonts\icomoon.eot" />
+    <Content Include="Content\Css\icomoon\fonts\icomoon.ttf" />
+    <Content Include="Content\Css\icomoon\fonts\icomoon.woff" />
     <None Include="Content\Scripts\CocktailDetails.jsx" />
     <Content Include="Content\Scripts\ThirdParty\tether.min.js" />
     <Content Include="Global.asax" />

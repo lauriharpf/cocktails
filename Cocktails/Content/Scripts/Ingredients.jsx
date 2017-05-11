@@ -41,7 +41,7 @@ export default class Ingredients extends React.Component {
         if (this.props.drinkList.size > 0) {
             var content = <div><p><b>You need</b></p><ul>{this.calculateNeededIngredients()}</ul></div>;
         } else {
-            var content = <p>No selections. Use <i className="fa fa-plus-square"></i> icons to add to list.</p>;
+            var content = <p>No selections. Use <span className="icon-plus-square"></span> icons to add to list.</p>;
         }
         
         return (

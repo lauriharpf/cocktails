@@ -75,7 +75,9 @@
     margin: auto;
     background-color: rgba(0, 0, 0, 0.5);
     padding-bottom: 5px;
+    padding-top: 5px;
     border-radius: 0 0 8px 8px;
+    font-size: 2em;
 }
 
 .left {
@@ -166,12 +168,12 @@ a.navbar-brand:hover, a.navbar-brand:visited {
 }
 
 .shopping-cart .shopping-cart-items li {
-      margin-bottom: 18px;
+      margin-bottom: 5px;
 }
 
 .shopping-cart .shopping-cart-items img {
       float: left;
-      margin-right: 12px;
+      margin-right: 7px;
 }
     
 .shopping-cart .shopping-cart-items .item-name {
@@ -180,8 +182,22 @@ a.navbar-brand:hover, a.navbar-brand:visited {
       font-size: 16px;
 }
 
+.shopping-cart .shopping-cart-items .itemName {
+    vertical-align: text-top;
+    line-height: 0.9;
+}
+
 .shopping-cart .shopping-cart-items .addAndRemove {
     padding-right: 5px;
+    font-size: 1.5em;
+}
+
+.shopping-cart .shopping-cart-items .addAndRemove .icon-minus-square {
+    cursor: pointer;
+}
+
+.shopping-cart .shopping-cart-items .addAndRemove .icon-plus-square {
+    cursor: pointer;
 }
 
 /* Darker borders for Bootstrap tabs; otherwise they are really hard to make out */

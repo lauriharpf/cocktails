@@ -11,6 +11,7 @@ namespace Cocktails.App_Start
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/Content/sitecss").Include("~/Content/Css/site.css"));
+            bundles.Add(new ScriptBundle("~/Content/Scripts/bundle").Include("~/Content/Scripts/bundle.js"));
 
             BundleTable.EnableOptimizations = true;
         }

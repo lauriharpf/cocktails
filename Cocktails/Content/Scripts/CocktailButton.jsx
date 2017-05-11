@@ -14,17 +14,17 @@ export default class CocktailButton extends React.Component {
 
     render() {
         const modalTarget = "#modal" + this.props.cocktail.ID;
+        const background = "url(" + this.props.cocktail.Image + ")";
         return ( 
             <div className="col-1 cocktailButton">
-                <div className="buttonStyle left">
-                    <div>
-                        <img src={this.props.cocktail.Image} width="50" height="78" className="left openDetails noselect" data-toggle="modal" data-target={modalTarget} />
-                    </div>
-                    <div className="textArea">
-                        <span className="openDetails" data-toggle="modal" data-target={modalTarget}>{this.props.cocktail.Name}</span>
-                        <div className="plusIconWrapper">
-                            <i className="fa fa-2x fa-plus-square plusIcon" onClick={this.onPlusClick}></i>
+                <div className="buttonStyle left" style={{ backgroundImage: background }}>
+                    <div className="openDetails" data-toggle="modal" data-target={modalTarget}>
+                        <div className="cocktailName">
+                            {this.props.cocktail.Name}
                         </div>
+                    </div>
+                    <div className="actions">
+                        <i className="fa fa-2x fa-plus-square plusIcon" onClick={this.onPlusClick}></i>
                     </div>
                 </div>
                     <CocktailDetails cocktail={this.props.cocktail} />

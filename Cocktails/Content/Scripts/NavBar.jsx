@@ -2,7 +2,7 @@
 
 const NavBar = (props) => {
     return (
-        <nav className="navbar sticky-top bg-faded" role="navigation">
+        <nav className="navbar fixed-top bg-faded" role="navigation">
             <div>
                 <span className="navbar-brand">
                     Cocktails World

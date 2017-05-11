@@ -8,8 +8,8 @@ const CocktailGrid = (props) => {
         );
     });
     return (
-        <div className="col-12">
-            <div className="row justify-content-center">
+        <div className="col-12 cocktailGrid">
+            <div className="row justify-content-center no-gutters">
                 {cocktails}
             </div>
         </div>

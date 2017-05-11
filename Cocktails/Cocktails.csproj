@@ -195,7 +195,6 @@
     <Content Include="Content\Css\font-awesome-4.7.0\css\font-awesome.min.css" />
     <Content Include="Content\Css\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Css\site.css" />
-    <Content Include="Content\Images\background.jpg" />
     <Content Include="Content\Images\cocktail_no_image_small.jpg" />
     <Content Include="Content\Images\Drinks\cosmopolitan_small.jpg" />
     <Content Include="Content\Images\Drinks\mai-tai_small.jpg" />

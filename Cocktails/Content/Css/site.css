@@ -1,8 +1,4 @@
-﻿body {
-    background: url(/Content/Images/background.jpg);
-}
-
-.cocktailButton img {
+﻿.cocktailButton img {
     border-right: 1px solid white;
     border-radius: 8px;
 }
@@ -17,18 +13,23 @@
                           supported by Chrome and Opera */
 }
 
+#content div.cocktailButton {
+    padding-right: 5px;    
+    margin-top: 5px;
+    min-width: 160px;
+    text-align: center;
+}
+
+.cocktailGrid {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 60px;
+}
+
 .cocktailButton h6 {
     letter-spacing: 3px;
     font-weight: 300;
     color: black;
-}
-
-.cocktailButton .plusIconWrapper {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding-bottom: 3px;
 }
 
 .cocktailButton .plusIcon {
@@ -38,21 +39,43 @@
 
 .cocktailButton .openDetails {
     cursor: pointer;
+    height: 170px;
+    min-width: 153px;
 }
 
-.cocktailButton .textArea {
-    position: relative;
-    width: 100%;
-}
-
-.buttonStyle {
-    background-color: rgba(55, 55, 55, 0.6);
+.cocktailButton .buttonStyle {
     color: white;
-    border: 1px solid white;
+    border: 1px solid grey;
     border-radius: 8px;
     width: 100%;
     font-size: 0.90rem;
     display: flex;
+    min-height: 208px;
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+}
+
+.cocktailButton .cocktailName {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+    border-radius: 8px 8px 0 0;
+}
+
+.cocktailButton .actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-bottom: 5px;
+    border-radius: 0 0 8px 8px;
 }
 
 .left {
@@ -82,14 +105,7 @@ ul {
 }
 
 .navbar.bg-faded {
-    background-color: rgba(55, 55, 55, 0.4);
-}
-
-.cocktailButton {
-    margin-top: 20px;
-    padding-right: 0;
-    min-width: 160px;
-    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .navbar-brand {
@@ -167,15 +183,6 @@ a.navbar-brand:hover, a.navbar-brand:visited {
 .shopping-cart .shopping-cart-items .addAndRemove {
     padding-right: 5px;
 }
-    
- .shopping-cart .shopping-cart-items .item-price {
-      color: #6394F8;
-      margin-right: 8px;
-}
-    
- .shopping-cart .shopping-cart-items .item-quantity {
-      color: #ABB0BE;    
-}
 
 /* Darker borders for Bootstrap tabs; otherwise they are really hard to make out */
 .shopping-cart .nav-tabs .nav-link:not(.active) {
@@ -206,13 +213,6 @@ a.navbar-brand:hover, a.navbar-brand:visited {
 	border-bottom-color: white;
 	border-width: 8px;
 	margin-left: -8px;
-}
-
-.cart-icon {
-  color: #515783;
-  font-size: 24px;
-  margin-right: 7px;
-  float: left;
 }
 
 .badge {

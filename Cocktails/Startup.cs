@@ -1,8 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
+using System.Web.Mvc;
+using System.Web.Optimization;
+using System.Web.Routing;
+using Autofac;
+using Autofac.Integration.WebApi;
+using Cocktails.App_Start;
 using Cocktails.BackgroundJobs;
+using Cocktails.Database;
 using Hangfire;
 using Hangfire.Dashboard;
 using Owin;
+using IAuthorizationFilter = Hangfire.Dashboard.IAuthorizationFilter;
 
 namespace Cocktails
 {
@@ -10,15 +19,37 @@ namespace Cocktails
     {
         public void Configuration(IAppBuilder app)
         {
+            // Code that runs on application startup
+            AreaRegistration.RegisterAllAreas();
+            System.Web.Http.GlobalConfiguration.Configure(WebApiConfig.Register);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            RegisterDependencies();
+
             GlobalConfiguration.Configuration.UseSqlServerStorage("CocktailsContext");
             app.UseHangfireDashboard("/hangfire", new DashboardOptions
             {
                 AuthorizationFilters = GetAuthorizationFilters()
             });
+            
             app.UseHangfireServer();
 
             RecurringJob.AddOrUpdate<GetRecipesFromWikipedia>(g => g.Get(Wikipedia.CocktailPages), "1 13 1 1 *");
             RecurringJob.RemoveIfExists("GetRecipiesFromWikipedia.Get");
+        }
+
+        private static void RegisterDependencies()
+        {
+            var builder = new ContainerBuilder();
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterType<CocktailsContext>();
+            builder.RegisterType<AzureImageUploader>().AsImplementedInterfaces();
+            builder.RegisterType<GetRecipesFromWikipedia>();
+
+            var container = builder.Build();
+            System.Web.Http.GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            GlobalConfiguration.Configuration.UseAutofacActivator(container);
         }
 
         private static IEnumerable<IAuthorizationFilter> GetAuthorizationFilters()

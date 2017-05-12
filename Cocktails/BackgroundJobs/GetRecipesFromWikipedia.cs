@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Cocktails.BackgroundJobs.RecipeParser;
 using Cocktails.Database;
 using Cocktails.Models;
@@ -52,8 +53,8 @@ namespace Cocktails.BackgroundJobs
 
                 cocktails.Add(new Cocktail
                 {
-                    Instructions = recipe.Instructions,
-                    Name = recipe.Name,
+                    Instructions = Regex.Replace(recipe.Instructions, @"\[.*\]", "").Replace("*", "").Trim(),
+                    Name = Regex.Replace(recipe.Name, @"\(.*\)", "").Trim(),
                     RecipeRows = recipeRowConverter.Convert(recipe.Ingredients.ToList()).Values,
                     WikipediaArticleUri = recipe.Uri.AbsoluteUri,
                     Image = imageName

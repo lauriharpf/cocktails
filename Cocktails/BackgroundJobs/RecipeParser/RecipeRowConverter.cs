@@ -47,6 +47,10 @@ namespace Cocktails.BackgroundJobs.RecipeParser
         private RecipeRow Parse(string foundIngredientWithAmount)
         {
             foundIngredientWithAmount = foundIngredientWithAmount.ToLower();
+            foundIngredientWithAmount = foundIngredientWithAmount.Replace("to taste", "")
+                .Replace("freshly squeezed", "")
+                .Replace("half a lime cut into 4 wedges", "0.5 item lime");
+            foundIngredientWithAmount = Regex.Replace(foundIngredientWithAmount, @"\([^\)]*\)", "").Trim();
             var ingredientParts = foundIngredientWithAmount.Split(' ');
             var recipeRow = new RecipeRow
             {
@@ -73,11 +77,11 @@ namespace Cocktails.BackgroundJobs.RecipeParser
 
         private Ingredient ParseIngredient(IEnumerable<string> ingredientParts)
         {
-            var reversedParts = ingredientParts.Reverse().Where(p => !p.Contains(')') && !p.Contains('(') && p != "fresh");
+            var reversedParts = ingredientParts.Reverse().Where(p => p != "fresh");
             var builder = new StringBuilder();
             foreach (var part in reversedParts)
             {
-                if (part.Length < 3 || StringToUnit.Keys.Any(k => part.Contains(k)))
+                if ((part.Length < 3 && part != "de")  || StringToUnit.Keys.Any(k => part.Contains(k)))
                 {
                     break;
                 }

@@ -6,7 +6,8 @@ namespace Cocktails.Migrations
     public partial class DeleteDuplicates : DbMigration
     {
         public override void Up()
-        {   // Somehow three duplicates (Dry Martini, The Godfather and The Godmother) ended up in the DB. Remove them.
+        {   // Due to duplicate URLs in Cocktails.BackgroundJobs.Wikipedia, three duplicates 
+            // (Dry Martini, The Godfather and The Godmother) ended up in the DB. Remove them.
             Sql("DELETE FROM Cocktail WHERE ID NOT IN (SELECT MIN(Id) FROM Cocktail GROUP BY Name)");
         }
         

@@ -17,33 +17,47 @@ namespace Cocktails.BackgroundJobs.RecipeParser
             html.LoadHtml(_client.DownloadString(uri));
 
             var hrecipeNodes = html.DocumentNode.Descendants().Where(n => n.HasClass("hrecipe"));
-            return hrecipeNodes.Select(x => Parse(x, uri)).ToList();
+            return hrecipeNodes.Select(x => Parse(x, uri)).Where(i => i != null).ToList();
         }
 
         private HRecipe Parse(HtmlNode hrecipeNode, Uri uri)
         {
             var children = hrecipeNode.Descendants().ToList();
             var name = children.FirstOrDefault(n => n.HasClass("fn"));
-            var ingredients = children.Where(n => n.HasClass("ingredient")).SelectMany(i => i.Descendants("li"));
+            var ingredients = children.Where(n => n.HasClass("ingredient")).SelectMany(i => i.Descendants("li")).ToList();
             var instructions = children.FirstOrDefault(n => n.InnerText == "Preparation")?.NextSibling?.NextSibling?.InnerText;
 
-            var imageUriString = 
-                children.Where(i => i.Name == "tr")
-                    .Skip(1)
-                    .FirstOrDefault()?.Descendants()
-                    .FirstOrDefault(n => n.Name == "img")?
-                    .Attributes.FirstOrDefault(a => a.Name == "src")?.Value;
+            if (name == null || !ingredients.Any() || instructions == null)
+                return null;
 
+            var imageUriString = FindImageUri(children);
             var image = imageUriString == null ? null : DownloadImage(new Uri("https:" + imageUriString));
 
             return new HRecipe
             {
-                Name = name?.InnerText,
+                Name = name.InnerText,
                 Ingredients = new List<string>(ingredients.Select(i => i.InnerText)),
                 Instructions = instructions,
                 Uri = uri,
                 Image = image
             };
+        }
+
+        private string FindImageUri(List<HtmlNode> children)
+        {
+            var tableRows = children.Where(i => i.Name == "tr").ToList();
+            for (var i = 1; i >= 0; i--)
+            {
+                var imageCandidate = tableRows.Skip(i).FirstOrDefault()?.Descendants()
+                    .FirstOrDefault(n => n.Name == "img")?
+                    .Attributes.FirstOrDefault(a => a.Name == "src")?.Value;
+                if (imageCandidate != null)
+                {
+                    return imageCandidate;
+                }
+            }
+
+            return null;
         }
 
         private Image DownloadImage(Uri imageUri)

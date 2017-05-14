@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import AmountAndUnit from './AmountAndUnit.jsx';
+import UnitSelector from './UnitSelector.jsx';
 
 export default class Ingredients extends React.Component {
     constructor(props) {
@@ -33,13 +34,20 @@ export default class Ingredients extends React.Component {
 
         return result.map((keyToValue) => {
             let item = keyToValue[1];
-            return <li key={item.ID}><AmountAndUnit unit={item.Unit} amount={item.Amount} /> <span style={{textTransform: 'capitalize'}}>{item.IngredientName}</span></li>;
+            return <li key={item.ID}><AmountAndUnit unit={item.Unit} amount={item.Amount} metric={this.props.metric} /> <span style={{textTransform: 'capitalize'}}>{item.IngredientName}</span></li>;
         });
     }
 
     render() {
         if (this.props.drinkList.size > 0) {
-            var content = <div><p><b>You need</b></p><ul>{this.calculateNeededIngredients()}</ul></div>;
+            var content = 
+                <div>
+                    <div className="clearfix">
+                        <div className="float-left"><b>You need</b></div>
+                        <div className="float-right"><UnitSelector setMetric={this.props.setMetric} metric={this.props.metric} name="ingredientsUnit" /></div>
+                    </div>
+                    <ul>{this.calculateNeededIngredients()}</ul>
+                </div>;
         } else {
             var content = <p>No selections. Use <span className="icon-plus-square"></span> icons to add to list.</p>;
         }

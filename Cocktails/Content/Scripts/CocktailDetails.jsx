@@ -1,10 +1,11 @@
 ﻿import React from 'react';
 import AmountAndUnit from './AmountAndUnit.jsx';
+import UnitSelector from './UnitSelector.jsx';
 
 const CocktailDetails = (props) => {
     var recipeRows = props.cocktail.RecipeRows.map((recipeRow) => {
         return (
-            <li key={recipeRow.ID}><AmountAndUnit unit={recipeRow.Unit} amount={recipeRow.Amount}/> <span className="capitalize">{recipeRow.Ingredient.Name}</span></li>
+            <li key={recipeRow.ID}><AmountAndUnit unit={recipeRow.Unit} amount={recipeRow.Amount} metric={props.metric} /> <span className="capitalize">{recipeRow.Ingredient.Name}</span></li>
         );
     });
     return (
@@ -13,9 +14,12 @@ const CocktailDetails = (props) => {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h4 className="modal-title" id={"modalLabel" + props.cocktail.ID}>{props.cocktail.Name}</h4>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <div className="unitSelector">
+                            <UnitSelector setMetric={props.setMetric} metric={props.metric} name={"unit" + props.cocktail.ID } />
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
                     </div>
                     <div className="modal-body">
                         <div className="row">

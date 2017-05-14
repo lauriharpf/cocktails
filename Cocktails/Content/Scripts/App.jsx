@@ -7,10 +7,11 @@ import NavBar from './NavBar.jsx';
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { drinkList: new Map(), data: [], showDrinkList: true };
+        this.state = { drinkList: new Map(), data: [], showDrinkList: true, metric: false };
         this.drinkListCount = this.drinkListCount.bind(this);
         this.changeDrinkCount = this.changeDrinkCount.bind(this);
         this.toggleDrinkList = this.toggleDrinkList.bind(this);
+        this.setMetric = this.setMetric.bind(this);
     }
 
     changeDrinkCount(cocktailId, changeBy) {
@@ -58,15 +59,19 @@ class App extends React.Component {
         this.setState({ showDrinkList: !this.state.showDrinkList });
     }
 
+    setMetric(metric) {
+        this.setState({ metric: metric });
+    }
+
     render() {
         return (
        <div>
            <NavBar drinkListCount={this.drinkListCount()} toggleDrinkList={this.toggleDrinkList} />
            <Selections drinkList={this.state.drinkList} cocktails={this.state.data} showDrinkList={this.state.showDrinkList} 
-                      toggleDrinkList={this.toggleDrinkList} changeDrinkCount={this.changeDrinkCount}/>
+                      toggleDrinkList={this.toggleDrinkList} changeDrinkCount={this.changeDrinkCount} setMetric={this.setMetric} metric={this.state.metric} />
            <div className="container-fluid" style={{position: 'relative' }}>
                <div className="row">
-                   <CocktailGrid cocktails={this.state.data} handlePlusClick={this.changeDrinkCount}/>
+                   <CocktailGrid cocktails={this.state.data} handlePlusClick={this.changeDrinkCount} setMetric={this.setMetric} metric={this.state.metric} />
                </div>
            </div>
        </div>);

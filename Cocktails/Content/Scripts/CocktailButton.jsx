@@ -27,7 +27,7 @@ export default class CocktailButton extends React.Component {
                         <span className="icon-plus-square plusIcon" onClick={this.onPlusClick}></span>
                     </div>
                 </div>
-                    <CocktailDetails cocktail={this.props.cocktail} />
+                    <CocktailDetails cocktail={this.props.cocktail} setMetric={this.props.setMetric} metric={this.props.metric} />
             </div>
         );
     }

@@ -1,4 +1,10 @@
-﻿.cocktailButton img {
+﻿/* Fixes page content jumping to left when a Bootstrap modal is opened */
+body {
+    padding-right: 0 !important;
+    overflow-y: auto !important;
+}
+
+.cocktailButton img {
     border-right: 1px solid white;
     border-radius: 8px;
 }
@@ -82,6 +88,26 @@
 
 .left {
     float: left;
+}
+
+.cocktailDetails .unitSelector > div:first-child {
+    display: inline;
+    margin-right: 20px;
+    line-height: 0.9;
+}
+
+/* Prevents the heading of cocktail detais (recipe) from wrapping to multiple rows on small mobile screens */
+@media (max-width: 400px) {
+    .cocktailDetails .modal-title {
+        font-size: 1.1rem;
+    }
+    .cocktailDetails .form-check-inline+.form-check-inline {
+        margin-left: 0.3rem;
+    }
+
+    .cocktailDetails .unitSelector > div:first-child {
+        margin-right: 10px;
+    }
 }
 
 @media (min-width: 576px) {

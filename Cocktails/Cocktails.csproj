@@ -200,6 +200,7 @@
     <Content Include="Content\Css\icomoon\style.css" />
     <Content Include="Content\Css\site.css" />
     <Content Include="Content\Images\cocktail_no_image_small.jpg" />
+    <Content Include="Content\Images\cocktail_og_image.jpg" />
     <Content Include="Content\Images\Drinks\cosmopolitan_small.jpg" />
     <Content Include="Content\Images\Drinks\mai-tai_small.jpg" />
     <Content Include="Content\Images\Drinks\mojito_small.jpg" />

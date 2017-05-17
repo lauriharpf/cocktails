@@ -81,7 +81,7 @@ class App extends React.Component {
                       removeAll={this.removeAll}/>
            <div className="container-fluid" style={{position: 'relative' }}>
                <div className="row">
-                   <CocktailGrid cocktails={this.state.data} handlePlusClick={this.changeDrinkCount} setMetric={this.setMetric} metric={this.state.metric} />
+                   <CocktailGrid cocktails={this.state.data} drinkList={this.state.drinkList} handlePlusClick={this.changeDrinkCount} setMetric={this.setMetric} metric={this.state.metric} />
                </div>
            </div>
        </div>);

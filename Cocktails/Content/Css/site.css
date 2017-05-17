@@ -9,6 +9,14 @@ body {
     border-radius: 8px;
 }
 
+.cocktailButton .badge {
+    position: absolute;
+    bottom: -1px;
+    left: -1px;
+    z-index: 999;
+    background-color: red;
+}
+
 .noselect {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -176,7 +184,7 @@ a.navbar-brand:hover, a.navbar-brand:visited {
     top: 55px;
     right: 10px;
     border-radius: 3px;
-    padding: 20px;
+    padding: 20px 10px 10px 20px;
     z-index: 99;
 }
 
@@ -269,7 +277,7 @@ a.navbar-brand:hover, a.navbar-brand:visited {
     border-radius: 10px;
     color: white;
     display: inline-block;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 1;
     padding: 3px 7px;
     text-align: center;

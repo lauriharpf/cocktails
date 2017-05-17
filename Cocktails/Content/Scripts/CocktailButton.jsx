@@ -15,8 +15,10 @@ export default class CocktailButton extends React.Component {
     render() {
         const modalTarget = "#modal" + this.props.cocktail.ID;
         const background = "url(" + this.props.cocktail.Image + ")";
+        const count = this.props.drinkList.has(this.props.cocktail.ID) ? this.props.drinkList.get(this.props.cocktail.ID) : 0;
+
         return ( 
-            <div className="col-1 cocktailButton">
+            <div className="col-1 cocktailButton noselect">
                 <div className="buttonStyle left" style={{ backgroundImage: background }}>
                     <div className="openDetails" data-toggle="modal" data-target={modalTarget}>
                         <div className="cocktailName">
@@ -24,6 +26,7 @@ export default class CocktailButton extends React.Component {
                         </div>
                     </div>
                     <div className="actions">
+                        {count > 0 && <div className="badge">{count}</div>}
                         <span className="icon-plus-square plusIcon" onClick={this.onPlusClick}></span>
                     </div>
                 </div>

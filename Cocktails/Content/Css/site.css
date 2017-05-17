@@ -13,7 +13,7 @@ body {
     position: absolute;
     bottom: -1px;
     left: -1px;
-    z-index: 999;
+    z-index: 50;
     background-color: red;
 }
 

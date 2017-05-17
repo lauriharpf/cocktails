@@ -12,6 +12,7 @@ class App extends React.Component {
         this.changeDrinkCount = this.changeDrinkCount.bind(this);
         this.toggleDrinkList = this.toggleDrinkList.bind(this);
         this.setMetric = this.setMetric.bind(this);
+        this.removeAll = this.removeAll.bind(this);
     }
 
     changeDrinkCount(cocktailId, changeBy) {
@@ -33,6 +34,14 @@ class App extends React.Component {
         return Array.from(this.state.drinkList.entries()).reduce(function(acc, keyToValue) {
             return acc + keyToValue[1];
         }, 0);
+    }
+
+    removeAll(cocktailId) {
+        const newDrinkList = new Map(this.state.drinkList);
+        newDrinkList.delete(cocktailId);
+        this.setState({
+            drinkList: newDrinkList
+        });
     }
 
     componentWillMount() {
@@ -68,7 +77,8 @@ class App extends React.Component {
        <div>
            <NavBar drinkListCount={this.drinkListCount()} toggleDrinkList={this.toggleDrinkList} />
            <Selections drinkList={this.state.drinkList} cocktails={this.state.data} showDrinkList={this.state.showDrinkList} 
-                      toggleDrinkList={this.toggleDrinkList} changeDrinkCount={this.changeDrinkCount} setMetric={this.setMetric} metric={this.state.metric} />
+                      toggleDrinkList={this.toggleDrinkList} changeDrinkCount={this.changeDrinkCount} setMetric={this.setMetric} metric={this.state.metric} 
+                      removeAll={this.removeAll}/>
            <div className="container-fluid" style={{position: 'relative' }}>
                <div className="row">
                    <CocktailGrid cocktails={this.state.data} handlePlusClick={this.changeDrinkCount} setMetric={this.setMetric} metric={this.state.metric} />

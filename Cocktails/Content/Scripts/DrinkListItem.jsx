@@ -24,6 +24,7 @@ export default class DrinkListItem extends React.Component {
                        <span className="icon-plus-square plusIcon" onClick={this.onPlusClick}></span> <span className="icon-minus-square" onClick={this.onMinusClick}></span>
                    </span>
                    <span className="itemName">{this.props.count} x {this.props.cocktail.Name}</span>
+                   <span className="icon-trash removeAll" onClick={() => this.props.removeAll(this.props.cocktail.ID)}></span>
                </div>
            </li>
         );   

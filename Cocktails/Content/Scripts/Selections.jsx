@@ -17,7 +17,8 @@ export default class Selections extends React.Component {
     render() {
         const displayClass = this.props.showDrinkList ? "" : "hidden";
         const contents = this.state.selectedTab === "selections" ?
-            <DrinkList drinkList={this.props.drinkList} cocktails={this.props.cocktails} showDrinkList={this.props.showDrinkList} changeDrinkCount={this.props.changeDrinkCount} /> :
+            <DrinkList drinkList={this.props.drinkList} cocktails={this.props.cocktails} showDrinkList={this.props.showDrinkList} changeDrinkCount={this.props.changeDrinkCount} 
+                        removeAll={this.props.removeAll}/> :
             <Ingredients drinkList={this.props.drinkList} cocktails={this.props.cocktails} setMetric={this.props.setMetric} metric={this.props.metric} />;
 
         return (

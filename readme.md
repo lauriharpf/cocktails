@@ -28,5 +28,13 @@
 6. In Task Runner Explorer, right-click the "package.json -> Custom -> build" target and select "Run".
 7. Run the app by pressing F5. The .jsx files can be modified while the app is running and changes are reflected in the browser.
 
-## Tests
+## Testing
 To run tests in CocktailsTests project, select Tools -> Extensions and Updates -> Online and install the _NUnit 3 Test Adapter_. Run all tests with CTRL+R+A.
+
+## Publishing
+
+1. Set up an App Service, a SQL database and a Storage account on Azure.
+2. Right-click on Cocktails project -> Publish.
+3. Choose Microsoft Azure App Service. Select your Azure account.
+4. In the publish Settings -> Databases, enable executing Code First Migrations and enter the Azure database connection string.
+5. Publish.

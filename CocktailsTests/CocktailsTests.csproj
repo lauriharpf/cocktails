@@ -87,7 +87,6 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="BackgroundJobs\GetRecipesFromWikipediaTest.cs" />
     <Compile Include="BackgroundJobs\RecipeParser\RecipeRowConverterTest.cs" />
     <Compile Include="EffortSetup\EffortProviderFactory.cs" />
     <Compile Include="Models\CocktailExtensions.cs" />

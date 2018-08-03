@@ -22,3 +22,7 @@ export const setData = (cocktails) => ({
     type: 'SET_DATA',
     value: cocktails
 });
+
+export const fetchData = () => ({
+    type: 'FETCH_DATA'
+});

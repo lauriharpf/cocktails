@@ -24,6 +24,7 @@
     "react-dom": "16.4.1",
     "redux": "4.0.0",
     "react-redux": "5.0.7",
+    "redux-saga": "0.16.0",
     "axios": "0.13.1"
   },
   "scripts": {
@@ -42,6 +43,7 @@
   },
   "jest": {
     "verbose": true,
-    "testURL": "http://localhost/"
+    "testURL": "http://localhost/",
+    "rootDir": "Content"
   }
 }

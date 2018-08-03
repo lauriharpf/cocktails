@@ -27,6 +27,7 @@
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -211,6 +212,7 @@
     <Content Include="Content\Css\icomoon\fonts\icomoon.woff" />
     <None Include="Content\Scripts\Components\CocktailDetails.jsx" />
     <Content Include="Content\Scripts\Reducers.jsx" />
+    <Content Include="Content\Scripts\Redux\Sagas.jsx" />
     <Content Include="Content\Scripts\Store.jsx" />
     <Content Include="Content\Scripts\ThirdParty\tether.min.js" />
     <Content Include="Content\Scripts\__tests__\Reducers.test.js" />

@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 module.exports = {
-    entry: "./Content/Scripts/App.jsx",
+    entry: ["./Content/Scripts/App.jsx"],
     module: {
         rules: [
             {

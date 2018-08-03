@@ -2,18 +2,14 @@
 
 module.exports = {
     entry: "./Content/Scripts/App.jsx",
-    output: {
-        filename: "./Content/Scripts/bundle.js"
-    },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?$/,
-                loader: "babel-loader",
                 exclude: /node_modules/,
-                query: {
-                    presets: ["es2015", "react"]
-                }
+                use: {
+                    loader: "babel-loader"
+                } 
             }
         ]
     }

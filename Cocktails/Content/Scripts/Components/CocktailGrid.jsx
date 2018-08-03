@@ -1,10 +1,12 @@
 ﻿import React from 'react';
+import { connect } from 'react-redux';
 import CocktailButton from './CocktailButton.jsx';
 
 const CocktailGrid = (props) => {
     var cocktails = props.cocktails.map((cocktail) => {
+        const count = props.drinkList.has(cocktail.ID) ? props.drinkList.get(cocktail.ID) : 0;
         return (
-            <CocktailButton key={cocktail.ID} cocktail={cocktail} handlePlusClick={props.handlePlusClick} setMetric={props.setMetric} metric={props.metric} drinkList={props.drinkList} />
+            <CocktailButton key={cocktail.ID} cocktail={cocktail} count={count} />
         );
     });
     return (
@@ -16,4 +18,9 @@ const CocktailGrid = (props) => {
     );
 }
 
-export default CocktailGrid;
+const mapStateToProps = (state) => ({
+    cocktails: state.data,
+    drinkList: state.drinkList
+});
+
+export default connect(mapStateToProps)(CocktailGrid);

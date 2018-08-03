@@ -1,4 +1,6 @@
 ﻿import React from 'react';
+import { connect } from 'react-redux';
+import { toggleDrinkList } from './../Actions.jsx';
 
 const NavBar = (props) => {
     return (
@@ -16,4 +18,12 @@ const NavBar = (props) => {
       );
 };
 
-export default NavBar;
+const mapStateToProps = (state) => ({
+    drinkListCount: Array.from(state.drinkList.entries()).reduce(function (acc, keyToValue) { return acc + keyToValue[1]; }, 0)
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    toggleDrinkList: () => dispatch(toggleDrinkList())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

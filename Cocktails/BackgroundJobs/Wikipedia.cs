@@ -89,7 +89,6 @@ namespace Cocktails.BackgroundJobs
             "Japanese_slipper",
             "Vodka_Martini",
             "Buck%27s_Fizz",
-            "Sea_of_Capri_(cocktail)",
             "Kir_Royal",
             "Redheaded_slut",
             "Agent_Orange_(cocktail)",

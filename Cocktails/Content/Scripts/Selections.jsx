@@ -1,9 +1,11 @@
 ﻿import React from 'react';
-import SelectionTabs from './SelectionTabs.jsx';
+import { connect } from 'react-redux';
+import SelectionTabs from './Components/SelectionTabs.jsx';
 import DrinkList from './DrinkList.jsx';
 import Ingredients from './Ingredients.jsx';
+import { toggleDrinkList } from './Actions.jsx';
 
-export default class Selections extends React.Component {
+class Selections extends React.Component {
     constructor(props) {
         super(props);
         this.state = { selectedTab: "selections" };
@@ -16,10 +18,7 @@ export default class Selections extends React.Component {
 
     render() {
         const displayClass = this.props.showDrinkList ? "" : "hidden";
-        const contents = this.state.selectedTab === "selections" ?
-            <DrinkList drinkList={this.props.drinkList} cocktails={this.props.cocktails} showDrinkList={this.props.showDrinkList} changeDrinkCount={this.props.changeDrinkCount} 
-                        removeAll={this.props.removeAll}/> :
-            <Ingredients drinkList={this.props.drinkList} cocktails={this.props.cocktails} setMetric={this.props.setMetric} metric={this.props.metric} />;
+        const contents = this.state.selectedTab === "selections" ? <DrinkList /> : <Ingredients />;
 
         return (
                 <div className={"shopping-cart " + displayClass} id="drinkList">
@@ -30,3 +29,13 @@ export default class Selections extends React.Component {
             );
     }
 }
+
+const mapStateToProps = (state) => ({
+    showDrinkList: state.showDrinkList
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    toggleDrinkList: () => dispatch(toggleDrinkList())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Selections);

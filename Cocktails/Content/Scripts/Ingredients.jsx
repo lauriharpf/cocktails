@@ -1,8 +1,9 @@
 ﻿import React from 'react';
+import { connect } from 'react-redux';
 import AmountAndUnit from './AmountAndUnit.jsx';
-import UnitSelector from './UnitSelector.jsx';
+import UnitSelector from './Components/UnitSelector.jsx';
 
-export default class Ingredients extends React.Component {
+class Ingredients extends React.Component {
     constructor(props) {
         super(props);
         this.calculateNeededIngredients = this.calculateNeededIngredients.bind(this);
@@ -34,7 +35,7 @@ export default class Ingredients extends React.Component {
 
         return result.map((keyToValue) => {
             let item = keyToValue[1];
-            return <li key={item.ID}><AmountAndUnit unit={item.Unit} amount={item.Amount} metric={this.props.metric} /> <span style={{textTransform: 'capitalize'}}>{item.IngredientName}</span></li>;
+            return <li key={item.ID}><AmountAndUnit unit={item.Unit} amount={item.Amount} /> <span style={{textTransform: 'capitalize'}}>{item.IngredientName}</span></li>;
         });
     }
 
@@ -44,7 +45,7 @@ export default class Ingredients extends React.Component {
                 <div>
                     <div className="clearfix">
                         <div className="float-left"><b>You need</b></div>
-                        <div className="float-right"><UnitSelector setMetric={this.props.setMetric} metric={this.props.metric} name="ingredientsUnit" /></div>
+                        <div className="float-right"><UnitSelector name="ingredientsUnit" /></div>
                     </div>
                     <ul>{this.calculateNeededIngredients()}</ul>
                 </div>;
@@ -61,3 +62,10 @@ export default class Ingredients extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state) => ({
+    cocktails: state.data,
+    drinkList: state.drinkList
+});
+
+export default connect(mapStateToProps)(Ingredients);

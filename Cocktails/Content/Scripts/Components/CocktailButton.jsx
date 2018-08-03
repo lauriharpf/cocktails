@@ -1,7 +1,9 @@
 ﻿import React from 'react';
+import { connect } from 'react-redux';
+import { changeDrinkCount } from '../Actions.jsx';
 import CocktailDetails from './CocktailDetails.jsx';
 
-export default class CocktailButton extends React.Component {
+class CocktailButton extends React.Component {
 
     constructor(props) {
         super(props);
@@ -9,13 +11,12 @@ export default class CocktailButton extends React.Component {
     }
 
     onPlusClick() {
-        this.props.handlePlusClick(this.props.cocktail.ID, 1);
+        this.props.changeDrinkCount(this.props.cocktail.ID, 1);
     }
 
     render() {
         const modalTarget = "#modal" + this.props.cocktail.ID;
         const background = "url(" + this.props.cocktail.Image + ")";
-        const count = this.props.drinkList.has(this.props.cocktail.ID) ? this.props.drinkList.get(this.props.cocktail.ID) : 0;
 
         return ( 
             <div className="col-1 cocktailButton noselect">
@@ -26,12 +27,18 @@ export default class CocktailButton extends React.Component {
                         </div>
                     </div>
                     <div className="actions">
-                        {count > 0 && <div className="badge">{count}</div>}
+                        {this.props.count > 0 && <div className="badge">{this.props.count}</div>}
                         <span className="icon-plus-square plusIcon" onClick={this.onPlusClick}></span>
                     </div>
                 </div>
-                    <CocktailDetails cocktail={this.props.cocktail} setMetric={this.props.setMetric} metric={this.props.metric} />
+                    <CocktailDetails cocktail={this.props.cocktail} />
             </div>
         );
     }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+    changeDrinkCount: (cocktailId, changeBy) => dispatch(changeDrinkCount(cocktailId, changeBy))
+});
+
+export default connect(null, mapDispatchToProps)(CocktailButton);

@@ -1,6 +1,8 @@
 ﻿import React from 'react';
+import { connect } from 'react-redux';
+import { changeDrinkCount, removeDrink } from './Actions.jsx';
 
-export default class DrinkListItem extends React.Component {
+class DrinkListItem extends React.Component {
     constructor(props) {
         super(props);
         this.onPlusClick = this.onPlusClick.bind(this);
@@ -24,9 +26,16 @@ export default class DrinkListItem extends React.Component {
                        <span className="icon-plus-square plusIcon" onClick={this.onPlusClick}></span> <span className="icon-minus-square" onClick={this.onMinusClick}></span>
                    </span>
                    <span className="itemName">{this.props.count} x {this.props.cocktail.Name}</span>
-                   <span className="icon-trash removeAll" onClick={() => this.props.removeAll(this.props.cocktail.ID)}></span>
+                   <span className="icon-trash removeAll" onClick={() => this.props.removeDrink(this.props.cocktail.ID)}></span>
                </div>
            </li>
         );   
     }    
 }
+
+const mapDispatchToProps = (dispatch) => ({
+    changeDrinkCount: (cocktailId, changeBy) => dispatch(changeDrinkCount(cocktailId, changeBy)),
+    removeDrink: (cocktailId) => dispatch(removeDrink(cocktailId))
+});
+
+export default connect(null, mapDispatchToProps)(DrinkListItem);

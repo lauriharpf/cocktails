@@ -1,4 +1,5 @@
 ﻿import React from 'react'
+import { connect } from 'react-redux';
 
 const AmountAndUnit = props => {
     let unit = "";
@@ -30,4 +31,8 @@ const AmountAndUnit = props => {
     );
 };
 
-export default AmountAndUnit;
+const mapStateToProps = (state) => ({
+    metric: state.metric
+});
+
+export default connect(mapStateToProps)(AmountAndUnit);

@@ -205,12 +205,16 @@
     <Content Include="Content\Images\Drinks\cosmopolitan_small.jpg" />
     <Content Include="Content\Images\Drinks\mai-tai_small.jpg" />
     <Content Include="Content\Images\Drinks\mojito_small.jpg" />
-    <Content Include="Content\Scripts\bundle.js" />
+    <Content Include="Content\Scripts\Actions.jsx" />
     <Content Include="Content\Css\icomoon\fonts\icomoon.eot" />
     <Content Include="Content\Css\icomoon\fonts\icomoon.ttf" />
     <Content Include="Content\Css\icomoon\fonts\icomoon.woff" />
-    <None Include="Content\Scripts\CocktailDetails.jsx" />
+    <None Include="Content\Scripts\Components\CocktailDetails.jsx" />
+    <Content Include="Content\Scripts\Reducers.jsx" />
+    <Content Include="Content\Scripts\Store.jsx" />
     <Content Include="Content\Scripts\ThirdParty\tether.min.js" />
+    <Content Include="Content\Scripts\__tests__\Reducers.test.js" />
+    <Content Include="dist\main.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -264,18 +268,18 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Content\Scripts\CocktailGrid.jsx" />
+    <Content Include="Content\Scripts\Components\CocktailGrid.jsx" />
     <Content Include="Content\Scripts\Selections.jsx" />
-    <Content Include="Content\Scripts\NavBar.jsx" />
+    <Content Include="Content\Scripts\Components\NavBar.jsx" />
     <None Include="Content\Scripts\App.jsx" />
-    <None Include="Content\Scripts\CocktailButton.jsx" />
+    <None Include="Content\Scripts\Components\CocktailButton.jsx" />
     <Content Include="package.json" />
     <Content Include="Content\Scripts\DrinkListItem.jsx" />
     <Content Include="Content\Scripts\DrinkList.jsx" />
-    <Content Include="Content\Scripts\SelectionTabs.jsx" />
+    <Content Include="Content\Scripts\Components\SelectionTabs.jsx" />
     <Content Include="Content\Scripts\Ingredients.jsx" />
     <Content Include="Content\Scripts\AmountAndUnit.jsx" />
-    <Content Include="Content\Scripts\UnitSelector.jsx" />
+    <Content Include="Content\Scripts\Components\UnitSelector.jsx" />
     <None Include="Properties\PublishProfiles\Cocktails20161208083924 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Cocktails20161208083924.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />

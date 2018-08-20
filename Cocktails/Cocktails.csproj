@@ -67,22 +67,6 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Hangfire.Autofac, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hangfire.Autofac.2.2.0\lib\net45\Hangfire.Autofac.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Hangfire.Core, Version=1.6.12.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hangfire.Core.1.6.12\lib\net45\Hangfire.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Hangfire.Dashboard.Authorization, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hangfire.Dashboard.Authorization.2.1.0\lib\net45\Hangfire.Dashboard.Authorization.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Hangfire.SqlServer, Version=1.6.12.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hangfire.SqlServer.1.6.12\lib\net45\Hangfire.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
@@ -201,11 +185,77 @@
     <Content Include="Content\Css\icomoon\style.css" />
     <Content Include="Content\Css\site.css" />
     <Content Include="Content\favicon.ico" />
+    <Content Include="Content\Images\americano.jpg" />
+    <Content Include="Content\Images\appletini.jpg" />
+    <Content Include="Content\Images\aviation.jpg" />
+    <Content Include="Content\Images\b52.jpg" />
+    <Content Include="Content\Images\bacardi_cocktail.jpg" />
+    <Content Include="Content\Images\bellini.jpg" />
+    <Content Include="Content\Images\between_the_sheets.jpg" />
+    <Content Include="Content\Images\black_russian.jpg" />
+    <Content Include="Content\Images\bloody_mary.jpg" />
+    <Content Include="Content\Images\bobby_burns.jpg" />
+    <Content Include="Content\Images\bramble.jpg" />
+    <Content Include="Content\Images\brandy_alexander.jpg" />
+    <Content Include="Content\Images\bronx.jpg" />
+    <Content Include="Content\Images\bucks_fizz.jpg" />
+    <Content Include="Content\Images\caipirinha.jpg" />
+    <Content Include="Content\Images\clover_club_cocktail.jpg" />
     <Content Include="Content\Images\cocktail_no_image_small.jpg" />
     <Content Include="Content\Images\cocktail_og_image.jpg" />
-    <Content Include="Content\Images\Drinks\cosmopolitan_small.jpg" />
-    <Content Include="Content\Images\Drinks\mai-tai_small.jpg" />
-    <Content Include="Content\Images\Drinks\mojito_small.jpg" />
+    <Content Include="Content\Images\cosmopolitan.jpg" />
+    <Content Include="Content\Images\cuba_libre.jpg" />
+    <Content Include="Content\Images\daiquiri.jpg" />
+    <Content Include="Content\Images\dark_n_stormy.jpg" />
+    <Content Include="Content\Images\don_alfredo.jpg" />
+    <Content Include="Content\Images\dry_martini.jpg" />
+    <Content Include="Content\Images\french_75.jpg" />
+    <Content Include="Content\Images\gibson.jpg" />
+    <Content Include="Content\Images\golden_dream.jpg" />
+    <Content Include="Content\Images\grasshopper.jpg" />
+    <Content Include="Content\Images\greyhound.jpg" />
+    <Content Include="Content\Images\harvey_wallbanger.jpg" />
+    <Content Include="Content\Images\hemingway_special.jpg" />
+    <Content Include="Content\Images\horses_neck.jpg" />
+    <Content Include="Content\Images\irish_coffee.jpg" />
+    <Content Include="Content\Images\japanese_slipper.jpg" />
+    <Content Include="Content\Images\kamikaze.jpg" />
+    <Content Include="Content\Images\kir.jpg" />
+    <Content Include="Content\Images\kir_royal.jpg" />
+    <Content Include="Content\Images\lemon_drop_martini.jpg" />
+    <Content Include="Content\Images\long_island_iced_tea.jpg" />
+    <Content Include="Content\Images\mai_tai.jpg" />
+    <Content Include="Content\Images\manhattan.jpg" />
+    <Content Include="Content\Images\margarita.jpg" />
+    <Content Include="Content\Images\mary_pickford.jpg" />
+    <Content Include="Content\Images\mimosa.jpg" />
+    <Content Include="Content\Images\mint_julep.jpg" />
+    <Content Include="Content\Images\mojito.jpg" />
+    <Content Include="Content\Images\monkey_gland.jpg" />
+    <Content Include="Content\Images\moscow_mule.jpg" />
+    <Content Include="Content\Images\negroni.jpg" />
+    <Content Include="Content\Images\old_fashioned.jpg" />
+    <Content Include="Content\Images\paradise.jpg" />
+    <Content Include="Content\Images\pina_colada.jpg" />
+    <Content Include="Content\Images\pisco_sour.jpg" />
+    <Content Include="Content\Images\planters_punch.jpg" />
+    <Content Include="Content\Images\porto_flip.jpg" />
+    <Content Include="Content\Images\rob_roy.jpg" />
+    <Content Include="Content\Images\rose.jpg" />
+    <Content Include="Content\Images\sazerac.jpg" />
+    <Content Include="Content\Images\screwdriver.jpg" />
+    <Content Include="Content\Images\sea_breeze.jpg" />
+    <Content Include="Content\Images\sex_on_the_beach.jpg" />
+    <Content Include="Content\Images\sidecar.jpg" />
+    <Content Include="Content\Images\singapore_sling.jpg" />
+    <Content Include="Content\Images\stinger.jpg" />
+    <Content Include="Content\Images\tequila_sunrise.jpg" />
+    <Content Include="Content\Images\the_godfather.jpg" />
+    <Content Include="Content\Images\tom_collins.jpg" />
+    <Content Include="Content\Images\vesper.jpg" />
+    <Content Include="Content\Images\vodka_martini.jpg" />
+    <Content Include="Content\Images\whiskey_sour.jpg" />
+    <Content Include="Content\Images\white_russian.jpg" />
     <Content Include="Content\Scripts\Actions.jsx" />
     <Content Include="Content\Css\icomoon\fonts\icomoon.eot" />
     <Content Include="Content\Css\icomoon\fonts\icomoon.ttf" />
@@ -217,6 +267,9 @@
     <Content Include="Content\Scripts\ThirdParty\tether.min.js" />
     <Content Include="Content\Scripts\__tests__\Reducers.test.js" />
     <Content Include="dist\main.js" />
+    <Content Include="Migrations\201808200656426_dbo.Cocktail.data.sql" />
+    <Content Include="Migrations\201808200656426_dbo.Ingredient.data.sql" />
+    <Content Include="Migrations\201808200656426_dbo.RecipeRow.data.sql" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -226,17 +279,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="BackgroundJobs\AzureImageUploader.cs" />
-    <Compile Include="BackgroundJobs\GetRecipesFromWikipedia.cs" />
-    <Compile Include="BackgroundJobs\RecipeParser\HRecipe.cs" />
-    <Compile Include="BackgroundJobs\RecipeParser\HRecipeParser.cs" />
-    <Compile Include="BackgroundJobs\OrAuthorizationFilter.cs" />
-    <Compile Include="BackgroundJobs\RecipeParser\HtmlNodeExtensions.cs" />
-    <Compile Include="BackgroundJobs\RecipeParser\Image.cs" />
-    <Compile Include="BackgroundJobs\RecipeParser\RecipeRowConverter.cs" />
-    <Compile Include="BackgroundJobs\Wikipedia.cs" />
     <Compile Include="Controllers\CocktailsController.cs" />
-    <Compile Include="Controllers\ConfigurationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Database\CocktailsContext.cs" />
     <Compile Include="Migrations\201701180841142_InitialCreate.cs" />
@@ -254,6 +297,10 @@
     <Compile Include="Migrations\201705091338087_DeleteDuplicates.cs" />
     <Compile Include="Migrations\201705091338087_DeleteDuplicates.Designer.cs">
       <DependentUpon>201705091338087_DeleteDuplicates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808200656426_EnterHardcodedData.cs" />
+    <Compile Include="Migrations\201808200656426_EnterHardcodedData.Designer.cs">
+      <DependentUpon>201808200656426_EnterHardcodedData.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cocktail.cs" />
@@ -310,6 +357,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705091338087_DeleteDuplicates.resx">
       <DependentUpon>201705091338087_DeleteDuplicates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808200656426_EnterHardcodedData.resx">
+      <DependentUpon>201808200656426_EnterHardcodedData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

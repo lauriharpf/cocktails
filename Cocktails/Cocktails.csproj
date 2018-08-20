@@ -267,9 +267,9 @@
     <Content Include="Content\Scripts\ThirdParty\tether.min.js" />
     <Content Include="Content\Scripts\__tests__\Reducers.test.js" />
     <Content Include="dist\main.js" />
-    <Content Include="Migrations\201808200656426_dbo.Cocktail.data.sql" />
-    <Content Include="Migrations\201808200656426_dbo.Ingredient.data.sql" />
-    <Content Include="Migrations\201808200656426_dbo.RecipeRow.data.sql" />
+    <EmbeddedResource Include="Migrations\201808200656426_dbo.Cocktail.data.sql" />
+    <EmbeddedResource Include="Migrations\201808200656426_dbo.Ingredient.data.sql" />
+    <EmbeddedResource Include="Migrations\201808200656426_dbo.RecipeRow.data.sql" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

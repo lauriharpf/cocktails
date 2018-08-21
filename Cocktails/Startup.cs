@@ -1,10 +1,8 @@
 ﻿using System.Reflection;
 using System.Web.Mvc;
-using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.WebApi;
-using Cocktails.App_Start;
 using Cocktails.Database;
 using Owin;
 
@@ -18,7 +16,6 @@ namespace Cocktails
             AreaRegistration.RegisterAllAreas();
             System.Web.Http.GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             RegisterDependencies();
         }

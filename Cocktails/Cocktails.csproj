@@ -1,339 +1,73 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{10C4D1B9-6DC7-4647-B300-A84AA1E7E218}</ProjectGuid>
-    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cocktails</RootNamespace>
-    <AssemblyName>Cocktails</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
-    <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
-    <Use64BitIISExpress />
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="Autofac.Integration.WebApi, Version=4.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.WebApi2.4.2.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
-      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.Caching" />
-    <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.6\lib\net45\System.Web.Http.WebHost.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.6\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.6\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.EnterpriseServices" />
-    <Reference Include="WindowsBase" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" />
   </ItemGroup>
+
   <ItemGroup>
-    <Reference Include="Microsoft.Web.Infrastructure">
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Content Remove="$(SpaRoot)**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
+
   <ItemGroup>
-    <Content Include="Content\Css\icomoon\fonts\icomoon.svg" />
-    <Content Include="Content\style.css" />
-    <Content Include="Content\Css\site.css" />
-    <Content Include="Content\favicon.ico" />
-    <Content Include="Content\Images\americano.jpg" />
-    <Content Include="Content\Images\appletini.jpg" />
-    <Content Include="Content\Images\aviation.jpg" />
-    <Content Include="Content\Images\b52.jpg" />
-    <Content Include="Content\Images\bacardi_cocktail.jpg" />
-    <Content Include="Content\Images\bellini.jpg" />
-    <Content Include="Content\Images\between_the_sheets.jpg" />
-    <Content Include="Content\Images\black_russian.jpg" />
-    <Content Include="Content\Images\bloody_mary.jpg" />
-    <Content Include="Content\Images\bobby_burns.jpg" />
-    <Content Include="Content\Images\bramble.jpg" />
-    <Content Include="Content\Images\brandy_alexander.jpg" />
-    <Content Include="Content\Images\bronx.jpg" />
-    <Content Include="Content\Images\bucks_fizz.jpg" />
-    <Content Include="Content\Images\caipirinha.jpg" />
-    <Content Include="Content\Images\clover_club_cocktail.jpg" />
-    <Content Include="Content\Images\cocktail_no_image_small.jpg" />
-    <Content Include="Content\Images\cocktail_og_image.jpg" />
-    <Content Include="Content\Images\cosmopolitan.jpg" />
-    <Content Include="Content\Images\cuba_libre.jpg" />
-    <Content Include="Content\Images\daiquiri.jpg" />
-    <Content Include="Content\Images\dark_n_stormy.jpg" />
-    <Content Include="Content\Images\don_alfredo.jpg" />
-    <Content Include="Content\Images\dry_martini.jpg" />
-    <Content Include="Content\Images\french_75.jpg" />
-    <Content Include="Content\Images\gibson.jpg" />
-    <Content Include="Content\Images\golden_dream.jpg" />
-    <Content Include="Content\Images\grasshopper.jpg" />
-    <Content Include="Content\Images\greyhound.jpg" />
-    <Content Include="Content\Images\harvey_wallbanger.jpg" />
-    <Content Include="Content\Images\hemingway_special.jpg" />
-    <Content Include="Content\Images\horses_neck.jpg" />
-    <Content Include="Content\Images\irish_coffee.jpg" />
-    <Content Include="Content\Images\japanese_slipper.jpg" />
-    <Content Include="Content\Images\kamikaze.jpg" />
-    <Content Include="Content\Images\kir.jpg" />
-    <Content Include="Content\Images\kir_royal.jpg" />
-    <Content Include="Content\Images\lemon_drop_martini.jpg" />
-    <Content Include="Content\Images\long_island_iced_tea.jpg" />
-    <Content Include="Content\Images\mai_tai.jpg" />
-    <Content Include="Content\Images\manhattan.jpg" />
-    <Content Include="Content\Images\margarita.jpg" />
-    <Content Include="Content\Images\mary_pickford.jpg" />
-    <Content Include="Content\Images\mimosa.jpg" />
-    <Content Include="Content\Images\mint_julep.jpg" />
-    <Content Include="Content\Images\mojito.jpg" />
-    <Content Include="Content\Images\monkey_gland.jpg" />
-    <Content Include="Content\Images\moscow_mule.jpg" />
-    <Content Include="Content\Images\negroni.jpg" />
-    <Content Include="Content\Images\old_fashioned.jpg" />
-    <Content Include="Content\Images\paradise.jpg" />
-    <Content Include="Content\Images\pina_colada.jpg" />
-    <Content Include="Content\Images\pisco_sour.jpg" />
-    <Content Include="Content\Images\planters_punch.jpg" />
-    <Content Include="Content\Images\porto_flip.jpg" />
-    <Content Include="Content\Images\rob_roy.jpg" />
-    <Content Include="Content\Images\rose.jpg" />
-    <Content Include="Content\Images\sazerac.jpg" />
-    <Content Include="Content\Images\screwdriver.jpg" />
-    <Content Include="Content\Images\sea_breeze.jpg" />
-    <Content Include="Content\Images\sex_on_the_beach.jpg" />
-    <Content Include="Content\Images\sidecar.jpg" />
-    <Content Include="Content\Images\singapore_sling.jpg" />
-    <Content Include="Content\Images\stinger.jpg" />
-    <Content Include="Content\Images\tequila_sunrise.jpg" />
-    <Content Include="Content\Images\the_godfather.jpg" />
-    <Content Include="Content\Images\tom_collins.jpg" />
-    <Content Include="Content\Images\vesper.jpg" />
-    <Content Include="Content\Images\vodka_martini.jpg" />
-    <Content Include="Content\Images\whiskey_sour.jpg" />
-    <Content Include="Content\Images\white_russian.jpg" />
-    <Content Include="Content\Scripts\Actions.jsx" />
-    <Content Include="Content\Css\icomoon\fonts\icomoon.eot" />
-    <Content Include="Content\Css\icomoon\fonts\icomoon.ttf" />
-    <Content Include="Content\Css\icomoon\fonts\icomoon.woff" />
-    <None Include="Content\Scripts\Components\CocktailDetails.jsx" />
-    <Content Include="Content\Scripts\Reducers.jsx" />
-    <Content Include="Content\Scripts\Redux\Sagas.jsx" />
-    <Content Include="Content\Scripts\Store.jsx" />
-    <Content Include="Content\Scripts\ThirdParty\tether.min.js" />
-    <Content Include="Content\Scripts\__tests__\Reducers.test.js" />
-    <Content Include="dist\main.js" />
-    <EmbeddedResource Include="Migrations\201808200656426_dbo.Cocktail.data.sql" />
-    <EmbeddedResource Include="Migrations\201808200656426_dbo.Ingredient.data.sql" />
-    <EmbeddedResource Include="Migrations\201808200656426_dbo.RecipeRow.data.sql" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="webpack.config.js" />
+    <Compile Remove="Migrations\20180821105602_InitialCreate.cs" />
+    <Compile Remove="Migrations\20180821105602_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20180821110234_InsertData.cs" />
+    <Compile Remove="Migrations\20180821110234_InsertData.Designer.cs" />
+    <Compile Remove="Migrations\20180821110434_InsertData.cs" />
+    <Compile Remove="Migrations\20180821110434_InsertData.Designer.cs" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\CocktailsController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Database\CocktailsContext.cs" />
-    <Compile Include="Migrations\201701180841142_InitialCreate.cs" />
-    <Compile Include="Migrations\201701180841142_InitialCreate.Designer.cs">
-      <DependentUpon>201701180841142_InitialCreate.cs</DependentUpon>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702011429296_DeleteHardcodedData.cs" />
-    <Compile Include="Migrations\201702011429296_DeleteHardcodedData.Designer.cs">
-      <DependentUpon>201702011429296_DeleteHardcodedData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702080747302_AddWikipediaURL.cs" />
-    <Compile Include="Migrations\201702080747302_AddWikipediaURL.Designer.cs">
-      <DependentUpon>201702080747302_AddWikipediaURL.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705091338087_DeleteDuplicates.cs" />
-    <Compile Include="Migrations\201705091338087_DeleteDuplicates.Designer.cs">
-      <DependentUpon>201705091338087_DeleteDuplicates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808200656426_EnterHardcodedData.cs" />
-    <Compile Include="Migrations\201808200656426_EnterHardcodedData.Designer.cs">
-      <DependentUpon>201808200656426_EnterHardcodedData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Cocktail.cs" />
-    <Compile Include="Models\Ingredient.cs" />
-    <Compile Include="Models\RecipeRow.cs" />
-    <Compile Include="Models\Unit.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Startup.cs" />
   </ItemGroup>
+
   <ItemGroup>
-    <Content Include="Views\web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="packages.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Content\Scripts\Components\CocktailGrid.jsx" />
-    <Content Include="Content\Scripts\Selections.jsx" />
-    <Content Include="Content\Scripts\Components\NavBar.jsx" />
-    <None Include="Content\Scripts\App.jsx" />
-    <None Include="Content\Scripts\Components\CocktailButton.jsx" />
-    <Content Include="package.json" />
-    <Content Include="Content\Scripts\DrinkListItem.jsx" />
-    <Content Include="Content\Scripts\DrinkList.jsx" />
-    <Content Include="Content\Scripts\Components\SelectionTabs.jsx" />
-    <Content Include="Content\Scripts\Ingredients.jsx" />
-    <Content Include="Content\Scripts\AmountAndUnit.jsx" />
-    <Content Include="Content\Scripts\Components\UnitSelector.jsx" />
-    <None Include="Properties\PublishProfiles\Cocktails20161208083924 - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\Cocktails20161208083924.pubxml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201701180841142_InitialCreate.resx">
-      <DependentUpon>201701180841142_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702011429296_DeleteHardcodedData.resx">
-      <DependentUpon>201702011429296_DeleteHardcodedData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702080747302_AddWikipediaURL.resx">
-      <DependentUpon>201702080747302_AddWikipediaURL.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705091338087_DeleteDuplicates.resx">
-      <DependentUpon>201705091338087_DeleteDuplicates.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808200656426_EnterHardcodedData.resx">
-      <DependentUpon>201808200656426_EnterHardcodedData.cs</DependentUpon>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <PropertyGroup>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
-    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-  </PropertyGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
-  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
-  <ProjectExtensions>
-    <VisualStudio>
-      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
-        <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50406</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50406/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
-        </WebProjectProperties>
-      </FlavorProperties>
-    </VisualStudio>
-  </ProjectExtensions>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
+
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
   </Target>
-  <Target Name="AfterBuild">
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)build\**; $(SpaRoot)build-ssr\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
   </Target>
-  -->
+
 </Project>

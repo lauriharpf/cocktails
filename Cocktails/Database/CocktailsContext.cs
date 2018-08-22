@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Web;
+﻿using Microsoft.EntityFrameworkCore;
 using Cocktails.Models;
 
 namespace Cocktails.Database
 {
     public class CocktailsContext : DbContext
     {
-        public CocktailsContext() : base("CocktailsContext")
+        public CocktailsContext(DbContextOptions<CocktailsContext> options) : base(options)
         { }
 
         public DbSet<Cocktail> Cocktails { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
     }
 }

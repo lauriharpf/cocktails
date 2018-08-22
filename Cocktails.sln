@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cocktails", "Cocktails\Cocktails.csproj", "{10C4D1B9-6DC7-4647-B300-A84AA1E7E218}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cocktails", "Cocktails\Cocktails.csproj", "{19F746CC-AC7E-4915-A8BC-4850B6A99484}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{10C4D1B9-6DC7-4647-B300-A84AA1E7E218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10C4D1B9-6DC7-4647-B300-A84AA1E7E218}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10C4D1B9-6DC7-4647-B300-A84AA1E7E218}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10C4D1B9-6DC7-4647-B300-A84AA1E7E218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19F746CC-AC7E-4915-A8BC-4850B6A99484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19F746CC-AC7E-4915-A8BC-4850B6A99484}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19F746CC-AC7E-4915-A8BC-4850B6A99484}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19F746CC-AC7E-4915-A8BC-4850B6A99484}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {504DC6AC-98E5-47AB-A73A-EB01D3686EC3}
+		SolutionGuid = {6E791BFA-D965-42DA-BB98-D94A0E1A4EEF}
 	EndGlobalSection
 EndGlobal

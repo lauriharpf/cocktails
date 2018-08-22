@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Web.Http;
 using Cocktails.Database;
 using Cocktails.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cocktails.Controllers
 {
-    public class CocktailsController : ApiController
+    [ApiController]
+    [Route("api/[controller]")]
+    public class CocktailsController : ControllerBase
     {
         private readonly CocktailsContext _context;
 
@@ -15,10 +17,11 @@ namespace Cocktails.Controllers
         {
             _context = context;
         }
-
+       
+        [HttpGet]
         public IEnumerable<Cocktail> Get()
         {
-            return _context.Cocktails.Include(c => c.RecipeRows.Select(r => r.Ingredient)).OrderBy(c => c.Name).ToList();
+            return _context.Cocktails.Include(c => c.RecipeRows).ThenInclude(r => r.Ingredient).OrderBy(c => c.Name).ToList();
         }
     }
 }

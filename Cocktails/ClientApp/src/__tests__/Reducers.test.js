@@ -13,7 +13,7 @@ const drinkListHiddenState = { ...expectedInitialState, showDrinkList: false };
 const drinkListVisibleState = { ...expectedInitialState, showDrinkList: true };
 
 test('Shows drinklist when toggle action dispatched and drinklist hidden', () => {
-    expect(reducer(drinkListHiddenState, toggleDrinkList())).toEqual(drinkListHiddenState);
+    expect(reducer(drinkListHiddenState, toggleDrinkList())).toEqual(drinkListVisibleState);
 });
 test('Hides drinklist when toggle action dispatched and drinklist is visible', () => {
     expect(reducer(drinkListVisibleState, toggleDrinkList())).toEqual(drinkListHiddenState);

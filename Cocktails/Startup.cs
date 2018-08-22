@@ -35,7 +35,12 @@ namespace Cocktails
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.RunMigrations();
+            // Run EF Core migrations if any
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<CocktailsContext>();
+                context.Database.Migrate();
+            }
 
             if (env.IsDevelopment())
             {

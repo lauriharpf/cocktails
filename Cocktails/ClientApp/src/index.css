@@ -218,22 +218,14 @@ a.navbar-brand:hover, a.navbar-brand:visited {
         }
 
         .shopping-cart .shopping-cart-items .itemName {
-            vertical-align: text-top;
-            line-height: 0.9;
+            vertical-align: top;
+            line-height: 1.2;
         }
 
         .shopping-cart .shopping-cart-items .addAndRemove {
             padding-right: 5px;
             font-size: 1.5em;
         }
-
-            .shopping-cart .shopping-cart-items .addAndRemove .icon-minus-square {
-                cursor: pointer;
-            }
-
-            .shopping-cart .shopping-cart-items .addAndRemove .icon-plus-square {
-                cursor: pointer;
-            }
 
         .shopping-cart .shopping-cart-items .removeAll {
             cursor: pointer;

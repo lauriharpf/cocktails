@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { connect } from 'react-redux';
 import { toggleDrinkList } from '../Redux/actions';
+import { FaShoppingCart } from 'react-icons/fa';
 
 const NavBar = (props) => {
     return (
@@ -10,8 +11,8 @@ const NavBar = (props) => {
                     Cocktails World
                 </span>
 
-                <button type="button" className="btn btn-light float-right" onClick = { props.toggleDrinkList } >
-                    <span className="badge">{props.drinkListCount}</span><span className="icon-shopping-basket"></span> Selections
+                <button type="button" className="btn btn-light float-right" onClick={props.toggleDrinkList} >
+                    <span className="badge">{props.drinkListCount}</span> <FaShoppingCart /> Selections
                 </button>
             </div>
         </nav>

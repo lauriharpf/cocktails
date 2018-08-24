@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import SelectionTabs from './Components/SelectionTabs';
 import DrinkList from './DrinkList';
 import Ingredients from './Ingredients';
-import { toggleDrinkList } from './Redux/actions';
+import FacebookShare from './Components/FacebookShare';
 
 class Selections extends React.Component {
     constructor(props) {
@@ -19,23 +19,26 @@ class Selections extends React.Component {
     render() {
         const displayClass = this.props.showDrinkList ? "" : "hidden";
         const contents = this.state.selectedTab === "selections" ? <DrinkList /> : <Ingredients />;
+        const shareText = this.props.isDrinkListEmpty ? "Share on" : "Share list on";
 
         return (
-                <div className={"shopping-cart " + displayClass} id="drinkList">
+            <div className={"shopping-cart " + displayClass} id="drinkList">                
                     <SelectionTabs changeSelectedTab={this.changeSelectedTab} selectedTab={this.state.selectedTab} />
                     {contents}
-                    <button className="btn btn-primary" style={{width: '100%' }} onClick={this.props.toggleDrinkList}>Close</button>
+                    <hr />
+                <div style={{ display: "flex", alignItems: "center" }}>
+                    <div style={{ paddingRight: "10px" }}>{shareText}</div>
+                    <FacebookShare />
                 </div>                
+            </div>
             );
     }
 }
 
 const mapStateToProps = ({ app }) => ({
-    showDrinkList: app.showDrinkList
+    showDrinkList: app.showDrinkList,
+    isDrinkListEmpty: app.drinkList.size === 0
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    toggleDrinkList: () => dispatch(toggleDrinkList())
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Selections);
+export default connect(mapStateToProps)(Selections);

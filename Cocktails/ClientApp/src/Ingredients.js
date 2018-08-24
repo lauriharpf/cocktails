@@ -2,6 +2,7 @@
 import { connect } from 'react-redux';
 import AmountAndUnit from './AmountAndUnit';
 import UnitSelector from './Components/UnitSelector';
+import { FaPlusSquare } from 'react-icons/fa';
 
 class Ingredients extends React.Component {
     constructor(props) {
@@ -49,7 +50,7 @@ class Ingredients extends React.Component {
                 <ul>{this.calculateNeededIngredients()}</ul>
             </div>)
             :
-            (<p>No selections. Use <span className="icon-plus-square"></span> icons to add to list.</p>);
+            (<p>No selections. Use <FaPlusSquare /> icons to add to list.</p>);
         
         return (
             <div>

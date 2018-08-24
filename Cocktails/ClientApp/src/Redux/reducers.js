@@ -20,7 +20,7 @@ export const parseStateFrom = (currentUrl) => {
             .split('/')
             .map(kv => kv.split('-'))
             .filter(i => i.length === 2)
-            .map(item => item.map(x => parseInt(x)));
+            .map(item => item.map(x => parseInt(x, 10)));
 
         const drinkList = new Map(keysAndValues);
         const metric = currentUrl.includes('/cl/');

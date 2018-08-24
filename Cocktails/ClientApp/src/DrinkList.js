@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { connect } from 'react-redux';
 import DrinkListItem from './DrinkListItem';
+import { FaPlusSquare } from 'react-icons/fa';
 
 class DrinkList extends React.Component {
     buildDrinkList(drinkList, cocktails) {
@@ -15,7 +16,7 @@ class DrinkList extends React.Component {
     render() {
         const content = this.props.drinkList.size > 0 ? 
             <ul className="shopping-cart-items">{this.buildDrinkList(this.props.drinkList, this.props.cocktails)}</ul> :
-            <p>Thirsty? Use <span className="icon-plus-square"></span> icons to add to list.</p>;
+            <p>Thirsty? Use <FaPlusSquare /> icons to add to list.</p>;
         return (
             <div>{content}</div>
         );

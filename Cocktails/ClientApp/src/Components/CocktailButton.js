@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import { connect } from 'react-redux';
+import { FaPlusSquare } from 'react-icons/fa';
 import { changeDrinkCount } from '../Redux/actions';
 import CocktailDetails from './CocktailDetails';
 
@@ -28,7 +29,7 @@ class CocktailButton extends React.Component {
                     </div>
                     <div className="actions">
                         {this.props.count > 0 && <div className="badge">{this.props.count}</div>}
-                        <span className="icon-plus-square plusIcon" onClick={this.onPlusClick}></span>
+                        <FaPlusSquare onClick={this.onPlusClick} style={{ cursor: "pointer" }} />                        
                     </div>
                 </div>
                 <CocktailDetails cocktail={this.props.cocktail} />

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
     <meta name="description" content="Friends coming over for cocktails? Find tasty cocktail recipes and check what ingredients you need." />
-    <meta property="og:image" content="http://www.cocktailsworld.eu/Content/Images/cocktail_og_image.jpg" />
+    <meta property="og:image" content="http://www.cocktailsworld.eu/Images/cocktail_og_image.jpg" />
     <meta property="og:image:width" content="1920" />
     <meta property="og:image:height" content="1280" />
     <meta property="og:title" content="Cocktails World" />
@@ -16,7 +16,6 @@
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
-    <link rel="stylesheet" href="%PUBLIC_URL%/style.css">
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <!--
@@ -30,10 +29,30 @@
     -->
     <title>Cocktails World</title>
 </head>
-  <body>
+<body>
     <noscript>
-      You need to enable JavaScript to run this app.
+        You need to enable JavaScript to run this app.
     </noscript>
+    <!-- Facebook SDK -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '2194221640815415',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v2.10'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -45,5 +64,5 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+</body>
 </html>

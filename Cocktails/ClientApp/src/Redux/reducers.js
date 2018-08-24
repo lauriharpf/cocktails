@@ -12,6 +12,27 @@
 };
 
 const initialState = { drinkList: new Map(), data: [], showDrinkList: true, metric: false };
+
+export const parseStateFrom = (currentUrl) => {
+    if (currentUrl) {
+        // Parse what drinks have been selected and how many of each
+        const keysAndValues = currentUrl
+            .split('/')
+            .map(kv => kv.split('-'))
+            .filter(i => i.length === 2)
+            .map(item => item.map(x => parseInt(x)));
+
+        const drinkList = new Map(keysAndValues);
+        const metric = currentUrl.includes('/cl/');
+        return {
+            drinkList,
+            metric
+        };
+    }
+
+    return {};
+};
+
 const reducer = (state = initialState, action) => {
 
     switch (action.type) {
@@ -42,7 +63,13 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 data: action.value
-            }
+            };
+        case 'HYDRATE_STATE_FROM_URL':            
+            const stateFromUrl = parseStateFrom(action.value);            
+            return {
+                ...state,
+                ...stateFromUrl               
+            };
         default: {
             return state;
         }

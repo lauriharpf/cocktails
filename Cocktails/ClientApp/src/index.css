@@ -198,42 +198,6 @@ a.navbar-brand:hover, a.navbar-brand:visited {
             float: right;
         }
 
-    .shopping-cart .shopping-cart-items {
-        padding-top: 20px;
-    }
-
-        .shopping-cart .shopping-cart-items li {
-            margin-bottom: 5px;
-        }
-
-        .shopping-cart .shopping-cart-items img {
-            float: left;
-            margin-right: 7px;
-        }
-
-        .shopping-cart .shopping-cart-items .item-name {
-            display: block;
-            padding-top: 10px;
-            font-size: 16px;
-        }
-
-        .shopping-cart .shopping-cart-items .itemName {
-            vertical-align: top;
-            line-height: 1.2;
-        }
-
-        .shopping-cart .shopping-cart-items .addAndRemove {
-            padding-right: 5px;
-            font-size: 1.5em;
-        }
-
-        .shopping-cart .shopping-cart-items .removeAll {
-            cursor: pointer;
-            font-size: 1.5rem;
-            float: right;
-            line-height: 1.3;
-        }
-
     /* Darker borders for Bootstrap tabs; otherwise they are really hard to make out */
     .shopping-cart .nav-tabs .nav-link:not(.active) {
         color: blue;

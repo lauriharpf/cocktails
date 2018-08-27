@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { changeDrinkCount, removeDrink } from './Redux/actions';
 import { FaPlusSquare, FaMinusSquare, FaTrashAlt } from 'react-icons/fa';
@@ -20,16 +20,13 @@ class DrinkListItem extends React.Component {
 
     render() {
         return (
-           <li key={this.props.cocktail.id} className="noselect">
-               <img src={this.props.cocktail.image} style={{ height: 49, width: 30 }} alt="" />                
-               <div className="item-name">
-                    <span className="addAndRemove">
-                        <FaPlusSquare onClick={this.onPlusClick} style={{ verticalAlign: "top", cursor: "pointer" }} /> <FaMinusSquare onClick={this.onMinusClick} style={{ verticalAlign: "top", cursor: "pointer", marginLeft: "-5px" }} />
-                   </span>
-                    <span className="itemName" style={{ marginLeft: "-3px" }}>{this.props.count} x {this.props.cocktail.name}</span>
-                    <FaTrashAlt className="removeAll" onClick={() => this.props.removeDrink(this.props.cocktail.id)} />                   
-               </div>
-           </li>
+           <Fragment>
+                <img src={this.props.cocktail.image} style={{ height: 49, width: 30 }} alt="" />                               
+                <FaPlusSquare onClick={this.onPlusClick} style={{ cursor: "pointer" }} />
+                <FaMinusSquare onClick={this.onMinusClick} style={{ cursor: "pointer" }} />
+               <span className="itemName" style={{ fontSize: "16px" }}>{this.props.count} x {this.props.cocktail.name}</span>
+               <FaTrashAlt className="removeAll" onClick={() => this.props.removeDrink(this.props.cocktail.id)} />                   
+           </Fragment>
         );   
     }    
 }

@@ -26,3 +26,8 @@ export const setData = (cocktails) => ({
 export const fetchData = () => ({
     type: 'FETCH_DATA'
 });
+
+export const setFilter = (filter) => ({
+    type: 'SET_FILTER',
+    value: filter
+});

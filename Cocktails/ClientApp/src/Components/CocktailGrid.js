@@ -1,26 +1,35 @@
-﻿import React from 'react';
+﻿import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CocktailButton from './CocktailButton';
+import { forceCheck } from 'react-lazyload';
 
-const CocktailGrid = (props) => {
-    var cocktails = props.cocktails.map((cocktail) => {
-        if (props.filter && !cocktail.name.toLowerCase().startsWith(props.filter)) {
-            return null;
-        }
+class CocktailGrid extends Component {
 
-        const count = props.drinkList.has(cocktail.id) ? props.drinkList.get(cocktail.id) : 0;
+    componentDidUpdate() {       
+        forceCheck();  // Check if any new thumbnails are now visible and must be loaded
+    }
+
+    render() {
+        const cocktails = this.props.cocktails.map((cocktail) => {
+            if (this.props.filter && !cocktail.name.toLowerCase().startsWith(this.props.filter)) {
+                return null;
+            }
+
+            const count = this.props.drinkList.has(cocktail.id) ? this.props.drinkList.get(cocktail.id) : 0;
+            return (
+                <CocktailButton key={cocktail.id} cocktail={cocktail} count={count} />
+            );
+        });
+
         return (
-            <CocktailButton key={cocktail.id} cocktail={cocktail} count={count} />
-        );
-    });
-    return (
-        <div className="col-12 cocktailGrid">
-            <div className="row justify-content-center no-gutters">
-                {cocktails}
+            <div className="col-12 cocktailGrid">
+                <div className="row justify-content-center no-gutters">
+                    {cocktails}
+                </div>
             </div>
-        </div>
-    );
-};
+        );
+    }
+}
 
 const mapStateToProps = ({ app }) => ({
     cocktails: app.data,

@@ -70,10 +70,15 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 ...stateFromUrl               
             };
-        case 'SET_FILTER':
+        case 'SET_FILTER':            
             return {
                 ...state,
                 filter: action.value
+            };
+        case 'SET_RECIPE_MODAL':
+            return {
+                ...state,
+                recipeModal: action.value
             };
         default: {
             return state;

@@ -1,10 +1,7 @@
 ﻿import { put, takeLatest, takeEvery, select } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
 import "regenerator-runtime/runtime";
-
-const cocktailImageUrl = (imageName) => {
-    return "/Images/" + (imageName ? imageName : "cocktail_no_image_small.jpg");
-};
+import cocktailDatabase from '../CocktailDatabase';
 
 const getDrinkList = (state) => state.app.drinkList;
 const getCurrentMetric = (state) => state.app.metric;
@@ -29,20 +26,9 @@ function* keepUrlInSync() {
 }
 
 function* fetchData() {
-    const jsonResult = yield fetch("/api/cocktails")
-        .then(resp => {
-            if (resp.ok) { return resp.json(); }
-
-            throw new Error("Fetching returned response " + resp.status);
-
-        }).catch(e => {
-            console.log("Sorry! Fetching cocktails went horribly wrong! Try refreshing the page.");
-        });
-
-    jsonResult.forEach((item) => item.image = cocktailImageUrl(item.image));    
     const currentUrl = yield select(getUrl);
 
-    yield put({ type: 'SET_DATA', value: jsonResult });
+    yield put({ type: 'SET_DATA', value: cocktailDatabase });
     yield put({ type: 'HYDRATE_STATE_FROM_URL', value: currentUrl });
 }
 

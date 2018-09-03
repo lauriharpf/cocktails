@@ -2,20 +2,38 @@
 import { connect } from 'react-redux';
 import { toggleDrinkList, setFilter } from '../Redux/actions';
 import { FaShoppingCart } from 'react-icons/fa';
+import styled from 'styled-components';
+
+const NavBarForm = styled.form`
+    width: 100%;
+    display: flex;
+`;
+
+const NavBarControls = styled.div`
+    margin-left: auto;
+    display: inherit;
+    align-items: center;
+`;
+
+const CartButton = styled.button`
+    margin-left: 5px;
+    height: calc(2.25rem + 2px);
+`;
 
 const NavBar = (props) => {
     return (
         <nav className="navbar fixed-top bg-faded">
-            <form style={{ width: "100%", display: "flex" }}>
+            <NavBarForm>
                 <span className="navbar-brand">
                     Cocktails World
                         </span>
-                <div style={{ marginLeft: "auto", display: "inherit", alignItems: "center" }}>
+                <NavBarControls>
                     <input className="form-control mr-sm-2" type="search" placeholder="Find cocktail..." aria-label="Find cocktail" onChange={props.setFilter} style={{ fontSize: "0.9rem" }} />
-                    <button type="button" className="btn btn-light float-right" onClick={props.toggleDrinkList} style={{ marginLeft: "5px", height: "calc(2.25rem + 2px)" }}>
-                        <span className="badge">{props.drinkListCount}</span> <FaShoppingCart /> <span className="d-none d-md-inline">Selections</span></button>
-                </div>
-            </form>
+                    <CartButton type="button" className="btn btn-light float-right" onClick={props.toggleDrinkList}>
+                        <span className="badge">{props.drinkListCount}</span> <FaShoppingCart /> <span className="d-none d-md-inline">Selections</span>
+                    </CartButton>
+                </NavBarControls>
+            </NavBarForm>
         </nav>
     );
 };

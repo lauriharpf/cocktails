@@ -14,18 +14,18 @@ class Ingredients extends React.Component {
         const allIngredientRows = Array.from(this.props.drinkList.entries()).map((keyToValue) => {
             const count = keyToValue[1];
             const cocktail = this.props.cocktails.find(x => x.id === keyToValue[0]);
-            
-            return cocktail.recipeRows.map((recipeRow) => {
-                return { amount: recipeRow.amount * count, unit: recipeRow.unit, ingredient_id: recipeRow.ingredient.id, ingredient_name: recipeRow.ingredient.name };
+
+            return cocktail.ingredients.map((ingredient) => {
+                return { amount: ingredient.amount * count, unit: ingredient.unit, ingredient_name: ingredient.name };
             });
         }).reduce((acc, cur) => acc.concat(cur), []);
 
 
         var result = Array.from(allIngredientRows.reduce(function(map, obj) {
-            if (map.has(obj.ingredient_id)) {
-                map.get(obj.ingredient_id).amount += obj.amount;
+            if (map.has(obj.ingredient_name)) {
+                map.get(obj.ingredient_name).amount += obj.amount;
             } else {
-                map.set(obj.ingredient_id, obj);
+                map.set(obj.ingredient_name, obj);
             }
             return map;
         }, new Map()).entries());
@@ -36,7 +36,7 @@ class Ingredients extends React.Component {
 
         return result.map((keyToValue) => {
             const item = keyToValue[1];            
-            return <li key={item.ingredient_id}><AmountAndUnit unit={item.unit} amount={item.amount} /> <span style={{textTransform: 'capitalize'}}>{item.ingredient_name}</span></li>;
+            return <li key={item.ingredient_name}><AmountAndUnit unit={item.unit} amount={item.amount} /> <span style={{textTransform: 'capitalize'}}>{item.ingredient_name}</span></li>;
         });
     }
 

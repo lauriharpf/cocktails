@@ -31,3 +31,8 @@ export const setFilter = (filter) => ({
     type: 'SET_FILTER',
     value: filter
 });
+
+export const setRecipeModal = (cocktailId) => ({
+    type: 'SET_RECIPE_MODAL',
+    value: cocktailId
+});

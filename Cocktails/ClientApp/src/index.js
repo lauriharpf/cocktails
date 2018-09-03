@@ -1,4 +1,5 @@
-import 'jquery/src/jquery';
+/* global $ */
+import './jquery';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.min';
 import './index.css';

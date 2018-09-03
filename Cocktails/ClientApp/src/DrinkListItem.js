@@ -21,7 +21,7 @@ class DrinkListItem extends React.Component {
     render() {
         return (
            <Fragment>
-                <img src={this.props.cocktail.image} style={{ height: 49, width: 30 }} alt="" />                               
+                <img src={this.props.cocktail.thumbnail} style={{ height: 30, width: 30 }} alt="" />                               
                 <FaPlusSquare onClick={this.onPlusClick} style={{ cursor: "pointer" }} />
                 <FaMinusSquare onClick={this.onMinusClick} style={{ cursor: "pointer" }} />
                <span className="itemName" style={{ fontSize: "16px" }}>{this.props.count} x {this.props.cocktail.name}</span>

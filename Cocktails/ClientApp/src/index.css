@@ -40,12 +40,6 @@ body {
     padding-top: 60px;
 }
 
-.cocktailButton h6 {
-    letter-spacing: 3px;
-    font-weight: 300;
-    color: black;
-}
-
 .cocktailButton .plusIcon {
     padding-top: 5px;
     cursor: pointer;
@@ -53,7 +47,7 @@ body {
 
 .cocktailButton .openDetails {
     cursor: pointer;
-    height: 170px;
+    height: 153px;
     min-width: 153px;
 }
 
@@ -64,7 +58,6 @@ body {
     width: 100%;
     font-size: 0.90rem;
     display: flex;
-    min-height: 208px;
     position: relative;
     background-size: cover;
     background-position: center center;
@@ -87,15 +80,24 @@ body {
     left: 0;
     right: 0;
     margin: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding-bottom: 5px;
-    padding-top: 5px;
+    background-color: rgba(0, 0, 0, 0.5);    
     border-radius: 0 0 8px 8px;
     font-size: 2em;
+    line-height: 1em;
 }
 
 .left {
     float: left;
+}
+
+.cocktailDetails h6 {
+    letter-spacing: 3px;
+    font-weight: 300;
+    color: black;
+}
+
+.cocktailDetails .row {
+    text-align: center;
 }
 
 .cocktailDetails .unitSelector > div:first-child {

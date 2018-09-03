@@ -4,6 +4,7 @@ import { fetchData } from './Redux/actions';
 import CocktailGrid from './Components/CocktailGrid';
 import Selections from './Selections';
 import NavBar from './Components/NavBar';
+import RecipeModal from './Components/RecipeModal';
 
 class App extends React.Component {
     componentWillMount() {
@@ -19,7 +20,8 @@ class App extends React.Component {
                    <div className="row">
                        <CocktailGrid />
                    </div>
-               </div>
+                </div>
+                <RecipeModal />
            </div>
        );
     }

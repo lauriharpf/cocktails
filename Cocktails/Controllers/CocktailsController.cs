@@ -21,7 +21,7 @@ namespace Cocktails.Controllers
         [HttpGet]
         public IEnumerable<Cocktail> Get()
         {
-            return _context.Cocktails.Include(c => c.RecipeRows).ThenInclude(r => r.Ingredient).OrderBy(c => c.Name).ToList();
+            return new List<Cocktail>();
         }
     }
 }

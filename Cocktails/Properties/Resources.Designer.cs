@@ -59,45 +59,5 @@ namespace Cocktails.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SET IDENTITY_INSERT [dbo].[Cocktail] ON
-        ///INSERT INTO [dbo].[Cocktail] ([ID], [Name], [Instructions], [Image], [WikipediaArticleUri]) VALUES (1, N&apos;Brandy Alexander&apos;, N&apos;Shake all ingredients with ice and strain contents into a cocktail glass. Sprinkle nutmeg on top and serve.&apos;, N&apos;brandy_alexander.jpg&apos;, N&apos;https://en.wikipedia.org/wiki/Alexander_(cocktail)&apos;)
-        ///INSERT INTO [dbo].[Cocktail] ([ID], [Name], [Instructions], [Image], [WikipediaArticleUri]) VALUES (2, N&apos;Americano&apos;, N&apos;Pour the Campari and vermouth over  [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string _201808200656426_dbo_Cocktail_data {
-            get {
-                return ResourceManager.GetString("_201808200656426_dbo_Cocktail_data", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SET IDENTITY_INSERT [dbo].[Ingredient] ON
-        ///INSERT INTO [dbo].[Ingredient] ([ID], [Name]) VALUES (1, N&apos;cognac&apos;)
-        ///INSERT INTO [dbo].[Ingredient] ([ID], [Name]) VALUES (2, N&apos;white crème de cacao&apos;)
-        ///INSERT INTO [dbo].[Ingredient] ([ID], [Name]) VALUES (3, N&apos;light cream&apos;)
-        ///INSERT INTO [dbo].[Ingredient] ([ID], [Name]) VALUES (4, N&apos;campari&apos;)
-        ///INSERT INTO [dbo].[Ingredient] ([ID], [Name]) VALUES (5, N&apos;red vermouth&apos;)
-        ///INSERT INTO [dbo].[Ingredient] ([ID], [Name]) VALUES (6, N&apos;soda water&apos;)
-        ///INSERT INTO [dbo].[Ingred [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string _201808200656426_dbo_Ingredient_data {
-            get {
-                return ResourceManager.GetString("_201808200656426_dbo_Ingredient_data", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SET IDENTITY_INSERT [dbo].[RecipeRow] ON
-        ///INSERT INTO [dbo].[RecipeRow] ([ID], [CocktailID], [Amount], [Unit], [Ingredient_ID]) VALUES (1, 1, CAST(3.00 AS Decimal(18, 2)), 0, 1)
-        ///INSERT INTO [dbo].[RecipeRow] ([ID], [CocktailID], [Amount], [Unit], [Ingredient_ID]) VALUES (2, 1, CAST(3.00 AS Decimal(18, 2)), 0, 2)
-        ///INSERT INTO [dbo].[RecipeRow] ([ID], [CocktailID], [Amount], [Unit], [Ingredient_ID]) VALUES (3, 1, CAST(3.00 AS Decimal(18, 2)), 0, 3)
-        ///INSERT INTO [dbo].[RecipeRow] ([ID], [CocktailID], [Amount] [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string _201808200656426_dbo_RecipeRow_data {
-            get {
-                return ResourceManager.GetString("_201808200656426_dbo_RecipeRow_data", resourceCulture);
-            }
-        }
     }
 }

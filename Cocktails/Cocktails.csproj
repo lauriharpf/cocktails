@@ -13,22 +13,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.2" />
   </ItemGroup>
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Migrations\20180821105602_InitialCreate.cs" />
-    <Compile Remove="Migrations\20180821105602_InitialCreate.Designer.cs" />
-    <Compile Remove="Migrations\20180821110234_InsertData.cs" />
-    <Compile Remove="Migrations\20180821110234_InsertData.Designer.cs" />
-    <Compile Remove="Migrations\20180821110434_InsertData.cs" />
-    <Compile Remove="Migrations\20180821110434_InsertData.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

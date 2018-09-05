@@ -15379,11 +15379,12 @@
 }
 ];
 
-!function appendImageData() {
+function appendImageData() {
     for (let i = 0; i < cocktailDatabase.length; i++) {
         cocktailDatabase[i].thumbnail = "/Images/Small/" + cocktailDatabase[i].image;
         cocktailDatabase[i].image = "/Images/Full/" + cocktailDatabase[i].image;
     }
-}();
+};
+appendImageData();
 
 export default cocktailDatabase;

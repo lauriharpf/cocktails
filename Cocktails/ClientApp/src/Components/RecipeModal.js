@@ -25,7 +25,7 @@ const RecipeModal = (props) => {
                     <div className="modal-body">
                         <div className="row">
                             <div className="col-sm-6">
-                                <img src={props.cocktail.image} className="responsiveImage" />
+                                <img src={props.cocktail.image} className="responsiveImage" alt={props.cocktail.name} />
                             </div>
                             <div className="col-sm-6">
                                 <h6>Ingredients</h6>

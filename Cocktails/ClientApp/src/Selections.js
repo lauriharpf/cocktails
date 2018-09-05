@@ -23,13 +23,15 @@ class Selections extends React.Component {
 
         return (
             <div className={"shopping-cart " + displayClass} id="drinkList">                
-                    <SelectionTabs changeSelectedTab={this.changeSelectedTab} selectedTab={this.state.selectedTab} />
-                    {contents}
-                    <hr />
-                <div style={{ display: "flex", alignItems: "center" }}>
-                    <div style={{ paddingRight: "10px" }}>{shareText}</div>
-                    <FacebookShare />
-                </div>                
+                    <div style={{ overflowY: "auto", maxHeight: "80vh" }}>
+                        <SelectionTabs changeSelectedTab={this.changeSelectedTab} selectedTab={this.state.selectedTab} />
+                        {contents}
+                        <hr />
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                            <div style={{ paddingRight: "10px" }}>{shareText}</div>
+                            <FacebookShare />
+                        </div>
+                    </div>                
             </div>
             );
     }

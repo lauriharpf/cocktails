@@ -1,9 +1,25 @@
 ﻿import React from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import SelectionTabs from './Components/SelectionTabs';
 import DrinkList from './DrinkList';
 import Ingredients from './Ingredients';
 import FacebookShare from './Components/FacebookShare';
+
+const ScrollArea = styled.div`
+    overflow: auto;
+    max-height: calc(80vh - 110px); 
+`;
+
+const Divider = styled.hr`
+    margin-top: 0px;
+    margin-bottom: 0px;
+`;
+
+const FacebookShareContainer = styled.div`
+    display: flex;
+    align-items: center;
+`;
 
 class Selections extends React.Component {
     constructor(props) {
@@ -17,23 +33,22 @@ class Selections extends React.Component {
     }
 
     render() {
-        const displayClass = this.props.showDrinkList ? "" : "hidden";
         const contents = this.state.selectedTab === "selections" ? <DrinkList /> : <Ingredients />;
         const shareText = this.props.isDrinkListEmpty ? "Share on" : "Share list on";
 
-        return (
-            <div className={"shopping-cart " + displayClass} id="drinkList">                
-                    <div style={{ overflowY: "auto", maxHeight: "80vh" }}>
-                        <SelectionTabs changeSelectedTab={this.changeSelectedTab} selectedTab={this.state.selectedTab} />
-                        {contents}
-                        <hr />
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                            <div style={{ paddingRight: "10px" }}>{shareText}</div>
-                            <FacebookShare />
-                        </div>
-                    </div>                
+        return this.props.showDrinkList ? 
+            <div className="shopping-cart" id="drinkList">                                    
+                <SelectionTabs changeSelectedTab={this.changeSelectedTab} selectedTab={this.state.selectedTab} />
+                <ScrollArea>
+                    {contents}
+                </ScrollArea>
+                <Divider />
+                <FacebookShareContainer>
+                    <div style={{ paddingRight: "10px" }}>{shareText}</div>
+                    <FacebookShare />
+                </FacebookShareContainer>                    
             </div>
-            );
+            : null;
     }
 }
 

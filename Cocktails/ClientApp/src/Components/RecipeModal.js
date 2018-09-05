@@ -1,7 +1,14 @@
 ﻿import React from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import AmountAndUnit from './../AmountAndUnit';
 import UnitSelector from './UnitSelector';
+
+const RecipeSource = styled.div`
+    margin-top: 10px;
+    font-size: smaller;
+    font-style: italic;
+`;
 
 const RecipeModal = (props) => {
     var recipeRows = props.cocktail.ingredients.map((ingredient) => {
@@ -34,9 +41,9 @@ const RecipeModal = (props) => {
                                 <h6>Instructions</h6>
                                 {props.cocktail.instructions}
 
-                                <div className="wikipediaLicense">
+                                <RecipeSource>
                                     Recipe courtesy of <a href="https://www.thecocktaildb.com/">TheCocktailDB</a>.
-                                </div>
+                                </RecipeSource>
                             </div>
                         </div>
                     </div>

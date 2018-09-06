@@ -1,16 +1,13 @@
-﻿import reducer from '../Redux/reducers'
+﻿import reducer, { initialState } from '../Redux/reducers';
 import { toggleDrinkList, setMetric, changeDrinkCount, removeDrink, setData } from '../Redux/actions';
 
-
-const expectedInitialState = { drinkList: new Map(), data: [], showDrinkList: true, metric: false };
-
 test('Returns initial state on undefined state and unknown action', () => {
-    expect(reducer(undefined, 'FOO')).toEqual(expectedInitialState);
+    expect(reducer(undefined, 'FOO')).toEqual(initialState);
 });
 
 /* Tests for drinklist visibility */
-const drinkListHiddenState = { ...expectedInitialState, showDrinkList: false };
-const drinkListVisibleState = { ...expectedInitialState, showDrinkList: true };
+const drinkListHiddenState = { ...initialState, showDrinkList: false };
+const drinkListVisibleState = { ...initialState, showDrinkList: true };
 
 test('Shows drinklist when toggle action dispatched and drinklist hidden', () => {
     expect(reducer(drinkListHiddenState, toggleDrinkList())).toEqual(drinkListVisibleState);
@@ -20,8 +17,8 @@ test('Hides drinklist when toggle action dispatched and drinklist is visible', (
 });
 
 /* Tests for selected unit (cl/oz) */
-const metricNotSelectedState = { ...expectedInitialState, metric: false };
-const metricSelectedState = { ...expectedInitialState, metric: true };
+const metricNotSelectedState = { ...initialState, metric: false };
+const metricSelectedState = { ...initialState, metric: true };
 
 test('Sets unit to metric when action dispatched and unit not metric', () => {
     expect(reducer(metricNotSelectedState, setMetric(true))).toEqual(metricSelectedState);
@@ -36,9 +33,9 @@ test('Does not change state when metric selected and metric action dispatched', 
 });
 
 /* Tests for changing selected drink count */
-const drinkListEmptyState = { ...expectedInitialState, drinkList: new Map() };
-const drinkListHasDrinkState = { ...expectedInitialState, drinkList: new Map([[0, 1]]) };
-const drinkListHasDrinksState = { ...expectedInitialState, drinkList: new Map([[0, 1], [1, 2]]) };
+const drinkListEmptyState = { ...initialState, drinkList: new Map() };
+const drinkListHasDrinkState = { ...initialState, drinkList: new Map([[0, 1]]) };
+const drinkListHasDrinksState = { ...initialState, drinkList: new Map([[0, 1], [1, 2]]) };
 
 test('Adding a selected drink to empty state', () => {
     expect(reducer(drinkListEmptyState, changeDrinkCount(0, 1))).toEqual(drinkListHasDrinkState);
@@ -66,9 +63,9 @@ test('Removing a drink that does not exist in the state', () => {
 });
 
 /* Tests for setting the list of all selectable cocktails */
-const noCocktailsState = { ...expectedInitialState, data: [] };
+const noCocktailsState = { ...initialState, data: [] };
 const cocktails = [{ ID: 1, Name: "Agent Orange" }];
-const oneCocktailState = { ...expectedInitialState, data: cocktails };
+const oneCocktailState = { ...initialState, data: cocktails };
 
 test('Setting list of cocktails', () => {
     expect(reducer(noCocktailsState, setData(cocktails))).toEqual(oneCocktailState);

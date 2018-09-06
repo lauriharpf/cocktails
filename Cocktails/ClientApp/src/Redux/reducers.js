@@ -11,7 +11,7 @@
     return newDrinkList;
 };
 
-const initialState = { drinkList: new Map(), data: [], showDrinkList: true, metric: false, selectedTab: "selections" };
+export const initialState = { drinkList: new Map(), data: [], showDrinkList: true, metric: false, selectedTab: "selections" };
 
 export const parseStateFrom = (currentUrl) => {
     if (currentUrl) {

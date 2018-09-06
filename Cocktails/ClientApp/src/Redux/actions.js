@@ -36,3 +36,8 @@ export const setRecipeModal = (cocktailId) => ({
     type: 'SET_RECIPE_MODAL',
     value: cocktailId
 });
+
+export const setSelectedTab = (selectedTab) => ({
+    type: 'SET_SELECTED_TAB',
+    value: selectedTab
+});

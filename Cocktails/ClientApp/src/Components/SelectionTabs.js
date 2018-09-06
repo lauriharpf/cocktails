@@ -2,25 +2,27 @@
 import { connect } from 'react-redux';
 import { FaWindowClose } from 'react-icons/fa';
 import { toggleDrinkList } from '../Redux/actions';
+import styled from 'styled-components';
+import SelectionTab from './SelectionTab';
 
-const SelectionTabs = (props) => {
-    var selectionsTabClass = props.selectedTab === "selections" ? " active" : "";
-    var ingredientsTabClass = props.selectedTab === "ingredients" ? " active" : "";
+const CloseTab = styled.li`
+  margin-left: auto;
+  align-self: center;
+`;
 
-    return (
-        <ul className="nav nav-tabs">
-            <li className="nav-item">
-                <a className={"nav-link" + selectionsTabClass} onClick={() => props.changeSelectedTab("selections")}>Selections</a>
-            </li>
-            <li className="nav-item">
-                <a className={"nav-link" + ingredientsTabClass} onClick={() => props.changeSelectedTab("ingredients")}>Ingredients</a>
-            </li>
-            <li style={{ marginLeft: "auto", alignSelf: "center" }}>
-                <FaWindowClose style={{ cursor: "pointer" }} size="1.5em" onClick={props.toggleDrinkList} />
-            </li>
-        </ul>
-    );
-};
+const CloseIcon = styled(FaWindowClose)`
+  cursor: pointer;
+`;
+
+const SelectionTabs = (props) =>
+    <ul className="nav nav-tabs">
+        <SelectionTab text="Selections" name="selections" />
+        <SelectionTab text="Ingredients" name="ingredients" />
+        <SelectionTab text="Recipes" name="recipes" />
+        <CloseTab>
+            <CloseIcon size="1.5em" onClick={props.toggleDrinkList} />
+        </CloseTab>
+    </ul>;
 
 const mapDispatchToProps = (dispatch) => ({
     toggleDrinkList: () => dispatch(toggleDrinkList())

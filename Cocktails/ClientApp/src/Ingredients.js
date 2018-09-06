@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import { connect } from 'react-redux';
 import AmountAndUnit from './AmountAndUnit';
-import UnitSelector from './Components/UnitSelector';
+import UnitSelectionRow from './Components/UnitSelectionRow';
 import { FaPlusSquare } from 'react-icons/fa';
 
 class Ingredients extends React.Component {
@@ -43,10 +43,7 @@ class Ingredients extends React.Component {
     render() {
         const content = (this.props.drinkList.size > 0) ?
             (<div>
-                <div className="clearfix">
-                    <div className="float-left"><b>You need</b></div>
-                    <div className="float-right"><UnitSelector name="ingredientsUnit" /></div>
-                </div>
+                <UnitSelectionRow text="You need" name="ingredientsUnit" />
                 <ul>{this.calculateNeededIngredients()}</ul>
             </div>)
             :

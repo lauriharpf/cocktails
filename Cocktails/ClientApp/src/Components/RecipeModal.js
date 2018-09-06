@@ -1,8 +1,8 @@
 ﻿import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import AmountAndUnit from './../AmountAndUnit';
 import UnitSelector from './UnitSelector';
+import IngredientList from './IngredientList';
 
 const RecipeSource = styled.div`
     margin-top: 10px;
@@ -10,12 +10,7 @@ const RecipeSource = styled.div`
     font-style: italic;
 `;
 
-const RecipeModal = (props) => {
-    var recipeRows = props.cocktail.ingredients.map((ingredient) => {
-        const key = ingredient.name + "_" + ingredient.unit + "_" + props.cocktail.id;
-        return <li key={key}><AmountAndUnit unit={ingredient.unit} amount={ingredient.amount} /> <span className="capitalize">{ingredient.name}</span></li>;
-    }
-    );
+const RecipeModal = (props) => {    
     return (
         <div className="modal fade cocktailDetails" id="recipeModal" tabIndex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
@@ -36,7 +31,7 @@ const RecipeModal = (props) => {
                             </div>
                             <div className="col-sm-6">
                                 <h6>Ingredients</h6>
-                                <ul>{recipeRows}</ul>
+                                <IngredientList ingredients={props.cocktail.ingredients} />                                
 
                                 <h6>Instructions</h6>
                                 {props.cocktail.instructions}

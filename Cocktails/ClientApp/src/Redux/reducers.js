@@ -11,7 +11,7 @@
     return newDrinkList;
 };
 
-const initialState = { drinkList: new Map(), data: [], showDrinkList: true, metric: false };
+const initialState = { drinkList: new Map(), data: [], showDrinkList: true, metric: false, selectedTab: "selections" };
 
 export const parseStateFrom = (currentUrl) => {
     if (currentUrl) {
@@ -79,6 +79,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 recipeModal: action.value
+            };
+        case 'SET_SELECTED_TAB':
+            return {
+                ...state,
+                selectedTab: action.value
             };
         default: {
             return state;

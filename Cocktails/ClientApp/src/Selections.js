@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import SelectionTabs from './Components/SelectionTabs';
 import DrinkList from './DrinkList';
 import Ingredients from './Ingredients';
+import Recipes from './Components/Recipes';
 import FacebookShare from './Components/FacebookShare';
 
 const ScrollArea = styled.div`
@@ -21,41 +22,42 @@ const FacebookShareContainer = styled.div`
     align-items: center;
 `;
 
-class Selections extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { selectedTab: "selections" };
-        this.changeSelectedTab = this.changeSelectedTab.bind(this);
+const ScrollAreaContents = (selectedTab) => {
+    switch (selectedTab) {
+        case "selections":
+            return <DrinkList />;
+        case "ingredients":
+            return <Ingredients />;
+        case "recipes":
+            return <Recipes />;
+        default:
+            return <DrinkList />;
     }
+};
 
-    changeSelectedTab(selectedTab) {
-        this.setState({ selectedTab: selectedTab });
-    }
+const Selections = (props) => {  
+    const contents = ScrollAreaContents(props.selectedTab);
+    const shareText = props.isDrinkListEmpty ? "Share on" : "Share list on";
 
-    render() {
-        const contents = this.state.selectedTab === "selections" ? <DrinkList /> : <Ingredients />;
-        const shareText = this.props.isDrinkListEmpty ? "Share on" : "Share list on";
-
-        return this.props.showDrinkList ? 
-            <div className="shopping-cart" id="drinkList">                                    
-                <SelectionTabs changeSelectedTab={this.changeSelectedTab} selectedTab={this.state.selectedTab} />
-                <ScrollArea>
-                    {contents}
-                </ScrollArea>
-                <Divider />
-                <FacebookShareContainer>
-                    <div style={{ paddingRight: "10px" }}>{shareText}</div>
-                    <FacebookShare />
-                </FacebookShareContainer>                    
-            </div>
-            : null;
-    }
-}
+    return props.showDrinkList ?
+        <div className="shopping-cart" id="drinkList">
+            <SelectionTabs />
+            <ScrollArea>
+                {contents}
+            </ScrollArea>
+            <Divider />
+            <FacebookShareContainer>
+                <div style={{ paddingRight: "10px" }}>{shareText}</div>
+                <FacebookShare />
+            </FacebookShareContainer>
+        </div>
+        : null;
+};
 
 const mapStateToProps = ({ app }) => ({
+    selectedTab: app.selectedTab,
     showDrinkList: app.showDrinkList,
     isDrinkListEmpty: app.drinkList.size === 0
 });
-
 
 export default connect(mapStateToProps)(Selections);

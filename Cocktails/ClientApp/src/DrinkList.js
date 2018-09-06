@@ -1,8 +1,9 @@
 ﻿import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import DrinkListItem from './DrinkListItem';
 import { FaPlusSquare } from 'react-icons/fa';
+import DrinkListItem from './DrinkListItem';
+import { transformSelectedCocktails } from './Redux/store';
 
 const DrinkListGrid = styled.ul`
     display: grid;
@@ -14,25 +15,20 @@ const DrinkListGrid = styled.ul`
     padding-top: 10px;
 `;
 
-class DrinkList extends React.Component {
-    buildDrinkList(drinkList, cocktails) {
-        return Array.from(drinkList.entries()).map((keyToValue) => {
-            var cocktail = cocktails.find(x => x.id === keyToValue[0]);
-            return (
-                <DrinkListItem key={cocktail.id} cocktail={cocktail} count={keyToValue[1]} />
-            );
-        });
-    }
-
+class DrinkList extends React.Component {   
     render() {
-        const content = this.props.drinkList.size > 0 ?
+        if (this.props.drinkList.size === 0) {
+            return <div><p>Thirsty? Use <FaPlusSquare /> icons to add to list.</p></div>;
+        }
+
+        const content = transformSelectedCocktails(this.props.drinkList, this.props.cocktails,
+            (cocktail, count) => <DrinkListItem key={cocktail.id} cocktail={cocktail} count={count} />);
+
+        return <div>
             <DrinkListGrid className="noselect">
-                {this.buildDrinkList(this.props.drinkList, this.props.cocktails)}
-            </DrinkListGrid> :
-            <p>Thirsty? Use <FaPlusSquare /> icons to add to list.</p>;
-        return (
-            <div>{content}</div>
-        );
+                {content}
+            </DrinkListGrid>
+        </div>;
     }
 }
 

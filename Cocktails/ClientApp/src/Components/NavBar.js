@@ -18,6 +18,7 @@ const NavBarControls = styled.div`
 const CartButton = styled.button`
     margin-left: 5px;
     height: calc(2.25rem + 2px);
+    white-space: nowrap;
 `;
 
 const NavBar = (props) => {

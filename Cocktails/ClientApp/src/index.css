@@ -30,6 +30,7 @@ body {
 #root div.cocktailButton {
     padding-right: 5px;
     margin-top: 5px;
+    max-width: 160px;
     min-width: 160px;
     text-align: center;
 }

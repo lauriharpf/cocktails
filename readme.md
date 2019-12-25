@@ -1,4 +1,4 @@
-# Cocktails World [![Build status](https://ci.appveyor.com/api/projects/status/0ipfl0ib704h2s8o?svg=true)](https://ci.appveyor.com/project/lauriharpf/cocktails)
+# Cocktails World [![Build status](https://ci.appveyor.com/api/projects/status/0ipfl0ib704h2s8o?svg=true)](https://ci.appveyor.com/project/lauriharpf/cocktails) [![License](https://img.shields.io/github/license/lharpf/cocktails)](https://github.com/lauriharpf/cocktails/blob/master/LICENSE.txt)
 
 [Cocktails World](http://www.cocktailsworld.eu/) shows cocktail recipes and calculates needed ingredients based on selected cocktails. Built with .NET Core, React, Redux, Bootstrap and hosted in Azure.
 

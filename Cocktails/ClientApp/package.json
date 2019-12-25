@@ -7,7 +7,10 @@
     "bootstrap": "4.3.1",
     "connected-react-router": "4.4.1",
     "cross-env": "^5.2.0",
+    "handlebars": "4.5.3",
     "jquery": "3.4.1",
+    "lodash": ">=4.17.14",
+    "mem": ">=4.0.0",
     "popper.js": "1.14.4",
     "react": "16.7.0",
     "react-dom": "16.7.0",
@@ -15,14 +18,11 @@
     "react-lazyload": "2.3.0",
     "react-redux": "5.0.7",
     "react-router": "4.3.1",
-    "react-scripts": "3.0.1",
+    "react-scripts": "3.3.0",
     "redux": "4.0.0",
     "redux-saga": "0.16.0",
     "rimraf": "2.6.2",
-    "styled-components": "4.1.2",
-    "lodash": ">=4.17.14",
-    "handlebars": ">=4.1.0",
-    "mem": ">=4.0.0"
+    "styled-components": "4.1.2"
   },
   "scripts": {
     "start": "rimraf ./build && react-scripts start",

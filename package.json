@@ -1,7 +1,6 @@
 {
-  "name": "heroku-cra-node",
-  "version": "3.0.0",
-  "description": "How to use create-react-app with a custom Node API on Heroku",
+  "name": "cocktails-world",
+  "version": "0.1.0",
   "engines": {
     "node": "14.x"
   },
@@ -18,14 +17,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mars/heroku-cra-node.git"
+    "url": "https://github.com/lauriharpf/cocktails"
   },
-  "keywords": [
-    "node",
-    "heroku",
-    "create-react-app",
-    "react"
-  ],
   "license": "MIT",
   "devDependencies": {}
 }

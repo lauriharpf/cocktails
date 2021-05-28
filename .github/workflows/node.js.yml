@@ -28,5 +28,5 @@ jobs:
         working-directory: react-ui
         run: |
           npm ci
-          npm build
+          npm run build
           npm test

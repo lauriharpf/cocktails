@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import UnitSelector from './UnitSelector';
 
 const UnitSelectionRow = (props) => 

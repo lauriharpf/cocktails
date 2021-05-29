@@ -1,4 +1,4 @@
-﻿import reducer, { initialState } from '../Redux/reducers';
+import reducer, { initialState } from '../Redux/reducers';
 import { toggleDrinkList, setMetric, changeDrinkCount, removeDrink, setData } from '../Redux/actions';
 
 test('Returns initial state on undefined state and unknown action', () => {

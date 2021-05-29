@@ -1,4 +1,4 @@
-﻿const cocktailDatabase = [{
+const cocktailDatabase = [{
     "id": 11000,
     "name": "A Furlong Too Late",
     "category": "Ordinary Drink",

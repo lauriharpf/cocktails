@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import AmountAndUnit from './AmountAndUnit';
 import UnitSelectionRow from './Components/UnitSelectionRow';

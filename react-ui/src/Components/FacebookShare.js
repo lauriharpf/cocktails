@@ -1,4 +1,4 @@
-﻿/*global FB*/
+/*global FB*/
 import React from 'react';
 import { connect } from 'react-redux';
 import { FaFacebookSquare } from 'react-icons/fa';

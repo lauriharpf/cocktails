@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { setSelectedTab } from '../Redux/actions';

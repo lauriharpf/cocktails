@@ -1,4 +1,4 @@
-﻿import React, { Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { FaPlusSquare } from 'react-icons/fa';
 import styled from 'styled-components';

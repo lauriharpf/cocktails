@@ -1,4 +1,4 @@
-﻿import { put, takeLatest, takeEvery, select } from 'redux-saga/effects';
+import { put, takeLatest, takeEvery, select } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
 import "regenerator-runtime/runtime";
 import cocktailDatabase from '../CocktailDatabase';

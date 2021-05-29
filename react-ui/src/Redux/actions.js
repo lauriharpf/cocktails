@@ -1,4 +1,4 @@
-﻿export const toggleDrinkList = () => ({
+export const toggleDrinkList = () => ({
     type: 'TOGGLE_DRINK_LIST'
 });
 

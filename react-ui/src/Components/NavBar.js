@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { toggleDrinkList, setFilter } from '../Redux/actions';
 import { FaShoppingCart } from 'react-icons/fa';

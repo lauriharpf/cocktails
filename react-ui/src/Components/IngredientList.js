@@ -1,4 +1,4 @@
-import AmountAndUnit from "../AmountAndUnit";
+import { AmountAndUnit } from "../AmountAndUnit";
 
 const IngredientList = (props) => {
   const ingredients = props.ingredients.map((ingredient) => {

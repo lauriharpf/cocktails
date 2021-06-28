@@ -1,9 +1,9 @@
 /* global $ */
-import { connect } from "react-redux";
 import styled from "styled-components";
 import { FaPlusSquare } from "react-icons/fa";
 import LazyLoad from "react-lazyload";
-import { changeDrinkCount, setRecipeModal } from "../Redux/actions";
+import { useContext } from "react";
+import { DrinkListContext } from "../DrinkListProvider";
 
 export const CocktailThumbnail = styled.img`
   position: absolute;
@@ -27,14 +27,10 @@ export const PlusIcon = styled(FaPlusSquare)`
   cursor: pointer;
 `;
 
-const CocktailButton = ({
-  changeDrinkCount,
-  setRecipeModal,
-  cocktail,
-  count,
-}) => {
+export const CocktailButton = ({ setRecipeModalDrinkId, cocktail, count }) => {
+  const { changeDrinkCount } = useContext(DrinkListContext);
   const onOpenClick = () => {
-    setRecipeModal(cocktail.id); // Fill the RecipeModal with data for this cocktail
+    setRecipeModalDrinkId(cocktail.id); // Fill the RecipeModal with data for this cocktail
     $("#recipeModal").modal(); // Open the modal
   };
 
@@ -66,11 +62,3 @@ const CocktailButton = ({
     </ContentWrapper>
   );
 };
-
-const mapDispatchToProps = (dispatch) => ({
-  changeDrinkCount: (cocktailId, changeBy) =>
-    dispatch(changeDrinkCount(cocktailId, changeBy)),
-  setRecipeModal: (cocktailId) => dispatch(setRecipeModal(cocktailId)),
-});
-
-export default connect(null, mapDispatchToProps)(CocktailButton);

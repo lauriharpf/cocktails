@@ -1,7 +1,7 @@
-import { connect } from "react-redux";
 import styled from "styled-components";
-import UnitSelector from "./UnitSelector";
+import { UnitSelector } from "./UnitSelector";
 import IngredientList from "./IngredientList";
+import CocktailDatabase from "../CocktailDatabase";
 
 const RecipeSource = styled.div`
   margin-top: 10px;
@@ -9,7 +9,10 @@ const RecipeSource = styled.div`
   font-style: italic;
 `;
 
-const RecipeModal = (props) => {
+export const RecipeModal = ({ recipeModalDrinkId }) => {
+  const selectedCocktail = recipeModalDrinkId
+    ? CocktailDatabase.find((x) => x.id === recipeModalDrinkId)
+    : CocktailDatabase[0];
   return (
     <div
       className="modal fade cocktailDetails"
@@ -23,7 +26,7 @@ const RecipeModal = (props) => {
         <div className="modal-content">
           <div className="modal-header">
             <h4 className="modal-title" id="modalLabel">
-              {props.cocktail.name}
+              {selectedCocktail.name}
             </h4>
             <div className="unitSelector">
               <UnitSelector name="modalUnitSelector" />
@@ -41,17 +44,17 @@ const RecipeModal = (props) => {
             <div className="row">
               <div className="col-sm-6">
                 <img
-                  src={props.cocktail.image}
+                  src={selectedCocktail.image}
                   className="responsiveImage"
-                  alt={props.cocktail.name}
+                  alt={selectedCocktail.name}
                 />
               </div>
               <div className="col-sm-6">
                 <h6>Ingredients</h6>
-                <IngredientList ingredients={props.cocktail.ingredients} />
+                <IngredientList ingredients={selectedCocktail.ingredients} />
 
                 <h6>Instructions</h6>
-                {props.cocktail.instructions}
+                {selectedCocktail.instructions}
 
                 <RecipeSource>
                   Recipe courtesy of{" "}
@@ -65,12 +68,3 @@ const RecipeModal = (props) => {
     </div>
   );
 };
-
-const mapStateToProps = ({ app }) => {
-  const selectedCocktail = app.recipeModal
-    ? app.data.find((x) => x.id === app.recipeModal)
-    : app.data[0];
-  return { cocktail: selectedCocktail };
-};
-
-export default connect(mapStateToProps)(RecipeModal);

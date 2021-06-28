@@ -1,9 +1,10 @@
-import { connect } from "react-redux";
-import { setMetric } from "../Redux/actions";
+import { useContext } from "react";
+import { DrinkListContext } from "../DrinkListProvider";
 
-const UnitSelector = (props) => {
-  var ozChecked = !props.metric ? "checked" : "";
-  var clChecked = props.metric ? "checked" : "";
+export const UnitSelector = ({ name }) => {
+  const { metric, setMetric } = useContext(DrinkListContext);
+  var ozChecked = !metric ? "checked" : "";
+  var clChecked = metric ? "checked" : "";
 
   return (
     <div>
@@ -12,9 +13,9 @@ const UnitSelector = (props) => {
           <input
             className="form-check-input"
             type="radio"
-            name={props.name}
+            name={name}
             value="oz"
-            onChange={() => props.setMetric(false)}
+            onChange={() => setMetric(false)}
             checked={ozChecked}
           />{" "}
           Oz
@@ -25,9 +26,9 @@ const UnitSelector = (props) => {
           <input
             className="form-check-input"
             type="radio"
-            name={props.name}
+            name={name}
             value="cl"
-            onChange={() => props.setMetric(true)}
+            onChange={() => setMetric(true)}
             checked={clChecked}
           />{" "}
           Cl
@@ -36,13 +37,3 @@ const UnitSelector = (props) => {
     </div>
   );
 };
-
-const mapStateToProps = ({ app }) => ({
-  metric: app.metric,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  setMetric: (bool) => dispatch(setMetric(bool)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(UnitSelector);

@@ -1,4 +1,4 @@
-import UnitSelector from "./UnitSelector";
+import { UnitSelector } from "./UnitSelector";
 
 const UnitSelectionRow = (props) => (
   <div className="clearfix">

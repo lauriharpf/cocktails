@@ -1,10 +1,10 @@
-import { Fragment } from "react";
-import { connect } from "react-redux";
+import { Fragment, useContext } from "react";
 import { FaPlusSquare } from "react-icons/fa";
 import styled from "styled-components";
-import { transformSelectedCocktails } from "../Redux/store";
 import IngredientList from "./IngredientList";
 import UnitSelectionRow from "./UnitSelectionRow";
+import CocktailDatabase from "../CocktailDatabase";
+import { DrinkListContext } from "../DrinkListProvider";
 
 const SmallText = styled.span`
   font-size: 0.8rem;
@@ -22,8 +22,10 @@ const SmallHeading = styled.h6`
   font-size: 1rem;
 `;
 
-const Recipes = (props) => {
-  if (props.drinkList.size === 0) {
+export const Recipes = () => {
+  const { drinkList } = useContext(DrinkListContext);
+
+  if (drinkList.size === 0) {
     return (
       <p>
         No selections. Use <FaPlusSquare /> icons to add to list.
@@ -32,8 +34,8 @@ const Recipes = (props) => {
   }
 
   const contents = transformSelectedCocktails(
-    props.drinkList,
-    props.cocktails,
+    drinkList,
+    CocktailDatabase,
     (cocktail, count) => (
       <div key={cocktail.id}>
         <CocktailHeading>
@@ -54,9 +56,13 @@ const Recipes = (props) => {
   );
 };
 
-const mapStateToProps = ({ app }) => ({
-  drinkList: app.drinkList,
-  cocktails: app.data,
-});
-
-export default connect(mapStateToProps)(Recipes);
+const transformSelectedCocktails = (
+  drinkList,
+  allCocktails,
+  transformCallback
+) => {
+  return Object.entries(drinkList).map((keyToValue) => {
+    const cocktail = allCocktails.find((x) => x.id === parseInt(keyToValue[0]));
+    return transformCallback(cocktail, keyToValue[1]);
+  });
+};

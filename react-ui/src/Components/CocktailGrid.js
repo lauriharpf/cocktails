@@ -1,40 +1,35 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import CocktailButton from './CocktailButton';
-import { forceCheck } from 'react-lazyload';
+import React, { useContext, useEffect } from "react";
+import { CocktailButton } from "./CocktailButton";
+import { forceCheck } from "react-lazyload";
+import CocktailDatabase from "../CocktailDatabase";
+import { DrinkListContext } from "../DrinkListProvider";
 
-class CocktailGrid extends Component {
+export const CocktailGrid = ({ filter, setRecipeModalDrinkId }) => {
+  const { drinkList } = useContext(DrinkListContext);
 
-    componentDidUpdate() {       
-        forceCheck();  // Check if any new thumbnails are now visible and must be loaded
+  useEffect(() => {
+    forceCheck(); // Check if any new thumbnails are now visible and must be loaded
+  });
+
+  const cocktails = CocktailDatabase.map((cocktail) => {
+    if (filter && !cocktail.name.toLowerCase().startsWith(filter)) {
+      return null;
     }
 
-    render() {
-        const cocktails = this.props.cocktails.map((cocktail) => {
-            if (this.props.filter && !cocktail.name.toLowerCase().startsWith(this.props.filter)) {
-                return null;
-            }
+    const count = drinkList[cocktail.id] ? drinkList[cocktail.id] : 0;
+    return (
+      <CocktailButton
+        key={cocktail.id}
+        cocktail={cocktail}
+        count={count}
+        setRecipeModalDrinkId={setRecipeModalDrinkId}
+      />
+    );
+  });
 
-            const count = this.props.drinkList.has(cocktail.id) ? this.props.drinkList.get(cocktail.id) : 0;
-            return (
-                <CocktailButton key={cocktail.id} cocktail={cocktail} count={count} />
-            );
-        });
-
-        return (
-            <div className="col-12 cocktailGrid">
-                <div className="row justify-content-center no-gutters">
-                    {cocktails}
-                </div>
-            </div>
-        );
-    }
-}
-
-const mapStateToProps = ({ app }) => ({
-    cocktails: app.data,
-    drinkList: app.drinkList,
-    filter: app.filter
-});
-
-export default connect(mapStateToProps)(CocktailGrid);
+  return (
+    <div className="col-12 cocktailGrid">
+      <div className="row justify-content-center no-gutters">{cocktails}</div>
+    </div>
+  );
+};

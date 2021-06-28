@@ -1,36 +1,34 @@
-import { useRef } from "react";
-import { connect } from "react-redux";
-import { fetchData } from "./Redux/actions";
-import CocktailGrid from "./Components/CocktailGrid";
-import Selections from "./Selections";
-import NavBar from "./Components/NavBar";
-import RecipeModal from "./Components/RecipeModal";
+import { useState } from "react";
+import { CocktailGrid } from "./Components/CocktailGrid";
+import { Selections } from "./Selections";
+import { NavBar } from "./Components/NavBar";
+import { RecipeModal } from "./Components/RecipeModal";
+import { DrinkListProvider } from "./DrinkListProvider";
 
-const useComponentWillMount = (func) => {
-  const willMount = useRef(true);
-  if (willMount.current) func();
-  willMount.current = false;
-};
-
-const App = ({ fetchData }) => {
-  useComponentWillMount(fetchData);
-
+export const App = () => {
+  const [showSelections, setShowSelections] = useState(true);
+  const [filter, setFilter] = useState("");
+  const [recipeModalDrinkId, setRecipeModalDrinkId] = useState();
+  const toggleShowSelections = () => setShowSelections((state) => !state);
   return (
-    <div>
-      <NavBar />
-      <Selections />
+    <DrinkListProvider>
+      <NavBar
+        toggleShowSelections={toggleShowSelections}
+        setFilter={setFilter}
+      />
+      <Selections
+        showSelections={showSelections}
+        toggleShowSelections={toggleShowSelections}
+      />
       <div className="container-fluid" style={{ position: "relative" }}>
         <div className="row">
-          <CocktailGrid />
+          <CocktailGrid
+            filter={filter}
+            setRecipeModalDrinkId={setRecipeModalDrinkId}
+          />
         </div>
       </div>
-      <RecipeModal />
-    </div>
+      <RecipeModal recipeModalDrinkId={recipeModalDrinkId} />
+    </DrinkListProvider>
   );
 };
-
-const mapDispatchToProps = (dispatch) => ({
-  fetchData: () => dispatch(fetchData()),
-});
-
-export default connect(null, mapDispatchToProps)(App);

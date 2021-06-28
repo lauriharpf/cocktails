@@ -1,7 +1,7 @@
-import { connect } from "react-redux";
-import { toggleDrinkList, setFilter } from "../Redux/actions";
 import { FaShoppingCart } from "react-icons/fa";
 import styled from "styled-components";
+import { useContext } from "react";
+import { DrinkListContext } from "../DrinkListProvider";
 
 const NavBarForm = styled.form`
   width: 100%;
@@ -20,7 +20,17 @@ const CartButton = styled.button`
   white-space: nowrap;
 `;
 
-const NavBar = (props) => {
+export const NavBar = ({ toggleShowSelections, setFilter }) => {
+  const { drinkList } = useContext(DrinkListContext);
+
+  const drinkListCount = Array.from(Object.entries(drinkList)).reduce(function (
+    acc,
+    keyToValue
+  ) {
+    return acc + keyToValue[1];
+  },
+  0);
+
   return (
     <nav className="navbar fixed-top bg-faded">
       <NavBarForm>
@@ -31,16 +41,15 @@ const NavBar = (props) => {
             type="search"
             placeholder="Find cocktail..."
             aria-label="Find cocktail"
-            onChange={props.setFilter}
+            onChange={(event) => setFilter(event.target.value.toLowerCase())}
             style={{ fontSize: "0.9rem" }}
           />
           <CartButton
             type="button"
             className="btn btn-light float-right"
-            onClick={props.toggleDrinkList}
+            onClick={toggleShowSelections}
           >
-            <span className="badge">{props.drinkListCount}</span>{" "}
-            <FaShoppingCart />{" "}
+            <span className="badge">{drinkListCount}</span> <FaShoppingCart />{" "}
             <span className="d-none d-md-inline">Selections</span>
           </CartButton>
         </NavBarControls>
@@ -48,20 +57,3 @@ const NavBar = (props) => {
     </nav>
   );
 };
-
-const mapStateToProps = (state) => ({
-  drinkListCount: Array.from(state.app.drinkList.entries()).reduce(function (
-    acc,
-    keyToValue
-  ) {
-    return acc + keyToValue[1];
-  },
-  0),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  toggleDrinkList: () => dispatch(toggleDrinkList()),
-  setFilter: (event) => dispatch(setFilter(event.target.value.toLowerCase())),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

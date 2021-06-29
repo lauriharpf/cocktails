@@ -106,7 +106,21 @@ function keepUrlInSync(
   history.push(url);
 }
 
-export const DrinkListContext = React.createContext({});
+interface DrinkListContextProps {
+  drinkList: DrinkList;
+  metric: boolean;
+  setMetric: (metric: boolean) => void;
+  changeDrinkCount: (cocktailId: string, changeBy: number) => void;
+  removeDrink: (cocktailId: string) => void;
+}
+
+export const DrinkListContext = React.createContext<DrinkListContextProps>({
+  drinkList: {},
+  metric: false,
+  setMetric: () => undefined,
+  changeDrinkCount: () => undefined,
+  removeDrink: () => undefined,
+});
 
 interface DrinkList {
   [drinkId: string]: number;

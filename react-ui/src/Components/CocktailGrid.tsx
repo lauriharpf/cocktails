@@ -36,7 +36,7 @@ export const CocktailGrid = ({ filter, setRecipeModalDrinkId }: Props) => {
 
   return (
     <div className="col-12 cocktailGrid">
-      <div className="row justify-content-center no-gutters">{cocktails}</div>
+      <div className="row justify-content-center g-0">{cocktails}</div>
     </div>
   );
 };

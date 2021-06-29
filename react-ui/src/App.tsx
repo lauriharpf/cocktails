@@ -8,7 +8,9 @@ import { DrinkListProvider } from "./DrinkListProvider";
 export const App = () => {
   const [showSelections, setShowSelections] = useState(true);
   const [filter, setFilter] = useState("");
-  const [recipeModalDrinkId, setRecipeModalDrinkId] = useState();
+  const [recipeModalDrinkId, setRecipeModalDrinkId] = useState<
+    number | undefined
+  >();
   const toggleShowSelections = () => setShowSelections((state) => !state);
   return (
     <DrinkListProvider>

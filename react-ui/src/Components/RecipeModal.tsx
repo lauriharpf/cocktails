@@ -3,21 +3,19 @@ import { UnitSelector } from "./UnitSelector";
 import IngredientList from "./IngredientList";
 import CocktailDatabase from "../CocktailDatabase";
 
-const RecipeSource = styled.div`
-  margin-top: 10px;
-  font-size: smaller;
-  font-style: italic;
-`;
+interface Props {
+  recipeModalDrinkId: number | undefined;
+}
 
-export const RecipeModal = ({ recipeModalDrinkId }) => {
-  const selectedCocktail = recipeModalDrinkId
-    ? CocktailDatabase.find((x) => x.id === recipeModalDrinkId)
-    : CocktailDatabase[0];
+export const RecipeModal = ({ recipeModalDrinkId }: Props) => {
+  const selectedCocktail = CocktailDatabase.find(
+    (x) => x.id === recipeModalDrinkId
+  );
   return (
     <div
       className="modal fade cocktailDetails"
       id="recipeModal"
-      tabIndex="-1"
+      tabIndex={-1}
       role="dialog"
       aria-labelledby="modalLabel"
       aria-hidden="true"
@@ -26,7 +24,7 @@ export const RecipeModal = ({ recipeModalDrinkId }) => {
         <div className="modal-content">
           <div className="modal-header">
             <h4 className="modal-title" id="modalLabel">
-              {selectedCocktail.name}
+              {selectedCocktail?.name}
             </h4>
             <div className="unitSelector">
               <UnitSelector name="modalUnitSelector" />
@@ -44,17 +42,19 @@ export const RecipeModal = ({ recipeModalDrinkId }) => {
             <div className="row">
               <div className="col-sm-6">
                 <img
-                  src={selectedCocktail.image}
+                  src={selectedCocktail?.image}
                   className="responsiveImage"
-                  alt={selectedCocktail.name}
+                  alt={selectedCocktail?.name}
                 />
               </div>
               <div className="col-sm-6">
                 <h6>Ingredients</h6>
-                <IngredientList ingredients={selectedCocktail.ingredients} />
+                <IngredientList
+                  ingredients={selectedCocktail?.ingredients || []}
+                />
 
                 <h6>Instructions</h6>
-                {selectedCocktail.instructions}
+                {selectedCocktail?.instructions}
 
                 <RecipeSource>
                   Recipe courtesy of{" "}
@@ -68,3 +68,9 @@ export const RecipeModal = ({ recipeModalDrinkId }) => {
     </div>
   );
 };
+
+const RecipeSource = styled.div`
+  margin-top: 10px;
+  font-size: smaller;
+  font-style: italic;
+`;

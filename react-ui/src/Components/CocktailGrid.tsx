@@ -1,10 +1,17 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { CocktailButton } from "./CocktailButton";
 import { forceCheck } from "react-lazyload";
 import CocktailDatabase from "../CocktailDatabase";
 import { DrinkListContext } from "../DrinkListProvider";
 
-export const CocktailGrid = ({ filter, setRecipeModalDrinkId }) => {
+interface Props {
+  filter: string;
+  setRecipeModalDrinkId: React.Dispatch<
+    React.SetStateAction<number | undefined>
+  >;
+}
+
+export const CocktailGrid = ({ filter, setRecipeModalDrinkId }: Props) => {
   const { drinkList } = useContext(DrinkListContext);
 
   useEffect(() => {

@@ -30,12 +30,10 @@ export const RecipeModal = ({ recipeModalDrinkId }: Props) => {
               <UnitSelector name="modalUnitSelector" />
               <button
                 type="button"
-                className="close"
-                data-dismiss="modal"
+                className="btn-close"
+                data-bs-dismiss="modal"
                 aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
+              />
             </div>
           </div>
           <div className="modal-body">

@@ -1,9 +1,9 @@
-/* global $ */
 import styled from "styled-components";
 import { FaPlusSquare } from "react-icons/fa";
 import LazyLoad from "react-lazyload";
 import { useContext } from "react";
 import { DrinkListContext } from "../DrinkListProvider";
+import { Modal } from "bootstrap";
 
 export const CocktailThumbnail = styled.img`
   position: absolute;
@@ -31,11 +31,11 @@ export const CocktailButton = ({ setRecipeModalDrinkId, cocktail, count }) => {
   const { changeDrinkCount } = useContext(DrinkListContext);
   const onOpenClick = () => {
     setRecipeModalDrinkId(cocktail.id); // Fill the RecipeModal with data for this cocktail
-    $("#recipeModal").modal(); // Open the modal
+    new Modal(document.getElementById("recipeModal")).show();
   };
 
   return (
-    <ContentWrapper className="col-1 cocktailButton noselect">
+    <ContentWrapper className="col-1 cocktailButton noselect position-relative">
       <LazyLoad
         height={155}
         offset={200}

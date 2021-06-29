@@ -2,24 +2,6 @@ import { FaShoppingCart } from "react-icons/fa";
 import styled from "styled-components";
 import { useContext } from "react";
 import { DrinkListContext } from "../DrinkListProvider";
-
-const NavBarForm = styled.form`
-  width: 100%;
-  display: flex;
-`;
-
-const NavBarControls = styled.div`
-  margin-left: auto;
-  display: inherit;
-  align-items: center;
-`;
-
-const CartButton = styled.button`
-  margin-left: 5px;
-  height: calc(2.25rem + 2px);
-  white-space: nowrap;
-`;
-
 interface Props {
   toggleShowSelections: () => void;
   setFilter: React.Dispatch<React.SetStateAction<string>>;
@@ -62,3 +44,20 @@ export const NavBar = ({ toggleShowSelections, setFilter }: Props) => {
     </nav>
   );
 };
+
+const NavBarForm = styled.form`
+  width: 100%;
+  display: flex;
+`;
+
+const NavBarControls = styled.div`
+  margin-left: auto;
+  display: inherit;
+  align-items: center;
+`;
+
+const CartButton = styled.button`
+  margin-left: 5px;
+  height: calc(2.25rem + 2px);
+  white-space: nowrap;
+`;

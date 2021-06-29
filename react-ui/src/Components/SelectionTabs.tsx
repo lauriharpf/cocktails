@@ -1,21 +1,19 @@
 import { FaWindowClose } from "react-icons/fa";
 import styled from "styled-components";
+import { TabName } from "../Selections";
 import { SelectionTab } from "./SelectionTab";
 
-const CloseTab = styled.li`
-  margin-left: auto;
-  align-self: center;
-`;
-
-const CloseIcon = styled(FaWindowClose)`
-  cursor: pointer;
-`;
+interface Props {
+  toggleShowSelections: () => void;
+  selectedTab: TabName;
+  setSelectedTab: React.Dispatch<React.SetStateAction<TabName>>;
+}
 
 export const SelectionTabs = ({
   toggleShowSelections,
   selectedTab,
   setSelectedTab,
-}) => {
+}: Props) => {
   return (
     <ul className="nav nav-tabs">
       <SelectionTab
@@ -42,3 +40,12 @@ export const SelectionTabs = ({
     </ul>
   );
 };
+
+const CloseTab = styled.li`
+  margin-left: auto;
+  align-self: center;
+`;
+
+const CloseIcon = styled(FaWindowClose)`
+  cursor: pointer;
+`;

@@ -20,7 +20,12 @@ const CartButton = styled.button`
   white-space: nowrap;
 `;
 
-export const NavBar = ({ toggleShowSelections, setFilter }) => {
+interface Props {
+  toggleShowSelections: () => void;
+  setFilter: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export const NavBar = ({ toggleShowSelections, setFilter }: Props) => {
   const { drinkList } = useContext(DrinkListContext);
 
   const drinkListCount = Array.from(Object.entries(drinkList)).reduce(function (

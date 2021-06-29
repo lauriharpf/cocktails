@@ -1,6 +1,6 @@
 # Cocktails World ![Build](https://github.com/lauriharpf/cocktails/actions/workflows/node.js.yml/badge.svg) [![License](https://img.shields.io/github/license/lharpf/cocktails)](https://github.com/lauriharpf/cocktails/blob/master/LICENSE.txt)
 
-[Cocktails World](http://www.cocktailsworld.eu/) shows cocktail recipes and calculates needed ingredients based on selected cocktails. Built with React, Redux, Bootstrap and hosted in Heroku.
+[Cocktails World](http://www.cocktailsworld.eu/) shows cocktail recipes and calculates needed ingredients based on selected cocktails. Built with React & Bootstrap and hosted in Heroku.
 
 ![Animated demo of Cocktails World site](https://raw.githubusercontent.com/lauriharpf/cocktails/master/readme_demo.gif)
 

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@popperjs/core": "^2.9.2",
+    "@popperjs/core": "^2.11.5",
     "@types/history": "^4.7.9",
     "@types/jest": "^26.0.24",
     "@types/node": "^16.3.1",
